@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight, Mail } from 'lucide-react';
+import { ArrowUpRight, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { portfolioData } from '../data/portfolioData';
 
@@ -25,34 +25,8 @@ export default function Hero() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Top Editorial Metadata Strip */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pb-6 sm:pb-8 border-b border-plum-900/10 dark:border-white/10 text-xs font-mono">
-          <div className="flex flex-col">
-            <span className="text-gold-600 dark:text-gold-400 uppercase tracking-widest font-semibold text-[10px]">
-              Domain Focus
-            </span>
-            <span className="text-plum-900 dark:text-ice-100 font-medium">
-              SE4AI & Machine Learning Research
-            </span>
-          </div>
-          <div className="flex flex-col sm:text-center">
-            <span className="text-gold-600 dark:text-gold-400 uppercase tracking-widest font-semibold text-[10px]">
-              Institutional Base
-            </span>
-            <span className="text-plum-900 dark:text-ice-100 font-medium">
-              NIT Calicut • Amal Jyothi (10.0 CGPA)
-            </span>
-          </div>
-          <div className="flex sm:justify-end items-center">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-50 dark:bg-plum-900/50 border border-gold-300/60 dark:border-gold-500/30 text-plum-900 dark:text-gold-300 font-mono text-[11px] font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-              {personal.statusText}
-            </span>
-          </div>
-        </div>
-
         {/* Hero Main Presentation Stage */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left Column: "Hello There!" Bounding Box, Headline & Pitch */}
           <div className="lg:col-span-7 flex flex-col items-start">
@@ -86,7 +60,7 @@ export default function Hero() {
             </h2>
 
             {/* Academic highlights badges */}
-            <div className="inline-flex flex-wrap items-center gap-2 mb-8 sm:mb-10">
+            <div className="inline-flex flex-wrap items-center gap-2 mb-6">
               <span className="px-2.5 py-1 rounded-md bg-plum-800 text-white dark:bg-gold-500 dark:text-plum-950 font-mono text-xs font-bold uppercase tracking-wider">
                 Rank 1 • 10.0 CGPA
               </span>
@@ -96,25 +70,6 @@ export default function Hero() {
               <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-plum-900/60 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-ice-200 font-mono text-xs font-medium">
                 KAU RAISE 2026 Stage 2
               </span>
-            </div>
-
-            {/* Quick CTAs */}
-            <div className="flex flex-wrap gap-3 items-center pt-2">
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-plum-800 hover:bg-plum-900 text-white dark:bg-gold-500 dark:hover:bg-gold-400 dark:text-plum-950 font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-gold-glow hover:-translate-y-0.5"
-              >
-                <span>Explore Work</span>
-                <ArrowDown className="w-3.5 h-3.5" />
-              </a>
-
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-plum-900/20 dark:border-gold-500/30 bg-white/80 dark:bg-plum-900/40 text-plum-900 dark:text-ice-100 font-mono text-xs font-semibold tracking-wider hover:border-gold-500 hover:bg-gold-50/50 dark:hover:bg-plum-900/80 transition-all hover:-translate-y-0.5"
-              >
-                <span>Get In Touch</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
             </div>
 
             {/* Social Links Row */}
