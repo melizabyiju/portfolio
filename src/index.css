@@ -155,24 +155,20 @@ body {
   z-index: 10001;
   will-change: transform;
   transform: translate(-50%, -50%);
-  transition: color 0.22s cubic-bezier(0.2, 0, 0, 1),
-              text-shadow 0.22s cubic-bezier(0.2, 0, 0, 1),
+  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              text-shadow 0.2s cubic-bezier(0.2, 0, 0, 1),
               opacity 0.2s ease;
 }
 
 /* Palette Color States for 'm' */
 .custom-cursor-m.is-purple {
-  color: #3A0F34;
-  text-shadow: none;
+  color: #3A0F34 !important;
+  text-shadow: none !important;
 }
 
 .custom-cursor-m.is-yellow {
-  color: #EAAA00;
-  text-shadow: 0 0 8px rgba(234, 170, 0, 0.45);
-}
-
-.dark .custom-cursor-m {
   color: #EAAA00 !important;
+  text-shadow: 0 0 8px rgba(234, 170, 0, 0.55) !important;
 }
 
 /* Outer follower ring 'o' */
@@ -187,33 +183,34 @@ body {
   z-index: 10000;
   will-change: transform;
   transform: translate(-50%, -50%);
-  transition: border-color 0.22s cubic-bezier(0.2, 0, 0, 1),
-              background-color 0.22s cubic-bezier(0.2, 0, 0, 1),
-              box-shadow 0.22s cubic-bezier(0.2, 0, 0, 1),
+  transition: border-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1),
               opacity 0.2s ease;
 }
 
 /* Palette Color States for ring 'o' */
 .custom-cursor-ring.is-purple {
-  border: 1.5px solid rgba(58, 15, 52, 0.45);
-  background-color: transparent;
-  box-shadow: none;
+  border: 1.5px solid rgba(58, 15, 52, 0.55) !important;
+  background-color: rgba(58, 15, 52, 0.04) !important;
+  box-shadow: none !important;
 }
 
 .custom-cursor-ring.is-yellow {
-  border: 1.5px solid #EAAA00;
-  background-color: rgba(234, 170, 0, 0.08);
-  box-shadow: 0 0 10px rgba(234, 170, 0, 0.25);
+  border: 1.5px solid #EAAA00 !important;
+  background-color: rgba(234, 170, 0, 0.12) !important;
+  box-shadow: 0 0 12px rgba(234, 170, 0, 0.3) !important;
 }
 
-.custom-cursor-ring.is-hovered {
+.custom-cursor-ring.is-hovered.is-purple {
+  background-color: rgba(58, 15, 52, 0.12) !important;
+  border-color: #3A0F34 !important;
+}
+
+.custom-cursor-ring.is-hovered.is-yellow {
+  background-color: rgba(234, 170, 0, 0.22) !important;
   border-color: #EAAA00 !important;
-  background-color: rgba(234, 170, 0, 0.14) !important;
-  box-shadow: 0 0 16px rgba(234, 170, 0, 0.35) !important;
-}
-
-.dark .custom-cursor-ring {
-  border-color: #EAAA00;
+  box-shadow: 0 0 16px rgba(234, 170, 0, 0.45) !important;
 }
 
 @media (pointer: coarse) {

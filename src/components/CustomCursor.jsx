@@ -3,8 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function CustomCursor() {
   const mRef = useRef(null);
   const ringRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isYellow, setIsYellow] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -18,54 +16,74 @@ export default function CustomCursor() {
     let mX = -100;
     let mY = -100;
     let isHovering = false;
-    let isOverPurple = false;
     let isMoving = false;
+    let isCurrentlyYellow = false;
 
-    // Detect if element or its container is purple/dark to switch to yellow
-    const checkPurpleOrDark = (clientX, clientY) => {
-      if (document.documentElement.classList.contains('dark')) {
+    // Apply color theme directly to DOM elements for zero-lag instant transition
+    const applyColorTheme = (yellow) => {
+      isCurrentlyYellow = yellow;
+      if (mRef.current) {
+        if (yellow) {
+          mRef.current.classList.add('is-yellow');
+          mRef.current.classList.remove('is-purple');
+        } else {
+          mRef.current.classList.remove('is-yellow');
+          mRef.current.classList.add('is-purple');
+        }
+      }
+      if (ringRef.current) {
+        if (yellow) {
+          ringRef.current.classList.add('is-yellow');
+          ringRef.current.classList.remove('is-purple');
+        } else {
+          ringRef.current.classList.remove('is-yellow');
+          ringRef.current.classList.add('is-purple');
+        }
+      }
+    };
+
+    // Determine if the background under (x, y) is purple or dark
+    const checkIsPurpleOrDarkAt = (x, y) => {
+      // 1. Dark mode active -> always yellow
+      if (
+        document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark'
+      ) {
         return true;
       }
-      const el = document.elementFromPoint(clientX, clientY);
+
+      const el = document.elementFromPoint(x, y);
       if (!el) return false;
 
       let current = el;
-      while (current && current !== document.body && current !== document.documentElement) {
-        // 1. Check classes for purple/dark design tokens
-        const classNames = current.className;
-        if (typeof classNames === 'string' && classNames.length > 0) {
-          if (
-            classNames.includes('bg-plum') ||
-            classNames.includes('bg-aubergine') ||
-            classNames.includes('bg-[#2D0A28]') ||
-            classNames.includes('bg-[#3A0F34]') ||
-            classNames.includes('bg-[#1A0519]') ||
-            classNames.includes('bg-[#10030F]') ||
-            classNames.includes('bg-[#260621]') ||
-            classNames.includes('bg-black') ||
-            classNames.includes('bg-slate-900') ||
-            classNames.includes('bg-slate-950')
-          ) {
-            return true;
-          }
-        }
-
-        // 2. Check computed background color
+      while (current && current !== document.documentElement) {
         try {
           const style = window.getComputedStyle(current);
           const bg = style.backgroundColor;
           if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') {
-            const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+            const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
             if (match) {
               const r = parseInt(match[1], 10);
               const g = parseInt(match[2], 10);
               const b = parseInt(match[3], 10);
-              const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-              const isPurpleHue = r > 35 && b > 25 && g < (r + b) * 0.45;
-              if (lum < 140 || isPurpleHue) {
-                return true;
-              } else {
-                return false;
+              const a = match[4] !== undefined ? parseFloat(match[4]) : 1;
+
+              if (a >= 0.4) {
+                // Perceived luminance
+                const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+
+                // Purple / Plum hue: Red & Blue high, Green low
+                const isPurple = r > g + 10 && b > g + 10 && lum < 155;
+
+                // Deep dark background
+                const isDark = lum < 110;
+
+                if (isPurple || isDark) {
+                  return true;
+                } else {
+                  // Found an opaque light or yellow/cream background
+                  return false;
+                }
               }
             }
           }
@@ -73,10 +91,15 @@ export default function CustomCursor() {
 
         current = current.parentElement;
       }
+
       return false;
     };
 
-    let checkTimer = 0;
+    // Initial color setup
+    const isDark =
+      document.documentElement.classList.contains('dark') ||
+      document.documentElement.getAttribute('data-theme') === 'dark';
+    applyColorTheme(isDark);
 
     const handleMouseMove = (e) => {
       targetX = e.clientX;
@@ -91,15 +114,10 @@ export default function CustomCursor() {
         setIsVisible(true);
       }
 
-      // Check background color under cursor smoothly
-      const now = performance.now();
-      if (now - checkTimer > 40) {
-        checkTimer = now;
-        const overDark = checkPurpleOrDark(targetX, targetY);
-        if (overDark !== isOverPurple) {
-          isOverPurple = overDark;
-          setIsYellow(overDark || isHovering);
-        }
+      // Check background color under pointer
+      const overPurple = checkIsPurpleOrDarkAt(targetX, targetY);
+      if (overPurple !== isCurrentlyYellow) {
+        applyColorTheme(overPurple);
       }
     };
 
@@ -116,7 +134,7 @@ export default function CustomCursor() {
     let animationFrameId;
     const animate = () => {
       if (isMoving) {
-        // High-performance smooth speed tracking without React setState lag
+        // High-performance smooth speed tracking without React setState latency
         mX += (targetX - mX) * 0.82;
         mY += (targetY - mY) * 0.82;
 
@@ -125,26 +143,28 @@ export default function CustomCursor() {
         ringY += (targetY - ringY) * 0.24;
 
         if (mRef.current) {
-          mRef.current.style.transform = `translate3d(${mX}px, ${mY}px, 0) translate(-50%, -50%) scale(${isHovering ? 1.25 : 1})`;
+          mRef.current.style.transform = `translate3d(${mX}px, ${mY}px, 0) translate(-50%, -50%) scale(${
+            isHovering ? 1.25 : 1
+          })`;
         }
         if (ringRef.current) {
-          ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${isHovering ? 1.55 : 1})`;
+          ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${
+            isHovering ? 1.55 : 1
+          })`;
         }
       }
       animationFrameId = requestAnimationFrame(animate);
     };
     animationFrameId = requestAnimationFrame(animate);
 
-    // Interactive element hover listeners
+    // Interactive element hover listeners (only scales up for tactile feedback, leaves color to background)
     const handleElementHover = () => {
       isHovering = true;
-      setIsHovered(true);
-      setIsYellow(true);
+      if (ringRef.current) ringRef.current.classList.add('is-hovered');
     };
     const handleElementLeave = () => {
       isHovering = false;
-      setIsHovered(false);
-      setIsYellow(isOverPurple);
+      if (ringRef.current) ringRef.current.classList.remove('is-hovered');
     };
 
     const updateInteractiveListeners = () => {
@@ -163,17 +183,34 @@ export default function CustomCursor() {
     const elements = updateInteractiveListeners();
 
     // Rebind on DOM changes (e.g. modals opening, filters clicked)
-    const observer = new MutationObserver(() => {
+    const domObserver = new MutationObserver(() => {
       updateInteractiveListeners();
     });
-    observer.observe(document.body, { childList: true, subtree: true });
+    domObserver.observe(document.body, { childList: true, subtree: true });
+
+    // Recheck theme on theme toggle
+    const themeObserver = new MutationObserver(() => {
+      const isDarkNow =
+        document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDarkNow) {
+        applyColorTheme(true);
+      } else {
+        applyColorTheme(checkIsPurpleOrDarkAt(targetX, targetY));
+      }
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class', 'data-theme'],
+    });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
       cancelAnimationFrame(animationFrameId);
-      observer.disconnect();
+      domObserver.disconnect();
+      themeObserver.disconnect();
       elements.forEach((el) => {
         el.removeEventListener('mouseenter', handleElementHover);
         el.removeEventListener('mouseleave', handleElementLeave);
@@ -186,9 +223,7 @@ export default function CustomCursor() {
       {/* Brand monogram 'm' centered inside 'o' ring */}
       <div
         ref={mRef}
-        className={`custom-cursor-m ${isYellow ? 'is-yellow' : 'is-purple'} ${
-          isVisible ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`custom-cursor-m is-purple ${isVisible ? 'opacity-100' : 'opacity-0'}`}
         aria-hidden="true"
       >
         m
@@ -197,9 +232,7 @@ export default function CustomCursor() {
       {/* Smooth outer follower ring 'o' */}
       <div
         ref={ringRef}
-        className={`custom-cursor-ring ${isYellow ? 'is-yellow' : 'is-purple'} ${
-          isHovered ? 'is-hovered' : ''
-        } ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`custom-cursor-ring is-purple ${isVisible ? 'opacity-100' : 'opacity-0'}`}
         aria-hidden="true"
       />
     </>
