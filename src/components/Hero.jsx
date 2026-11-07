@@ -7,7 +7,7 @@ export default function Hero() {
   const { personal } = portfolioData;
 
   return (
-    <section id="hero" className="relative pt-28 sm:pt-36 pb-6 sm:pb-8 md:pb-12 overflow-hidden bg-[#FAF6F2] dark:bg-[#10030F] transition-colors duration-300">
+    <section id="hero" className="relative pt-28 sm:pt-36 pb-8 sm:pb-10 md:pb-14 lg:pb-16 overflow-hidden bg-[#FAF6F2] dark:bg-[#10030F] transition-colors duration-300">
 
       {/* ========================================================================
           HERO BACKGROUND COMPOSITION (WARM BLUSH, PEACH/GOLD GLOWS, CURVES & WAVES)
@@ -46,21 +46,21 @@ export default function Hero() {
         >
           {/* Wave 1: Soft Pale Lavender / Blush Wave (Back Layer) */}
           <path
-            d="M 0,80 C 300,35 560,110 880,70 C 1120,40 1300,75 1440,60 L 1440,140 L 0,140 Z"
+            d="M 0,95 C 320,80 560,95 880,65 C 1120,45 1300,70 1440,55 L 1440,140 L 0,140 Z"
             fill="#F3EBF2"
             className="dark:fill-[#260A26] opacity-85"
           />
 
           {/* Wave 2: Deep Rich Plum Wave */}
           <path
-            d="M 0,115 C 240,95 460,60 760,75 C 1020,85 1240,118 1440,100 L 1440,140 L 0,140 Z"
+            d="M 0,122 C 300,120 540,98 780,82 C 1020,70 1240,105 1440,95 L 1440,140 L 0,140 Z"
             fill="#461240"
             className="dark:fill-[#360833]"
           />
 
           {/* Wave 3: Dark Velvety Burgundy Wave */}
           <path
-            d="M 0,140 L 0,130 C 280,115 580,95 900,105 C 1160,115 1330,135 1440,130 L 1440,140 Z"
+            d="M 0,140 L 0,132 C 320,125 600,110 900,115 C 1160,120 1330,136 1440,132 L 1440,140 Z"
             fill="#280825"
             className="dark:fill-[#1C041B]"
           />
@@ -149,34 +149,34 @@ export default function Hero() {
             </div>
 
             {/* Social Links Row */}
-            <div className="flex items-center gap-4 mt-8 pt-6 border-t border-plum-900/10 dark:border-white/10">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-7 pt-5 border-t border-plum-900/15 dark:border-white/15 relative z-20">
               <a
                 href={personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-700 dark:text-slate-300 hover:text-gold-600 dark:hover:text-gold-400 transition-colors"
               >
-                <GithubIcon className="w-4 h-4" />
+                <GithubIcon className="w-4 h-4 flex-shrink-0" />
                 <span>GitHub</span>
-                <ArrowUpRight className="w-3 h-3 opacity-60" />
+                <ArrowUpRight className="w-3 h-3 opacity-60 flex-shrink-0" />
               </a>
-              <span className="text-slate-300 dark:text-slate-700">•</span>
+              <span className="text-slate-300 dark:text-slate-700 select-none">•</span>
               <a
                 href={personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-700 dark:text-slate-300 hover:text-gold-600 dark:hover:text-gold-400 transition-colors"
               >
-                <LinkedinIcon className="w-4 h-4" />
+                <LinkedinIcon className="w-4 h-4 flex-shrink-0" />
                 <span>LinkedIn</span>
-                <ArrowUpRight className="w-3 h-3 opacity-60" />
+                <ArrowUpRight className="w-3 h-3 opacity-60 flex-shrink-0" />
               </a>
-              <span className="text-slate-300 dark:text-slate-700">•</span>
+              <span className="text-slate-300 dark:text-slate-700 select-none">•</span>
               <a
                 href={`mailto:${personal.email}`}
                 className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-700 dark:text-slate-300 hover:text-gold-600 dark:hover:text-gold-400 transition-colors"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-4 h-4 flex-shrink-0" />
                 <span>{personal.email}</span>
               </a>
             </div>

@@ -152,12 +152,12 @@ export default function ProjectExplorer({ onSelectProject }) {
                   )}
                 </div>
 
-                {/* Circular Inspector Arrow Button (Exact Reference Match, No Text) */}
+                {/* Circular Inspector Arrow Button (Purple/Plum theme with golden arrow) */}
                 <div
                   aria-label="Inspect project"
-                  className="w-9 h-9 rounded-full bg-[#2A372E] dark:bg-[#1E2B21] flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-[#20061D] dark:group-hover:bg-gold-500 dark:group-hover:text-plum-950 transition-all duration-300"
+                  className="w-9 h-9 rounded-full bg-plum-800 dark:bg-plum-900 flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-plum-950 dark:group-hover:bg-gold-400 dark:group-hover:text-plum-950 transition-all duration-300"
                 >
-                  <ArrowRight className="w-4 h-4 text-gold-400 group-hover:text-gold-300 dark:group-hover:text-plum-950 transition-colors" />
+                  <ArrowRight className="w-4 h-4 text-gold-400 group-hover:text-plum-950 transition-colors" />
                 </div>
               </div>
 
@@ -201,12 +201,12 @@ export default function ProjectExplorer({ onSelectProject }) {
                   ))}
                 </div>
 
-                {/* Circular Inspector Arrow Button (Exact Reference Match, No Text) */}
+                {/* Circular Inspector Arrow Button (Purple/Plum theme with golden arrow) */}
                 <div
                   aria-label="Inspect project"
-                  className="w-9 h-9 rounded-full bg-[#2A372E] dark:bg-[#1E2B21] flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-[#20061D] dark:group-hover:bg-gold-500 dark:group-hover:text-plum-950 transition-all duration-300"
+                  className="w-9 h-9 rounded-full bg-plum-800 dark:bg-plum-900 flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-plum-950 dark:group-hover:bg-gold-400 dark:group-hover:text-plum-950 transition-all duration-300"
                 >
-                  <ArrowRight className="w-4 h-4 text-gold-400 group-hover:text-gold-300 dark:group-hover:text-plum-950 transition-colors" />
+                  <ArrowRight className="w-4 h-4 text-gold-400 group-hover:text-plum-950 transition-colors" />
                 </div>
               </div>
             </div>
