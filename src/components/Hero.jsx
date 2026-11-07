@@ -185,7 +185,7 @@ export default function Hero() {
 
           {/* Right Column: Profile Photo Area with Soft Peach/Gold Gradient, Overlapping Circular Outlines & Radiating Plum Strokes */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative select-none">
-            <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] flex items-center justify-center pt-4 sm:pt-6 pb-2">
+            <div className="relative isolate w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] flex items-center justify-center pt-4 sm:pt-6 pb-2">
               
               {/* Three Radiating Plum Strokes Above Head (from Reference Image) */}
               <svg
@@ -202,28 +202,29 @@ export default function Hero() {
               </svg>
 
               {/* Large Soft Peach and Golden Gradient Organic Shape Behind Portrait */}
-              <div 
-                className="absolute w-[290px] h-[320px] sm:w-[350px] sm:h-[380px] md:w-[390px] md:h-[420px] -left-4 sm:-left-8 top-1/2 -translate-y-1/2 bg-gradient-to-tr from-[#FED7AA]/70 via-[#FDE68A]/65 to-[#F59E0B]/35 dark:from-gold-600/30 dark:via-gold-500/25 dark:to-transparent rounded-[60%_40%_55%_45%/45%_55%_45%_55%] -z-10 filter blur-[0.5px] transition-transform duration-700"
+              <div
+                aria-hidden="true"
+                className="profile-organic-shape absolute left-1/2 top-[53%] -translate-x-[53%] -translate-y-1/2 w-[270px] h-[320px] sm:w-[330px] sm:h-[380px] md:w-[365px] md:h-[410px] blur-[0.5px] z-0"
               />
 
               {/* Thin Overlapping Golden Circular Outlines (Matching Reference) */}
               <svg
-                className="absolute -left-10 sm:-left-16 top-1/2 -translate-y-1/2 w-[380px] sm:w-[460px] md:w-[500px] h-[380px] sm:h-[460px] md:h-[500px] pointer-events-none -z-5 text-gold-500/60 dark:text-gold-400/40"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[410px] md:w-[455px] h-[340px] sm:h-[410px] md:h-[455px] pointer-events-none z-0 text-gold-600/55 dark:text-gold-400/45"
                 viewBox="0 0 500 500"
                 fill="none"
               >
                 {/* Primary thin golden circular curve sweeping around left side */}
-                <ellipse cx="230" cy="250" rx="190" ry="180" stroke="currentColor" strokeWidth="1.15" />
+                <ellipse cx="210" cy="224" rx="186" ry="178" stroke="currentColor" strokeWidth="1.1" />
                 {/* Secondary overlapping thin circular outline sweeping rightward */}
-                <ellipse cx="270" cy="270" rx="170" ry="160" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.65" />
+                <ellipse cx="300" cy="300" rx="180" ry="172" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.62" />
               </svg>
 
               {/* Transparent Person Cutout with Natural Shadows & Smooth Image-Edge Blending */}
-              <div className="relative z-10 w-full flex justify-center [mask-image:linear-gradient(to_bottom,black_86%,transparent_100%)]">
+              <div className="relative z-10 w-full flex justify-center [mask-image:linear-gradient(to_bottom,black_0%,black_84%,rgba(0,0,0,0.82)_91%,transparent_100%)]">
                 <img
                   src="Images/hero_cutout.png"
                   alt="Meliza Mariya Byiju"
-                  className="w-[280px] sm:w-[340px] md:w-[380px] h-auto object-contain pointer-events-none transition-transform duration-700 hover:scale-[1.015] filter drop-shadow-[0_12px_24px_rgba(58,15,52,0.13)] dark:drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)]"
+                  className="profile-portrait-image w-[280px] sm:w-[340px] md:w-[380px] h-auto object-contain pointer-events-none transition-transform duration-700 hover:scale-[1.015] filter drop-shadow-[0_16px_28px_rgba(58,15,52,0.16)] dark:drop-shadow-[0_16px_28px_rgba(0,0,0,0.42)]"
                   onError={(e) => {
                     e.currentTarget.src = "Images/hero.jpeg";
                     e.currentTarget.className = "w-[260px] sm:w-[300px] aspect-[4/5] object-cover object-top rounded-3xl shadow-xl";

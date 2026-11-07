@@ -213,6 +213,45 @@ body {
   box-shadow: 0 0 16px rgba(234, 170, 0, 0.45) !important;
 }
 
+/* Hero portrait artwork only */
+.profile-organic-shape {
+  border-radius: 63% 37% 58% 42% / 44% 56% 43% 57%;
+  background: radial-gradient(
+    ellipse at 36% 38%,
+    rgba(255, 235, 211, 0.94) 0%,
+    rgba(255, 217, 172, 0.88) 42%,
+    rgba(249, 197, 110, 0.62) 72%,
+    rgba(234, 170, 0, 0.12) 100%
+  );
+  box-shadow: 0 24px 72px rgba(234, 170, 0, 0.1);
+}
+
+.dark .profile-organic-shape {
+  background: radial-gradient(
+    ellipse at 36% 38%,
+    rgba(212, 153, 0, 0.3) 0%,
+    rgba(164, 79, 157, 0.18) 58%,
+    transparent 100%
+  );
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.16);
+}
+
+.profile-portrait-image {
+  translate: -1.25rem 0;
+}
+
+@media (min-width: 640px) {
+  .profile-portrait-image {
+    translate: -1.75rem 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .profile-portrait-image {
+    translate: -2rem 0;
+  }
+}
+
 @media (pointer: coarse) {
   .custom-cursor-m,
   .custom-cursor-ring {
