@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { LayoutGrid, List, ArrowUpRight, Award, Filter } from 'lucide-react';
+import { LayoutGrid, List, Award, Filter, ArrowRight } from 'lucide-react';
 
 export default function ProjectExplorer({ onSelectProject }) {
   const { projects } = portfolioData;
@@ -112,10 +112,9 @@ export default function ProjectExplorer({ onSelectProject }) {
                   <span>{project.category.split('&')[0]}</span>
                 </div>
 
-                {/* Title & Tagline */}
-                <h3 className="font-display font-bold text-xl text-plum-950 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors flex items-center justify-between">
-                  <span>{project.title}</span>
-                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-gold-500 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                {/* Title & Subtitle */}
+                <h3 className="font-display font-bold text-xl text-plum-950 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
+                  {project.title}
                 </h3>
                 <p className="font-mono text-xs text-gold-700 dark:text-gold-400 font-semibold mt-0.5 mb-3">
                   {project.subtitle}
@@ -134,10 +133,11 @@ export default function ProjectExplorer({ onSelectProject }) {
                 )}
               </div>
 
-              <div>
+              {/* Bottom Row: Tech Chips on Left, Circular Arrow Button on Right (Matching Reference Image) */}
+              <div className="pt-4 border-t border-plum-900/10 dark:border-white/10 flex items-center justify-between gap-3">
                 {/* Tech Chips */}
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-plum-900/10 dark:border-white/10">
-                  {project.techStack.slice(0, 4).map((tech) => (
+                <div className="flex flex-wrap gap-1.5 flex-1">
+                  {project.techStack.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-plum-900/60 text-slate-700 dark:text-ice-200"
@@ -145,19 +145,22 @@ export default function ProjectExplorer({ onSelectProject }) {
                       {tech}
                     </span>
                   ))}
-                  {project.techStack.length > 4 && (
+                  {project.techStack.length > 3 && (
                     <span className="px-1.5 py-0.5 rounded text-[10px] font-mono text-slate-400">
-                      +{project.techStack.length - 4}
+                      +{project.techStack.length - 3}
                     </span>
                   )}
                 </div>
 
-                {/* Inspect Action */}
-                <div className="mt-4 pt-3 flex items-center justify-between text-xs font-mono text-gold-600 dark:text-gold-400 font-bold group-hover:underline">
-                  <span>INSPECT ARCHITECTURE</span>
-                  <span>↗</span>
+                {/* Circular Inspector Arrow Button (Exact Reference Match, No Text) */}
+                <div
+                  aria-label="Inspect project"
+                  className="w-9 h-9 rounded-full bg-[#2A372E] dark:bg-[#1E2B21] flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-[#20061D] dark:group-hover:bg-gold-500 dark:group-hover:text-plum-950 transition-all duration-300"
+                >
+                  <ArrowRight className="w-4 h-4 text-gold-400 group-hover:text-gold-300 dark:group-hover:text-plum-950 transition-colors" />
                 </div>
               </div>
+
             </div>
           ))}
         </div>
@@ -197,10 +200,14 @@ export default function ProjectExplorer({ onSelectProject }) {
                     </span>
                   ))}
                 </div>
-                <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-plum-900/15 dark:border-white/10 text-xs font-mono font-bold text-plum-900 dark:text-gold-400 group-hover:border-gold-500">
-                  <span>INSPECT</span>
-                  <span>↗</span>
-                </span>
+
+                {/* Circular Inspector Arrow Button (Exact Reference Match, No Text) */}
+                <div
+                  aria-label="Inspect project"
+                  className="w-9 h-9 rounded-full bg-[#2A372E] dark:bg-[#1E2B21] flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-[#20061D] dark:group-hover:bg-gold-500 dark:group-hover:text-plum-950 transition-all duration-300"
+                >
+                  <ArrowRight className="w-4 h-4 text-gold-400 group-hover:text-gold-300 dark:group-hover:text-plum-950 transition-colors" />
+                </div>
               </div>
             </div>
           ))}
