@@ -1,1165 +1,632 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" class="scroll-smooth">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meliza Byiju | AI and ML Researcher • Computer Science Scholar</title>
-  <meta name="description" content="Portfolio of Meliza Mariya Byiju. Computer Science Scholar (10.0 CGPA) and SE4AI Researcher at NIT Calicut. Engineering intelligent machine learning pipelines and real world sustainability systems.">
+  <meta name="description" content="Meliza Mariya Byiju — Computer Science Engineering Scholar (10.0 CGPA) & SE4AI Researcher at NIT Calicut. Engineering intelligent machine learning architectures and real-world sustainability systems.">
   <meta name="author" content="Meliza Mariya Byiju">
-  
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-  
-  <!-- Single Approved Typeface: Manrope & Geist Mono per B1 -->
+  <meta name="keywords" content="Meliza Mariya Byiju, Meliza Byiju, AI Researcher, Machine Learning, SE4AI, NIT Calicut, Amal Jyothi, 10.0 CGPA">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Meliza Mariya Byiju — Editorial Portfolio">
+  <meta property="og:description" content="Computer Science Scholar (10.0 CGPA) | SE4AI Researcher at NIT Calicut">
+  <meta property="og:type" content="website">
+
+  <title>Meliza Mariya Byiju | AI & ML Researcher • CSE Scholar</title>
+
+  <!-- Typography: Swiss Brutalist & Editorial Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Phosphor Icons per B6 -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          colors: {
-            aubergine: {
-              DEFAULT: '#3A0F34',
-              dark: '#260621',
-              deep: '#1F071C',
-              light: '#53194B',
-              50: '#FAF4F9',
-              100: '#F3E5F1',
-              200: '#E4C7DF',
-            },
-            marigold: {
-              DEFAULT: '#EAAA00',
-              hover: '#D49900',
-              light: '#FFF8E6',
-              50: '#FFFDF7',
-            },
-            silver: {
-              DEFAULT: '#DDE3E8',
-              light: '#F4F7F9',
-              dark: '#CBD5E1',
-            }
-          },
-          fontFamily: {
-            sans: ['"Manrope"', 'sans-serif'],
-            mono: ['"Geist Mono"', 'monospace']
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%233A0F34' width='32' height='32'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='16' fill='%23EAAA00' font-family='sans-serif' font-weight='900'>MB</text></svg>">
 
-  <!-- Custom Stylesheet -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="selection:bg-marigold selection:text-aubergine-dark relative overflow-x-hidden min-h-screen">
+<body data-theme="light">
+
+  <!-- Minimal Custom Cursor (Joyel Shaji Inspired) -->
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
   <!-- ========================================================================
-       SWARM REBUILD EXTENSION (Figma / IDE Editor Canvas Overlay)
+       SITE HEADER / MINIMAL NAVIGATION
        ======================================================================== -->
-  <div class="editor-ruler-top">0 100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400</div>
-  <div class="editor-ruler-left">0 100 200 300 400 500 600 700 800 900</div>
-
-  <div id="swarm-canvas-container" aria-hidden="true">
-    <!-- Active Figma Selection Bounding Box with Corner Handles -->
-    <div id="editorSelectionBox" class="editor-selection-box">
-      <div class="editor-handle-bl"></div>
-      <div class="editor-handle-br"></div>
-    </div>
-    <!-- Alignment Laser Lines -->
-    <div id="swarmLaserH" class="swarm-laser-line swarm-laser-h"></div>
-    <div id="swarmLaserV" class="swarm-laser-line swarm-laser-v"></div>
-  </div>
-
-  <!-- FLOATING EXTENSION CONTROL DOCK -->
-  <aside id="swarmDock" class="swarm-dock" aria-label="Swarm Rebuild Extension Bar">
-    <div class="flex items-center gap-2">
-      <div class="flex gap-1">
-        <span class="swarm-pulse-dot"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-      </div>
-      <span class="font-bold text-white tracking-wide">18 Agents Active</span>
+  <header class="site-header" id="site-header">
+    <div class="header-left">
+      <a href="#hero" class="brand-link" aria-label="Home">
+        <span class="brand-name">MELIZA MARIYA BYIJU</span>
+        <span class="brand-meta">PORTFOLIO</span>
+      </a>
     </div>
 
-    <span class="text-slate-500">|</span>
-    
-    <span id="swarmLayerCounter" class="text-marigold font-semibold">364 / 364 layers</span>
+    <nav class="header-nav" aria-label="Primary Navigation">
+      <a href="#section-about" class="nav-link">ABOUT</a>
+      <a href="#section-projects" class="nav-link">WORK</a>
+      <a href="#section-experience" class="nav-link">EXPERIENCE</a>
+      <a href="#section-skills" class="nav-link">SKILLS</a>
+      <a href="#section-education" class="nav-link">EDUCATION</a>
+      <a href="#section-leadership" class="nav-link">LEADERSHIP</a>
+      <a href="#section-contact" class="nav-link">CONTACT</a>
+    </nav>
 
-    <span class="text-slate-500">|</span>
-
-    <button id="swarmModeBtn" class="swarm-dock-btn text-marigold" title="Toggle autonomous mode">
-      Touring
-    </button>
-
-    <button id="swarmSpeedBtn" class="swarm-dock-btn" title="Toggle simulation speed">
-      1x
-    </button>
-
-    <button id="swarmRebuildBtn" class="swarm-dock-btn font-bold text-white hover:text-marigold" title="Trigger full cursor build sequence">
-      <i class="ph ph-arrow-clockwise text-marigold"></i> Rebuild
-    </button>
-
-    <button id="swarmCloseBtn" class="text-slate-400 hover:text-white p-1 ml-1" title="Minimize dock" aria-label="Close dock">
-      <i class="ph ph-x text-xs"></i>
-    </button>
-  </aside>
-
-  <!-- Minimized Restore Button -->
-  <button id="swarmRestorePill" class="swarm-restore-pill" title="Restore swarm controls">
-    <span class="w-2 h-2 rounded-full bg-marigold animate-ping"></span>
-    <span>Swarm Agents</span>
-  </button>
-
-  <!-- ========================================================================
-       TOP FIXED NAVIGATION BAR (Editorial Layout Styled with Palette Tokens)
-       ======================================================================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-aubergine-dark/95 dark:bg-[#180517]/95 backdrop-blur-md border-b border-aubergine-light/40 dark:border-white/10 transition-colors duration-300 shadow-[0_4px_24px_rgba(38,6,33,0.35)]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[68px] flex items-center justify-between">
-      
-      <!-- Left: Brand Logo & Title with Marigold Accents -->
-      <a href="#hero" class="flex flex-col select-none group leading-none">
-        <span class="font-extrabold text-[15px] sm:text-base tracking-tight text-white uppercase leading-none group-hover:text-marigold transition-colors font-sans">
-          MELIZA BYIJU<span class="text-marigold">.</span>
-        </span>
-        <span class="text-[9.5px] sm:text-[10px] font-mono tracking-[0.24em] text-marigold uppercase font-semibold mt-1">
-          PORTFOLIO
-        </span>
+    <div class="header-actions">
+      <a href="#section-contact" class="btn-header-contact">
+        <span>GET IN TOUCH</span>
+        <span>↗</span>
       </a>
 
-      <!-- Center: Desktop Nav Links (Silver on Deep Aubergine with Marigold Hover) -->
-      <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-[11.5px] sm:text-xs font-bold tracking-wider uppercase text-silver">
-        <a href="#about" class="hover:text-marigold transition-colors py-1">ABOUT</a>
-        <a href="#work" class="hover:text-marigold transition-colors py-1">WORK</a>
-        <a href="#experience" class="hover:text-marigold transition-colors py-1">EXPERIENCE</a>
-        <a href="#skills" class="hover:text-marigold transition-colors py-1">SKILLS</a>
-        <a href="#education" class="hover:text-marigold transition-colors py-1">EDUCATION</a>
-        <a href="#leadership" class="hover:text-marigold transition-colors py-1">LEADERSHIP</a>
-        <a href="#contact" class="hover:text-marigold transition-colors py-1">CONTACT</a>
-      </nav>
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="btn-icon-minimal" aria-label="Toggle visual theme" title="Toggle theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
 
-      <!-- Right: Action Controls (Marigold Outline Button + Theme Box + Menu Box) -->
-      <div class="flex items-center gap-2 sm:gap-2.5">
-        <!-- GET IN TOUCH Outline Button in Marigold -->
-        <a href="#contact" class="inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-2 border border-marigold bg-marigold/10 text-marigold hover:bg-marigold hover:text-aubergine-dark font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-sm">
-          <span>GET IN TOUCH</span>
-          <i class="ph ph-arrow-up-right text-xs"></i>
-        </a>
-
-        <!-- Square Theme Toggle Box Button -->
-        <button id="themeToggleBtn" aria-label="Toggle visual theme" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-white/20 text-marigold hover:border-marigold hover:bg-white/10 transition-colors" title="Toggle theme">
-          <i id="themeIcon" class="ph ph-moon text-base"></i>
-        </button>
-
-        <!-- Square Hamburger Menu Box Button -->
-        <button id="mobileMenuBtn" aria-label="Toggle navigation drawer" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-white/20 text-silver hover:border-marigold hover:text-marigold hover:bg-white/10 transition-colors" title="Open navigation menu">
-          <i class="ph ph-list text-lg"></i>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Dropdown / Drawer Menu (Palette Styled) -->
-    <div id="mobileMenu" class="hidden bg-aubergine-dark/98 dark:bg-[#180517]/98 backdrop-blur-md border-b border-aubergine-light/40 dark:border-white/10 shadow-2xl transition-all duration-200">
-      <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col space-y-3 font-bold text-xs uppercase tracking-wider text-silver">
-        <a href="#about" class="mobile-nav-link py-2.5 border-b border-white/10 flex items-center justify-between hover:text-marigold transition-colors">ABOUT <i class="ph ph-arrow-right text-xs text-marigold"></i></a>
-        <a href="#work" class="mobile-nav-link py-2.5 border-b border-white/10 flex items-center justify-between hover:text-marigold transition-colors">WORK <i class="ph ph-arrow-right text-xs text-marigold"></i></a>
-        <a href="#experience" class="mobile-nav-link py-2.5 border-b border-white/10 flex items-center justify-between hover:text-marigold transition-colors">EXPERIENCE <i class="ph ph-arrow-right text-xs text-marigold"></i></a>
-        <a href="#skills" class="mobile-nav-link py-2.5 border-b border-white/10 flex items-center justify-between hover:text-marigold transition-colors">SKILLS <i class="ph ph-arrow-right text-xs text-marigold"></i></a>
-        <a href="#education" class="mobile-nav-link py-2.5 border-b border-white/10 flex items-center justify-between hover:text-marigold transition-colors">EDUCATION <i class="ph ph-arrow-right text-xs text-marigold"></i></a>
-        <a href="#leadership" class="mobile-nav-link py-2.5 border-b border-white/10 flex items-center justify-between hover:text-marigold transition-colors">LEADERSHIP <i class="ph ph-arrow-right text-xs text-marigold"></i></a>
-        <a href="#contact" class="mobile-nav-link py-2.5 border-b border-white/10 flex items-center justify-between hover:text-marigold transition-colors">CONTACT <i class="ph ph-arrow-right text-xs text-marigold"></i></a>
-        <a href="#contact" class="mobile-nav-link mt-2 text-center py-3 border border-marigold bg-marigold text-aubergine-dark font-mono text-xs font-bold uppercase tracking-wider hover:bg-marigold-hover transition-colors">
-          GET IN TOUCH <i class="ph ph-arrow-up-right ml-1"></i>
-        </a>
-      </div>
+      <!-- Side Navigation Drawer Button -->
+      <button id="side-panel-toggle" class="btn-icon-minimal" aria-label="Open navigation menu" title="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </header>
 
   <main>
     <!-- ========================================================================
-         HERO SECTION
+         HERO SECTION (Swiss-Brutalist Composition inspired by Joyel Shaji)
          ======================================================================== -->
-    <div id="about" class="scroll-mt-24"></div>
-    <section id="hero" class="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6 max-w-7xl mx-auto scroll-mt-20">
+    <section class="hero-section" id="hero">
       
-      <!-- Top Editorial Status Pills (Integrated cleanly above hero content) -->
-      <div class="flex flex-wrap items-center justify-between gap-3 mb-8 pt-2 text-[11px] font-mono border-b border-silver/80 dark:border-white/10 pb-3">
-        <div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
-          <span><strong class="text-aubergine dark:text-marigold">ROLE:</strong> AI & SE4AI Researcher</span>
-          <span><strong class="text-aubergine dark:text-marigold">LOCATION:</strong> Kerala, India</span>
+      <!-- Top Editorial Metadata Strip -->
+      <div class="hero-meta-top">
+        <div class="hero-meta-col">
+          <span class="meta-label">ROLE</span>
+          <span class="meta-value">Computer Science Scholar | AI & SE4AI Researcher</span>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="text-slate-600 dark:text-slate-300 font-semibold uppercase tracking-wider">Available for Collaborations</span>
+        <div class="hero-meta-col center">
+          <span class="meta-label">LOCATION</span>
+          <span class="meta-value">Kerala, India</span>
         </div>
-      </div>
-
-      <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        
-        <!-- Left Column: Big Bold Typography & Outcome -->
-        <div class="lg:col-span-7 space-y-7 text-center lg:text-left">
-          
-          <!-- Corner Tag: ┌ Hello There! ┐ -->
-          <div class="inline-block">
-            <div class="corner-tag text-xs font-bold tracking-wider uppercase text-aubergine dark:text-marigold bg-white/80 dark:bg-aubergine/80 backdrop-blur-sm shadow-sm rounded-sm">
-              <span class="text-marigold mr-1.5">●</span> Hello There!
-            </div>
-          </div>
-
-          <!-- Headline Container for Swarm Build Targeting -->
-          <div class="hero-headline max-w-[680px] space-y-2">
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-[1.08] tracking-tight">
-              I am <span class="text-marigold">Meliza Byiju</span>,
-              <br>
-              AI and ML Researcher
-              <br>
-              <span class="hero-gradient-text font-semibold">Based in India.</span>
-            </h1>
-          </div>
-
-          <!-- Subheadline -->
-          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-[680px] mx-auto lg:mx-0 leading-relaxed font-normal">
-            Computer Science scholar at Amal Jyothi with a perfect <strong class="text-aubergine dark:text-white font-bold">10.0 CGPA</strong> and <strong class="text-aubergine dark:text-white font-bold">SE4AI Researcher at NIT Calicut</strong>. Engineering intelligent machine learning architectures and real world sustainability systems.
-          </p>
-
-          <!-- Dual Pill Action Buttons -->
-          <div class="hero-cta-row flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-            <!-- Left CTA: Pill with Attached Circular Marigold Play Badge -->
-            <a href="#projects" class="inline-flex items-center rounded-full bg-aubergine text-white pl-7 pr-2 py-2 hover:bg-aubergine-light transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group">
-              <span class="font-bold text-sm tracking-wide mr-3">Explore Projects</span>
-              <div class="w-10 h-10 rounded-full bg-marigold text-aubergine flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-                <i class="ph ph-play-fill text-sm ml-0.5 text-aubergine"></i>
-              </div>
-            </a>
-            
-            <!-- Right CTA: Clean Outlined Pill -->
-            <a href="#contact" class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white dark:bg-transparent text-aubergine dark:text-white border-2 border-aubergine dark:border-white/30 font-bold text-sm hover:bg-aubergine hover:text-white transition-all shadow-sm">
-              <span>Contact Me</span>
-            </a>
-          </div>
-
-          <!-- Quick Metrics Bar -->
-          <div class="stat-counter pt-6 grid grid-cols-3 gap-4 border-t border-silver dark:border-white/10 max-w-lg mx-auto lg:mx-0">
-            <div>
-              <div class="text-3xl sm:text-4xl font-extrabold text-aubergine dark:text-white">10.0</div>
-              <div class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider mt-0.5">KTU Rank 1</div>
-            </div>
-            <div>
-              <div class="text-3xl sm:text-4xl font-extrabold text-aubergine dark:text-white">2,500+</div>
-              <div class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider mt-0.5">SE4AI Reqs</div>
-            </div>
-            <div>
-              <div class="text-3xl sm:text-4xl font-extrabold text-marigold">₹5L</div>
-              <div class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider mt-0.5">RAISE 2026 Grant</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Visual Frame with Rotating Stamp Badge & Pinned Pill Badges -->
-        <div class="lg:col-span-5 flex justify-center relative">
-          <div class="hero-portrait-frame relative w-80 sm:w-96 aspect-[4/5] max-w-full">
-            
-            <!-- Flat Marigold Backdrop Shape -->
-            <div class="absolute -top-6 -right-6 w-full h-full rounded-[48px] bg-marigold rotate-3 transition-transform duration-500"></div>
-            
-            <!-- Flat Aubergine Layer -->
-            <div class="absolute -bottom-4 -left-4 w-full h-full rounded-[48px] bg-aubergine -rotate-2"></div>
-
-            <!-- Portrait Frame -->
-            <div class="relative w-full h-full rounded-[40px] overflow-hidden bg-slate-100 dark:bg-slate-900 border-4 border-white dark:border-white/20 shadow-2xl z-10 flex items-center justify-center">
-              <img 
-                id="heroProfileImg"
-                src="Images/hero.jpeg" 
-                alt="Meliza Mariya Byiju" 
-                class="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
-                onerror="this.style.display='none'; document.getElementById('heroFallbackAvatar').classList.remove('hidden'); document.getElementById('heroFallbackAvatar').classList.add('flex');"
-              >
-              <!-- Graceful Avatar Fallback -->
-              <div id="heroFallbackAvatar" class="hidden w-full h-full bg-aubergine items-center justify-center flex-col text-white p-6 text-center">
-                <div class="w-24 h-24 rounded-full bg-white/10 border-2 border-marigold flex items-center justify-center text-4xl font-black text-marigold mb-3 shadow-inner">
-                  MB
-                </div>
-                <h4 class="font-bold text-xl text-white">Meliza Mariya Byiju</h4>
-                <p class="text-xs text-marigold font-medium mt-1">AI and SE4AI Researcher</p>
-                <div class="mt-4 px-3 py-1 rounded-full bg-white/10 text-xs font-semibold text-slate-200">NIT Calicut • Amal Jyothi</div>
-              </div>
-            </div>
-
-            <!-- Rotating Stamp Badge (Top Right) -->
-            <div class="hero-rotating-stamp absolute -top-7 -right-7 z-20 w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center">
-              <svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100">
-                <defs>
-                  <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
-                </defs>
-                <text font-size="8.5" font-family="'Manrope', sans-serif" font-weight="700" fill="#EAAA00" letter-spacing="2">
-                  <textPath href="#circlePath" startOffset="0%">
-                    ✦ 10.0 CGPA ✦ NIT CALICUT ✦ RANK 1 ✦
-                  </textPath>
-                </text>
-              </svg>
-              <div class="absolute w-12 h-12 rounded-full bg-marigold flex items-center justify-center text-aubergine shadow-md">
-                <i class="ph ph-arrow-up-right text-lg font-bold"></i>
-              </div>
-            </div>
-
-            <!-- Floating Pill Tag: SE4AI Researcher -->
-            <div class="absolute top-1/2 -right-8 z-20 bg-marigold text-aubergine-dark px-4 py-2 rounded-full shadow-xl flex items-center gap-2 border border-white/40">
-              <span class="text-xs font-extrabold tracking-wide">SE4AI Researcher</span>
-              <i class="ph ph-sparkle text-xs"></i>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         MARQUEE BANNER
-         ======================================================================== -->
-    <div class="relative w-full overflow-hidden bg-marigold py-4 shadow-inner border-y border-marigold-hover/40">
-      <div class="flex marquee-track whitespace-nowrap text-aubergine-dark font-extrabold text-base sm:text-lg tracking-wider uppercase select-none">
-        <span class="mx-6 flex items-center gap-5">SE4AI Research <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Machine Learning <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Deep Learning CNNs <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Semantic Retrieval <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Biomass Recovery <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Sustainability Tech <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">PyTorch and Python <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Flask REST APIs <span class="text-aubergine text-sm">✳</span></span>
-        <!-- Duplicated for seamless loop -->
-        <span class="mx-6 flex items-center gap-5">SE4AI Research <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Machine Learning <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Deep Learning CNNs <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Semantic Retrieval <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Biomass Recovery <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Sustainability Tech <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">PyTorch and Python <span class="text-aubergine text-sm">✳</span></span>
-        <span class="mx-6 flex items-center gap-5">Flask REST APIs <span class="text-aubergine text-sm">✳</span></span>
-      </div>
-    </div>
-
-    <!-- ========================================================================
-         MANDATORY TAGLINE REVEAL SECTION (B11)
-         ======================================================================== -->
-    <section class="py-24 sm:py-32 px-4 sm:px-6 max-w-5xl mx-auto text-center">
-      <div class="space-y-4">
-        <div class="text-xs font-bold tracking-widest uppercase text-marigold">
-          Core Purpose
-        </div>
-        <p id="taglineReveal" class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight max-w-[680px] mx-auto">
-          Building intelligent neural networks and empirical software architectures to solve pressing real world ecological and healthcare challenges.
-        </p>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         SERVICES / CORE CAPABILITIES
-         ======================================================================== -->
-    <section id="services" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div class="space-y-2">
-          <div class="text-xs font-bold tracking-widest uppercase text-marigold">
-            Expertise
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-aubergine dark:text-white">
-            Core Focus and Services
-          </h2>
-        </div>
-        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-md">
-          Bridging the gap between empirical AI research, rigorous software engineering, and production grade implementations.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Service Card 1 -->
-        <div class="service-card p-8 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 shadow-sm hover:shadow-xl hover:border-marigold transition-all group flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-aubergine/10 dark:bg-white/10 text-aubergine dark:text-marigold flex items-center justify-center font-bold text-2xl group-hover:bg-aubergine group-hover:text-marigold transition-all">
-              <i class="ph ph-brain"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-aubergine dark:text-white">
-              Machine Learning and Deep Learning
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Supervised and unsupervised models, convolutional neural networks for computer vision, vector space embeddings, and neural network fine tuning with PyTorch.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex flex-wrap gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5">PyTorch</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5">CNNs</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5">OpenCV</span>
-          </div>
-        </div>
-
-        <!-- Service Card 2 -->
-        <div class="service-card p-8 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 shadow-sm hover:shadow-xl hover:border-marigold transition-all group flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-marigold/20 text-aubergine dark:text-marigold flex items-center justify-center font-bold text-2xl group-hover:bg-marigold group-hover:text-aubergine-dark transition-all">
-              <i class="ph ph-flask"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-aubergine dark:text-white">
-              SE4AI and Requirements Research
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Empirical software engineering for artificial intelligence systems. Taxonomy classification, quality attribute evaluation, and large scale dataset curation at NIT Calicut.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex flex-wrap gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5">SE4AI</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5">Data Taxonomy</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5">2,500+ Reqs</span>
-          </div>
-        </div>
-
-        <!-- Service Card 3 -->
-        <div class="service-card p-8 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 shadow-sm hover:shadow-xl hover:border-marigold transition-all group flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-aubergine/10 dark:bg-white/10 text-aubergine dark:text-marigold flex items-center justify-center font-bold text-2xl group-hover:bg-aubergine group-hover:text-marigold transition-all">
-              <i class="ph ph-plant"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-aubergine dark:text-white">
-              AI for Sustainability and Startups
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Developing artificial intelligence solutions for river pollution tracking and aquatic biomass recovery. Selected for Stage 2 of the KAU RAISE 2026 Student Startup Programme.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex flex-wrap gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">
-            <span class="px-2.5 py-1 rounded-md bg-marigold/20 text-aubergine dark:text-marigold font-bold">KAU RAISE 2026</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5">AICTE APF</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5">Python</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         HOW IT WORKS
-         ======================================================================== -->
-    <section id="methodology" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div class="space-y-2">
-          <div class="text-xs font-bold tracking-widest uppercase text-marigold">
-            Engineering Methodology
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-aubergine dark:text-white">
-            How I Build Reliable AI Systems
-          </h2>
-        </div>
-        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-md">
-          A disciplined three step engineering workflow grounded in empirical software research and clean architecture.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Step 1 -->
-        <div class="p-8 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 shadow-sm space-y-4">
-          <div class="text-xs font-mono font-bold text-marigold">STEP 01</div>
-          <h3 class="text-2xl font-bold text-aubergine dark:text-white">Problem Formulation and Data Architecture</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Curating ground truth datasets, labeling empirical requirements, addressing class imbalances, and structuring scalable data pipelines.
-          </p>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="p-8 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 shadow-sm space-y-4">
-          <div class="text-xs font-mono font-bold text-marigold">STEP 02</div>
-          <h3 class="text-2xl font-bold text-aubergine dark:text-white">Model Architecture and Optimization</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Developing convolutional networks, embedding retrieval stacks, or object detection models fine tuned against verified validation benchmarks.
-          </p>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="p-8 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 shadow-sm space-y-4">
-          <div class="text-xs font-mono font-bold text-marigold">STEP 03</div>
-          <h3 class="text-2xl font-bold text-aubergine dark:text-white">Deployment and Continuous Monitoring</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Containerizing models into lightweight Flask REST microservices, verifying latency limits, and exposing telemetry dashboards for real time tracking.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         FEATURED PROJECTS (Accordion Click to Expand)
-         ======================================================================== -->
-    <section id="projects" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div class="space-y-2">
-          <div class="text-xs font-bold tracking-widest uppercase text-marigold">
-            Portfolio of Works
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-aubergine dark:text-white">
-            Featured Projects
-          </h2>
-          <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">
-            (Click any project card to inspect complete technical architecture and repository links)
-          </p>
-        </div>
-
-        <!-- Filter Buttons -->
-        <div class="flex flex-wrap gap-2 text-xs font-bold" id="projectFilters">
-          <button class="project-filter-btn px-4 py-2 rounded-full bg-aubergine text-white transition-all shadow-sm active" data-filter="all">All</button>
-          <button class="project-filter-btn px-4 py-2 rounded-full bg-white dark:bg-white/10 text-slate-600 dark:text-slate-300 border border-silver dark:border-white/10 hover:bg-slate-50 transition-all" data-filter="ai">AI and ML</button>
-          <button class="project-filter-btn px-4 py-2 rounded-full bg-white dark:bg-white/10 text-slate-600 dark:text-slate-300 border border-silver dark:border-white/10 hover:bg-slate-50 transition-all" data-filter="sustainability">Sustainability</button>
-          <button class="project-filter-btn px-4 py-2 rounded-full bg-white dark:bg-white/10 text-slate-600 dark:text-slate-300 border border-silver dark:border-white/10 hover:bg-slate-50 transition-all" data-filter="systems">Systems</button>
+        <div class="hero-meta-col right">
+          <span class="meta-status">
+            <span class="status-dot"></span>
+            AVAILABLE FOR AI COLLABORATIONS
+          </span>
         </div>
       </div>
 
-      <!-- Projects Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsContainer">
-        
-        <!-- PROJECT 1: KAYORA -->
-        <div class="project-card rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 p-7 shadow-sm transition-all flex flex-col justify-between" data-category="ai sustainability">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-[11px] font-bold border border-emerald-200 dark:border-emerald-800">
-                RAISE 2026 Stage 2
-              </span>
-              <span class="text-xs font-mono text-slate-400">01 / SUSTAINABILITY</span>
-            </div>
+      <!-- Hero Stage Composition -->
+      <div class="hero-stage">
+        <!-- Background Geometric Vector Curves -->
+        <svg class="hero-vector-bg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <circle cx="500" cy="300" r="160" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/>
+          <circle cx="500" cy="300" r="260" fill="none" stroke="currentColor" stroke-width="1"/>
+          <circle cx="500" cy="300" r="360" fill="none" stroke="currentColor" stroke-width="0.75" stroke-dasharray="6 8"/>
+          <line x1="0" y1="300" x2="1000" y2="300" stroke="currentColor" stroke-width="0.75" stroke-dasharray="4 6"/>
+          <line x1="500" y1="0" x2="500" y2="600" stroke="currentColor" stroke-width="0.75" stroke-dasharray="4 6"/>
+          <circle cx="500" cy="300" r="4" fill="currentColor"/>
+        </svg>
 
-            <div>
-              <h3 class="text-2xl font-extrabold text-aubergine dark:text-white group-hover:text-marigold transition-colors">
-                KAYORA
-              </h3>
-              <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">AI Assisted Aquatic Biomass Recovery System</p>
-            </div>
-
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Artificial intelligence methodology for aquatic weed identification, continuous monitoring, and structured biomass recovery.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">Biomass Detection</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">Resource Tech</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-marigold/20 text-aubergine dark:text-marigold font-bold">₹5L Grant Track</span>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex items-center justify-between text-xs font-bold text-aubergine dark:text-white">
-            <span class="expand-text">View Details</span>
-            <div class="expand-icon w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center transition-transform duration-300">
-              <i class="ph ph-caret-down text-sm"></i>
-            </div>
-          </div>
-
-          <div class="project-expanded-body border-t border-slate-100 dark:border-white/10 pt-4 space-y-4 text-xs text-slate-600 dark:text-slate-300">
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">System Architecture and Impact</h4>
-              <p class="leading-relaxed">
-                Selected for <strong>Stage 2 of the Kerala Agricultural University RAISE 2026 Student Startup Programme</strong> with funding potential up to 5 Lakh rupees. Protects freshwater ecosystems by tracking invasive weed growth using aerial and surface computer vision.
-              </p>
-            </div>
-
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">Key Highlights</h4>
-              <ul class="space-y-1 list-disc list-inside">
-                <li>Automated drone imagery processing for biomass density calculation</li>
-                <li>Ecological monitoring without chemical contaminants</li>
-                <li>Stage 2 evaluation pitch to state agricultural evaluation panel</li>
-              </ul>
-            </div>
-
-            <div class="pt-2 flex items-center justify-between">
-              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine dark:text-marigold hover:underline">
-                <i class="ph ph-github-logo text-sm"></i>
-                <span>GitHub Repository</span>
-              </a>
-              <span class="text-[11px] font-bold text-marigold">KAU RAISE 2026</span>
-            </div>
+        <!-- Giant Condensed Name Typography Behind & Around Portrait -->
+        <div class="hero-giant-typography" aria-hidden="true">
+          <div class="giant-name-row">
+            <span class="giant-part left">MELIZA</span>
+            <span class="giant-part right">MARIYA</span>
           </div>
         </div>
 
-        <!-- PROJECT 2: ReFind -->
-        <div class="project-card rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 p-7 shadow-sm transition-all flex flex-col justify-between" data-category="ai systems">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 text-[11px] font-bold border border-amber-200 dark:border-amber-800">
-                AI Bhoomi 20h Sprint
-              </span>
-              <span class="text-xs font-mono text-slate-400">02 / NLP AND SEARCH</span>
-            </div>
-
-            <div>
-              <h3 class="text-2xl font-extrabold text-aubergine dark:text-white group-hover:text-marigold transition-colors">
-                ReFind
-              </h3>
-              <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Intelligent Semantic Search and Vector Retrieval</p>
-            </div>
-
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              High accuracy semantic retrieval pipeline leveraging modern dense vector embeddings, cross encoder re ranking, and contextual generation.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">EmbeddingGemma 2</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">Jina Reranker</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">Gemini 2.5 Flash</span>
-            </div>
+        <!-- Foreground Framed Portrait Overlapping Typography -->
+        <div class="hero-portrait-container">
+          <div class="hero-portrait-frame">
+            <img 
+              src="Images/hero.jpeg" 
+              alt="Meliza Mariya Byiju" 
+              class="hero-portrait-img" 
+              id="hero-photo"
+              onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:var(--c-aubergine);color:var(--c-marigold);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;\'><div style=\'width:72px;height:72px;border-radius:50%;border:2px solid var(--c-marigold);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;margin-bottom:12px;\'>MB</div><div style=\'font-family:var(--font-heading);font-weight:700;font-size:18px;\'>MELIZA MARIYA BYIJU</div><div style=\'font-family:var(--font-mono);font-size:11px;color:#FFFFFF;margin-top:4px;\'>10.0 CGPA • NIT Calicut SE4AI</div></div>';"
+            >
           </div>
-
-          <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex items-center justify-between text-xs font-bold text-aubergine dark:text-white">
-            <span class="expand-text">View Details</span>
-            <div class="expand-icon w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center transition-transform duration-300">
-              <i class="ph ph-caret-down text-sm"></i>
-            </div>
-          </div>
-
-          <div class="project-expanded-body border-t border-slate-100 dark:border-white/10 pt-4 space-y-4 text-xs text-slate-600 dark:text-slate-300">
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">Retrieval Pipeline</h4>
-              <p class="leading-relaxed">
-                Constructed during the intense 20 hour <strong>AI Bhoomi Startup Weekend Sprint</strong>. Couples Google EmbeddingGemma 2 for dense space mapping with Jina cross encoder reranking to provide grounded answers synthesized by Gemini 2.5 Flash Lite.
-              </p>
-            </div>
-
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">Technical Highlights</h4>
-              <ul class="space-y-1 list-disc list-inside">
-                <li>Subsecond query latencies over indexed technical documentation</li>
-                <li>Hybrid ranking eliminating false factual hallucinations</li>
-                <li>Pitched live to engineering mentors and seed stage investors</li>
-              </ul>
-            </div>
-
-            <div class="pt-2 flex items-center justify-between">
-              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine dark:text-marigold hover:underline">
-                <i class="ph ph-github-logo text-sm"></i>
-                <span>GitHub Repository</span>
-              </a>
-              <span class="text-[11px] font-bold text-aubergine dark:text-white">Startup Weekend</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROJECT 3: RiverClean -->
-        <div class="project-card rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 p-7 shadow-sm transition-all flex flex-col justify-between" data-category="ai sustainability systems">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-aubergine/10 dark:bg-white/10 text-aubergine dark:text-marigold text-[11px] font-bold border border-aubergine/20 dark:border-white/20">
-                AICTE APF Round 1
-              </span>
-              <span class="text-xs font-mono text-slate-400">03 / COMPUTER VISION</span>
-            </div>
-
-            <div>
-              <h3 class="text-2xl font-extrabold text-aubergine dark:text-white group-hover:text-marigold transition-colors">
-                RiverClean
-              </h3>
-              <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Real Time River Waste and Pollution Detection</p>
-            </div>
-
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Machine learning engineer developing automated river surface trash detection models for the AICTE APF National Innovation Fellowship.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">YOLOv8</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">Python</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">Flask REST</span>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex items-center justify-between text-xs font-bold text-aubergine dark:text-white">
-            <span class="expand-text">View Details</span>
-            <div class="expand-icon w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center transition-transform duration-300">
-              <i class="ph ph-caret-down text-sm"></i>
-            </div>
-          </div>
-
-          <div class="project-expanded-body border-t border-slate-100 dark:border-white/10 pt-4 space-y-4 text-xs text-slate-600 dark:text-slate-300">
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">Computer Vision Pipeline</h4>
-              <p class="leading-relaxed">
-                Trained deep convolutional object detection models to accurately identify floating plastics, industrial residue, and biological debris across variable sunlight conditions.
-              </p>
-            </div>
-
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">Fellowship Impact</h4>
-              <ul class="space-y-1 list-disc list-inside">
-                <li>Selected for Round 1 of the national AICTE APF fellowship tier</li>
-                <li>Lightweight inference latency optimized for edge camera units</li>
-                <li>Automated alerting dashboard for regional water sanitation bodies</li>
-              </ul>
-            </div>
-
-            <div class="pt-2 flex items-center justify-between">
-              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine dark:text-marigold hover:underline">
-                <i class="ph ph-github-logo text-sm"></i>
-                <span>GitHub Repository</span>
-              </a>
-              <span class="text-[11px] font-bold text-marigold">AICTE APF</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROJECT 4: D-Detect -->
-        <div class="project-card rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 p-7 shadow-sm transition-all flex flex-col justify-between" data-category="ai">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-400 text-[11px] font-bold border border-purple-200 dark:border-purple-800">
-                Healthcare AI
-              </span>
-              <span class="text-xs font-mono text-slate-400">04 / MEDICAL VISION</span>
-            </div>
-
-            <div>
-              <h3 class="text-2xl font-extrabold text-aubergine dark:text-white group-hover:text-marigold transition-colors">
-                D-Detect
-              </h3>
-              <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Dermatological Lesion Classifier with CNN</p>
-            </div>
-
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Automated multi class skin lesion screening using custom deep convolutional neural network architectures on dermoscopic clinical datasets.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">PyTorch</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">HAM10000</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">Clinical AI</span>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex items-center justify-between text-xs font-bold text-aubergine dark:text-white">
-            <span class="expand-text">View Details</span>
-            <div class="expand-icon w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center transition-transform duration-300">
-              <i class="ph ph-caret-down text-sm"></i>
-            </div>
-          </div>
-
-          <div class="project-expanded-body border-t border-slate-100 dark:border-white/10 pt-4 space-y-4 text-xs text-slate-600 dark:text-slate-300">
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">Deep Learning Architecture</h4>
-              <p class="leading-relaxed">
-                Trained deep convolutional networks with transfer learning and extensive augmentation on the <strong>HAM10000</strong> dataset to accurately classify seven distinct dermoscopic skin lesions including melanoma.
-              </p>
-            </div>
-
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">Key Highlights</h4>
-              <ul class="space-y-1 list-disc list-inside">
-                <li>High validation sensitivity for early stage melanoma diagnosis</li>
-                <li>Balanced sampling to handle extreme real world class imbalances</li>
-                <li>Diagnostic confidence reporting to support clinical practitioners</li>
-              </ul>
-            </div>
-
-            <div class="pt-2 flex items-center justify-between">
-              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine dark:text-marigold hover:underline">
-                <i class="ph ph-github-logo text-sm"></i>
-                <span>GitHub Repository</span>
-              </a>
-              <span class="text-[11px] font-bold text-aubergine dark:text-white">PyTorch Model</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROJECT 5: Kalyanam -->
-        <div class="project-card rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 p-7 shadow-sm transition-all flex flex-col justify-between" data-category="systems">
-          <div class="space-y-4">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-400 text-[11px] font-bold border border-blue-200 dark:border-blue-800">
-                Full Stack Web
-              </span>
-              <span class="text-xs font-mono text-slate-400">05 / SYSTEMS</span>
-            </div>
-
-            <div>
-              <h3 class="text-2xl font-extrabold text-aubergine dark:text-white group-hover:text-marigold transition-colors">
-                Kalyanam
-              </h3>
-              <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">Full Stack Matrimonial Matchmaking Application</p>
-            </div>
-
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              Secure relational web application featuring authenticated user sessions, criteria matching algorithms, and dynamic profile filtering.
-            </p>
-
-            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">Python Flask</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">MySQL Database</span>
-              <span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5">REST API</span>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex items-center justify-between text-xs font-bold text-aubergine dark:text-white">
-            <span class="expand-text">View Details</span>
-            <div class="expand-icon w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center transition-transform duration-300">
-              <i class="ph ph-caret-down text-sm"></i>
-            </div>
-          </div>
-
-          <div class="project-expanded-body border-t border-slate-100 dark:border-white/10 pt-4 space-y-4 text-xs text-slate-600 dark:text-slate-300">
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">System Architecture</h4>
-              <p class="leading-relaxed">
-                Full stack database backed portal designed with third normal form relational schemas, secure session authentication, and dynamic querying for mutual compatibility scores.
-              </p>
-            </div>
-
-            <div class="space-y-1.5">
-              <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">Key Highlights</h4>
-              <ul class="space-y-1 list-disc list-inside">
-                <li>Normalized SQL schema designed for high concurrency queries</li>
-                <li>Encrypted credential storage with fine grained profile privacy</li>
-                <li>Responsive mobile layout with profile media asset handling</li>
-              </ul>
-            </div>
-
-            <div class="pt-2 flex items-center justify-between">
-              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine dark:text-marigold hover:underline">
-                <i class="ph ph-github-logo text-sm"></i>
-                <span>GitHub Repository</span>
-              </a>
-              <span class="text-[11px] font-bold text-aubergine dark:text-white">Web Platform</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         RESEARCH EXPERIENCE SECTION
-         ======================================================================== -->
-    <section id="experience" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div class="space-y-2">
-          <div class="text-xs font-bold tracking-widest uppercase text-marigold">
-            Academic and Industry
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-aubergine dark:text-white">
-            Research and Experience
-          </h2>
-        </div>
-        <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-md">
-          Peer reviewed empirical research at premier national technical institutes and fellowship representations.
-        </p>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-8">
-        <!-- NIT Calicut Experience -->
-        <div class="p-8 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 shadow-sm space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="px-3 py-1 rounded-full bg-aubergine/10 dark:bg-white/10 text-aubergine dark:text-marigold text-xs font-bold border border-aubergine/20 dark:border-white/20">
-              Research Internship
-            </span>
-            <span class="text-xs font-mono text-slate-400">June 2025 to July 2025</span>
-          </div>
-
-          <h3 class="text-2xl font-bold text-aubergine dark:text-white">
-            SE4AI Research Intern
-          </h3>
-          <p class="text-sm font-semibold text-marigold">National Institute of Technology (NIT) Calicut</p>
-
-          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="text-marigold font-bold mt-0.5">✦</span>
-              <span>Conducted research under <strong>Dr. Pournami P. N.</strong>, Department of Computer Science and Engineering.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-marigold font-bold mt-0.5">✦</span>
-              <span>Curated, preprocessed, and classified a comprehensive taxonomy dataset of over <strong>2,500 software requirements</strong> across 15 plus machine learning initiatives.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-marigold font-bold mt-0.5">✦</span>
-              <span>Evaluated empirical metrics and quality attributes to enhance specification standards for AI intensive software systems.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- AICTE Fellowship -->
-        <div class="p-8 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 shadow-sm space-y-4">
-          <div class="flex items-center justify-between">
-            <span class="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 text-xs font-bold border border-emerald-200 dark:border-emerald-800">
-              National Fellowship
-            </span>
-            <span class="text-xs font-mono text-slate-400">2025 to Present</span>
-          </div>
-
-          <h3 class="text-2xl font-bold text-aubergine dark:text-white">
-            Student Ambassador and Fellow
-          </h3>
-          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">AICTE Anuvadini and Prajjawala Fellowship (APF)</p>
-
-          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="text-marigold font-bold mt-0.5">✦</span>
-              <span>Selected to represent the institution in national level innovation programs advancing AI accessibility and ecological safety.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-marigold font-bold mt-0.5">✦</span>
-              <span>Spearheaded technological prototypes for river clean up governance and organized peer workshops on AI ethics.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         COMPETITIVE MILESTONES & HONORS
-         ======================================================================== -->
-    <section id="milestones" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
-      <div class="text-center max-w-2xl mx-auto space-y-2 mb-12">
-        <div class="text-xs font-bold tracking-widest uppercase text-marigold">
-          Honors and Recognitions
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-aubergine dark:text-white">
-          Competitive Milestones
-        </h2>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Milestone 1 -->
-        <div class="p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 hover:border-marigold transition-all flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-marigold/20 text-aubergine dark:text-marigold flex items-center justify-center font-bold text-xl">
-              <i class="ph ph-trophy"></i>
-            </div>
-            <h3 class="font-bold text-lg text-aubergine dark:text-white">e-Yantra Robotics</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              National robotics competition hosted by <strong>IIT Bombay</strong>. Engineered simulation pipelines and autonomous control algorithms.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-silver dark:border-white/10 text-[11px] font-bold text-aubergine dark:text-white">
-            IIT Bombay National Stage
-          </div>
-        </div>
-
-        <!-- Milestone 2 -->
-        <div class="p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 hover:border-marigold transition-all flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-400 flex items-center justify-center font-bold text-xl">
-              <i class="ph ph-plant"></i>
-            </div>
-            <h3 class="font-bold text-lg text-aubergine dark:text-white">KAU RAISE 2026</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Stage 2 Finalist in Kerala Agricultural University flagship student startup program eligible for up to <strong>5 Lakh rupees</strong> grant.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-silver dark:border-white/10 text-[11px] font-bold text-emerald-700 dark:text-emerald-400">
-            ₹5L Funding Track
-          </div>
-        </div>
-
-        <!-- Milestone 3 -->
-        <div class="p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 hover:border-marigold transition-all flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-400 flex items-center justify-center font-bold text-xl">
-              <i class="ph ph-lightning"></i>
-            </div>
-            <h3 class="font-bold text-lg text-aubergine dark:text-white">AI Bhoomi Sprint</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Designed, fine tuned, and live demonstrated ReFind in an intense 20 hour hackathon sprint, winning high presentation honors.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-silver dark:border-white/10 text-[11px] font-bold text-amber-700 dark:text-amber-400">
-            20h Hackathon Sprint
-          </div>
-        </div>
-
-        <!-- Milestone 4 -->
-        <div class="p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 hover:border-marigold transition-all flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="w-10 h-10 rounded-2xl bg-aubergine/10 dark:bg-white/10 text-aubergine dark:text-marigold flex items-center justify-center font-bold text-xl">
-              <i class="ph ph-graduation-cap"></i>
-            </div>
-            <h3 class="font-bold text-lg text-aubergine dark:text-white">Perfect 10.0 CGPA</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Consistently ranked first across the Computer Science Engineering Department at Amal Jyothi College of Engineering.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-silver dark:border-white/10 text-[11px] font-bold text-aubergine dark:text-white">
-            KTU Academic Rank 1
+          <div class="hero-portrait-caption">
+            <span class="caption-index">[01]</span>
+            <span class="caption-text">COMPUTER SCIENCE SCHOLAR • 10.0 CGPA • RANK 1</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- ========================================================================
-         FREQUENTLY ASKED QUESTIONS (FAQ)
-         ======================================================================== -->
-    <section id="faq" class="py-20 px-4 sm:px-6 max-w-4xl mx-auto border-t border-silver dark:border-white/10">
-      <div class="text-center space-y-2 mb-12">
-        <div class="text-xs font-bold tracking-widest uppercase text-marigold">
-          Inquiries and Answers
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-aubergine dark:text-white">
-          Frequently Asked Questions
-        </h2>
-      </div>
-
-      <div class="space-y-4">
-        <!-- FAQ 1 -->
-        <div class="faq-item p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 transition-all">
-          <button class="faq-trigger w-full flex items-center justify-between text-left text-base sm:text-lg font-bold text-aubergine dark:text-white" aria-expanded="false">
-            <span>What are your primary technical competencies in artificial intelligence?</span>
-            <i class="ph ph-plus faq-icon text-lg transition-transform duration-300"></i>
-          </button>
-          <div class="faq-body text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            My primary specialties span empirical software engineering for artificial intelligence (SE4AI), deep learning convolutional networks with PyTorch, semantic vector search with EmbeddingGemma 2 and cross encoder re rankers, and computer vision with YOLOv8.
-          </div>
-        </div>
-
-        <!-- FAQ 2 -->
-        <div class="faq-item p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 transition-all">
-          <button class="faq-trigger w-full flex items-center justify-between text-left text-base sm:text-lg font-bold text-aubergine dark:text-white" aria-expanded="false">
-            <span>What was the primary contribution of your research at NIT Calicut?</span>
-            <i class="ph ph-plus faq-icon text-lg transition-transform duration-300"></i>
-          </button>
-          <div class="faq-body text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Under the guidance of Dr. Pournami P. N., I curated and classified a benchmark dataset exceeding 2,500 software requirements across real world artificial intelligence projects to study quality attributes and requirements engineering taxonomies.
-          </div>
-        </div>
-
-        <!-- FAQ 3 -->
-        <div class="faq-item p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 transition-all">
-          <button class="faq-trigger w-full flex items-center justify-between text-left text-base sm:text-lg font-bold text-aubergine dark:text-white" aria-expanded="false">
-            <span>What is the current status of the KAYORA project?</span>
-            <i class="ph ph-plus faq-icon text-lg transition-transform duration-300"></i>
-          </button>
-          <div class="faq-body text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            KAYORA was successfully selected for Stage 2 of the Kerala Agricultural University RAISE 2026 Student Startup Programme, positioning the initiative on track for up to 5 Lakh rupees in prototype commercialization grants.
-          </div>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="faq-item p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 transition-all">
-          <button class="faq-trigger w-full flex items-center justify-between text-left text-base sm:text-lg font-bold text-aubergine dark:text-white" aria-expanded="false">
-            <span>Are you open to research fellowships or engineering internships?</span>
-            <i class="ph ph-plus faq-icon text-lg transition-transform duration-300"></i>
-          </button>
-          <div class="faq-body text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Yes. I am actively interested in technical research positions, machine learning engineering internships, and collaborative scientific opportunities focused on trustworthy AI, systems, and ecological sustainability.
-          </div>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="faq-item p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 transition-all">
-          <button class="faq-trigger w-full flex items-center justify-between text-left text-base sm:text-lg font-bold text-aubergine dark:text-white" aria-expanded="false">
-            <span>Where can I inspect your code and verification pipelines?</span>
-            <i class="ph ph-plus faq-icon text-lg transition-transform duration-300"></i>
-          </button>
-          <div class="faq-body text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            All code repositories, dataset analysis notebooks, and model implementations are maintained on GitHub at github.com/melizabyiju.
-          </div>
-        </div>
-
-        <!-- FAQ 6 -->
-        <div class="faq-item p-6 rounded-3xl bg-white dark:bg-[#1E0A1B] border border-silver dark:border-white/10 transition-all">
-          <button class="faq-trigger w-full flex items-center justify-between text-left text-base sm:text-lg font-bold text-aubergine dark:text-white" aria-expanded="false">
-            <span>How does the interactive Swarm Rebuild feature work on this site?</span>
-            <i class="ph ph-plus faq-icon text-lg transition-transform duration-300"></i>
-          </button>
-          <div class="faq-body text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            The Swarm Rebuild bar simulates autonomous engineering cursors assembling the layout live with canvas coordinates, element selection frames, and laser alignment crosshairs.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         FINAL CTA SECTION
-         ======================================================================== -->
-    <section id="contact" class="py-24 sm:py-32 bg-aubergine text-white px-4 sm:px-6 relative overflow-hidden">
-      <div class="max-w-4xl mx-auto relative z-10 text-center space-y-10">
-        
-        <div class="space-y-4">
-          <div class="inline-block">
-            <div class="corner-tag text-xs font-bold tracking-wider uppercase text-marigold">
-              Let Us Connect
-            </div>
-          </div>
-          
-          <h2 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.1] max-w-[680px] mx-auto">
-            Ready to collaborate on intelligent AI systems?
-          </h2>
-          
-          <p class="text-slate-300 text-base sm:text-lg max-w-[680px] mx-auto font-normal leading-relaxed">
-            Whether for research opportunities, machine learning internships, scientific collaborations, or startup inquiries, I look forward to hearing from you.
-          </p>
-        </div>
-
-        <!-- Action Links -->
-        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-          <a href="mailto:melizabyiju@gmail.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-marigold text-aubergine-dark font-extrabold text-sm hover:bg-white transition-all shadow-xl hover:scale-105">
-            <i class="ph ph-envelope-simple text-base"></i>
+      <!-- Hero Bottom Bar -->
+      <div class="hero-bottom-bar">
+        <div class="hero-social-strip">
+          <a href="mailto:melizabyiju@gmail.com" class="hero-social-link" title="Email Meliza">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <span>melizabyiju@gmail.com</span>
           </a>
-
-          <a href="https://linkedin.com/in/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm transition-all border border-white/20">
-            <i class="ph ph-linkedin-logo text-base text-marigold"></i>
-            <span>LinkedIn</span>
+          <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="hero-social-link" title="GitHub Profile">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <span>GITHUB</span> ↗
           </a>
-
-          <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm transition-all border border-white/20">
-            <i class="ph ph-github-logo text-base text-marigold"></i>
-            <span>GitHub</span>
+          <a href="https://linkedin.com/in/melizabyiju" target="_blank" rel="noopener noreferrer" class="hero-social-link" title="LinkedIn Profile">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>LINKEDIN</span> ↗
           </a>
         </div>
 
-        <!-- Contact Form -->
-        <div class="max-w-xl mx-auto mt-12 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 text-left">
-          <h3 class="font-bold text-lg text-white mb-4 text-center">Send a Direct Message</h3>
-          
-          <form id="contactForm" class="space-y-4">
-            <div>
-              <label for="senderName" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Your Name</label>
-              <input type="text" id="senderName" required placeholder="Dr. Jane Doe or Recruiter" class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-marigold transition-colors">
-            </div>
+        <a href="#section-about" class="hero-scroll-indicator" aria-label="Scroll to next section">
+          <span class="scroll-label">SCROLL DOWN</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+      </div>
+    </section>
 
-            <div>
-              <label for="senderEmail" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Your Email</label>
-              <input type="email" id="senderEmail" required placeholder="jane@example.com" class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-marigold transition-colors">
-            </div>
+    <!-- ========================================================================
+         ABOUT SECTION
+         ======================================================================== -->
+    <section class="editorial-section" id="section-about">
+      <div class="editorial-header-row">
+        <div>
+          <div class="section-tag">01 / BIOGRAPHY & PROFILE</div>
+          <h2 class="editorial-display-heading">ABOUT MELIZA</h2>
+        </div>
+        <div class="section-counter">[01 / 07]</div>
+      </div>
 
-            <div>
-              <label for="senderMessage" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Message</label>
-              <textarea id="senderMessage" rows="3" required placeholder="Hi Meliza, I would like to discuss a research collaboration..." class="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-marigold transition-colors resize-none"></textarea>
-            </div>
+      <div class="editorial-grid-2col">
+        <!-- Visual Portrait Frame -->
+        <div style="position: relative;">
+          <div class="hero-portrait-frame" style="width: 100%; max-width: 440px; aspect-ratio: 4 / 5;">
+            <img 
+              src="Images/about.jpeg" 
+              alt="Meliza Mariya Byiju" 
+              class="hero-portrait-img"
+              onerror="this.src='Images/hero.jpeg';"
+            >
+          </div>
+          <div class="hero-portrait-caption" style="margin-top: 14px;">
+            <span>[02] SE4AI RESEARCHER • KAU RAISE 2026 FINALIST</span>
+          </div>
+        </div>
 
-            <button type="submit" class="w-full py-3.5 rounded-xl bg-marigold text-aubergine-dark font-extrabold text-sm hover:bg-white transition-all shadow-md flex items-center justify-center gap-2">
-              <span>Send Message</span>
-              <i class="ph ph-paper-plane-tilt text-base"></i>
-            </button>
-          </form>
+        <!-- Narrative Content -->
+        <div class="about-narrative">
+          <p>
+            I am <strong style="color: var(--text-heading);">Meliza Mariya Byiju</strong>, a Computer Science Engineering scholar at <strong style="color: var(--text-heading);">Amal Jyothi College of Engineering</strong> with a consistent record of academic excellence, maintaining a perfect <strong style="color: var(--c-marigold);">10.0 CGPA</strong> and ranking first across the entire department.
+          </p>
+          <p>
+            My engineering work is rooted in empirical rigor and practical societal impact. As a <strong style="color: var(--text-heading);">Research Intern in Software Engineering for AI (SE4AI) at NIT Calicut</strong> under Dr. Pournami P. N., I curated and classified a benchmark taxonomy dataset of over 2,500 software requirements across real-world machine learning systems.
+          </p>
+          <p>
+            Concurrently, as co-founder of <strong style="color: var(--text-heading);">KAYORA</strong>, I engineer automated computer vision and biomass recovery systems, successfully selected for Stage 2 of Kerala Agricultural University’s RAISE 2026 Student Startup Programme with potential funding up to ₹5 Lakh.
+          </p>
+
+          <!-- Core Metrics -->
+          <div class="about-stats-grid">
+            <div>
+              <div class="stat-item-num">10.0</div>
+              <div class="stat-item-label">B.Tech CGPA (Rank 1)</div>
+            </div>
+            <div>
+              <div class="stat-item-num">2,500+</div>
+              <div class="stat-item-label">SE4AI Requirements</div>
+            </div>
+            <div>
+              <div class="stat-item-num" style="color: var(--c-marigold);">₹5L</div>
+              <div class="stat-item-label">RAISE 2026 Grant Track</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         WORK & PROJECTS (Editorial Index Table Format)
+         ======================================================================== -->
+    <section class="editorial-section" id="section-projects">
+      <div class="editorial-header-row">
+        <div>
+          <div class="section-tag">02 / SELECTED WORK & CASE STUDIES</div>
+          <h2 class="editorial-display-heading">ENGINEERING INDEX</h2>
+        </div>
+        <div class="section-counter">[02 / 07]</div>
+      </div>
+
+      <div class="project-index-list">
+        
+        <!-- Project 01: KAYORA -->
+        <div class="project-row" data-project-id="kayora">
+          <div class="project-idx">01</div>
+          <div class="project-main-col">
+            <h3 class="project-name">KAYORA — AI-Assisted Aquatic Biomass Recovery System</h3>
+            <p class="project-short-desc">Autonomous computer vision and aquatic weed monitoring for clean freshwater ecosystems. Selected for Stage 2 KAU RAISE 2026 grant track.</p>
+          </div>
+          <div class="project-tech-tags">
+            <span class="tech-tag">Computer Vision</span>
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">IoT</span>
+          </div>
+          <div class="project-action-col">
+            <span>INSPECT ↗</span>
+          </div>
+        </div>
+
+        <!-- Project 02: ReFind -->
+        <div class="project-row" data-project-id="refind">
+          <div class="project-idx">02</div>
+          <div class="project-main-col">
+            <h3 class="project-name">ReFind — AI-Powered Multimodal Semantic Search Engine</h3>
+            <p class="project-short-desc">Intelligent semantic retrieval pipeline coupling EmbeddingGemma 2, Jina reranking, and Gemini 2.5 Flash Lite context synthesis. AI Bhoomi 20h Sprint.</p>
+          </div>
+          <div class="project-tech-tags">
+            <span class="tech-tag">EmbeddingGemma 2</span>
+            <span class="tech-tag">Jina Reranker</span>
+            <span class="tech-tag">FastAPI</span>
+          </div>
+          <div class="project-action-col">
+            <span>INSPECT ↗</span>
+          </div>
+        </div>
+
+        <!-- Project 03: RiverClean -->
+        <div class="project-row" data-project-id="riverclean">
+          <div class="project-idx">03</div>
+          <div class="project-main-col">
+            <h3 class="project-name">RiverClean — Real-Time River Pollution & Waste Detection</h3>
+            <p class="project-short-desc">Autonomous river surface debris classification using custom YOLOv8 models. Selected for national Round 1 of the AICTE APF Fellowship.</p>
+          </div>
+          <div class="project-tech-tags">
+            <span class="tech-tag">YOLOv8</span>
+            <span class="tech-tag">OpenCV</span>
+            <span class="tech-tag">Flask REST</span>
+          </div>
+          <div class="project-action-col">
+            <span>INSPECT ↗</span>
+          </div>
+        </div>
+
+        <!-- Project 04: D-Detect -->
+        <div class="project-row" data-project-id="d-detect">
+          <div class="project-idx">04</div>
+          <div class="project-main-col">
+            <h3 class="project-name">D-Detect — Dermatological Lesion Classifier with CNN</h3>
+            <p class="project-short-desc">Automated clinical multi-class skin lesion screening using custom convolutional neural networks on the HAM10000 dataset.</p>
+          </div>
+          <div class="project-tech-tags">
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">HAM10000</span>
+            <span class="tech-tag">Clinical AI</span>
+          </div>
+          <div class="project-action-col">
+            <span>INSPECT ↗</span>
+          </div>
+        </div>
+
+        <!-- Project 05: Kalyanam -->
+        <div class="project-row" data-project-id="kalyanam">
+          <div class="project-idx">05</div>
+          <div class="project-main-col">
+            <h3 class="project-name">Kalyanam.com — Relational Matrimonial Web Platform</h3>
+            <p class="project-short-desc">Full-stack relational database portal with secure session authentication, dynamic filtering, and mutual compatibility algorithms.</p>
+          </div>
+          <div class="project-tech-tags">
+            <span class="tech-tag">Python Flask</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">REST API</span>
+          </div>
+          <div class="project-action-col">
+            <span>INSPECT ↗</span>
+          </div>
         </div>
 
       </div>
     </section>
+
+    <!-- ========================================================================
+         RESEARCH EXPERIENCE & TIMELINE
+         ======================================================================== -->
+    <section class="editorial-section" id="section-experience">
+      <div class="editorial-header-row">
+        <div>
+          <div class="section-tag">03 / INSTITUTIONAL ROLES & FELLOWSHIPS</div>
+          <h2 class="editorial-display-heading">RESEARCH & EXPERIENCE</h2>
+        </div>
+        <div class="section-counter">[03 / 07]</div>
+      </div>
+
+      <div class="experience-list">
+        
+        <!-- Entry 1: NIT Calicut -->
+        <div class="experience-entry">
+          <div class="experience-period">JUNE 2025 — JULY 2025</div>
+          <div class="experience-content">
+            <h3 class="experience-role">SE4AI Research Intern</h3>
+            <div class="experience-org">National Institute of Technology (NIT) Calicut</div>
+            <ul class="experience-bullets">
+              <li>Conducted research under <strong>Dr. Pournami P. N.</strong>, Department of Computer Science & Engineering.</li>
+              <li>Curated, preprocessed, and classified a comprehensive taxonomy dataset of over <strong>2,500 software requirements</strong> across 15+ machine learning projects.</li>
+              <li>Analyzed quality attributes and empirical metrics to improve specification standards for AI-intensive systems.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Entry 2: AICTE APF -->
+        <div class="experience-entry">
+          <div class="experience-period">2025 — PRESENT</div>
+          <div class="experience-content">
+            <h3 class="experience-role">Student Ambassador & Fellow</h3>
+            <div class="experience-org">AICTE — Anuvadini & Prajjawala Fellowship (APF)</div>
+            <ul class="experience-bullets">
+              <li>Selected to represent the institution in national-level innovation initiatives advancing AI accessibility and ecological sustainability.</li>
+              <li>Spearheaded technological prototypes for clean river governance and coordinated peer workshops on trustworthy machine learning.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         TECHNICAL SKILLS & CAPABILITIES
+         ======================================================================== -->
+    <section class="editorial-section" id="section-skills">
+      <div class="editorial-header-row">
+        <div>
+          <div class="section-tag">04 / TECHNICAL INVENTORY</div>
+          <h2 class="editorial-display-heading">CORE CAPABILITIES</h2>
+        </div>
+        <div class="section-counter">[04 / 07]</div>
+      </div>
+
+      <div class="skills-editorial-grid">
+        
+        <div class="skill-category-block">
+          <div>
+            <h3 class="skill-cat-title">Machine Learning & Deep Learning</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 20px;">
+              Architecting neural networks, training computer vision pipelines, and fine-tuning models.
+            </p>
+          </div>
+          <div class="skill-chips-row">
+            <span class="skill-chip">PyTorch</span>
+            <span class="skill-chip">TensorFlow</span>
+            <span class="skill-chip">CNNs</span>
+            <span class="skill-chip">YOLOv8</span>
+            <span class="skill-chip">OpenCV</span>
+            <span class="skill-chip">Vector Embeddings</span>
+            <span class="skill-chip">Jina Reranker</span>
+          </div>
+        </div>
+
+        <div class="skill-category-block">
+          <div>
+            <h3 class="skill-cat-title">SE4AI & Research Methods</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 20px;">
+              Empirical software engineering standards, requirements taxonomies, and dataset verification.
+            </p>
+          </div>
+          <div class="skill-chips-row">
+            <span class="skill-chip">Requirements Engineering</span>
+            <span class="skill-chip">Data Taxonomy</span>
+            <span class="skill-chip">Model Auditing</span>
+            <span class="skill-chip">Quality Attributes</span>
+            <span class="skill-chip">Empirical Baselines</span>
+          </div>
+        </div>
+
+        <div class="skill-category-block">
+          <div>
+            <h3 class="skill-cat-title">Full-Stack & Systems</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 20px;">
+              Building production REST microservices, database schemas, and client-side interfaces.
+            </p>
+          </div>
+          <div class="skill-chips-row">
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">Flask</span>
+            <span class="skill-chip">FastAPI</span>
+            <span class="skill-chip">MySQL</span>
+            <span class="skill-chip">C</span>
+            <span class="skill-chip">Java</span>
+            <span class="skill-chip">Git / GitHub</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         EDUCATION & HONORS
+         ======================================================================== -->
+    <section class="editorial-section" id="section-education">
+      <div class="editorial-header-row">
+        <div>
+          <div class="section-tag">05 / ACADEMIC MERIT & COMPETITIVE HONORS</div>
+          <h2 class="editorial-display-heading">EDUCATION & AWARDS</h2>
+        </div>
+        <div class="section-counter">[05 / 07]</div>
+      </div>
+
+      <div class="experience-list">
+        
+        <div class="experience-entry">
+          <div class="experience-period">2023 — 2027</div>
+          <div class="experience-content">
+            <h3 class="experience-role">B.Tech in Computer Science & Engineering</h3>
+            <div class="experience-org">Amal Jyothi College of Engineering (APJ Abdul Kalam Technological University)</div>
+            <ul class="experience-bullets">
+              <li><strong>CGPA: 10.0 / 10.0</strong> — Ranked 1st across the Computer Science Engineering Department.</li>
+              <li>Consistently placed on the Principal’s and Manager’s Top Honor List every academic term.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-entry">
+          <div class="experience-period">2026</div>
+          <div class="experience-content">
+            <h3 class="experience-role">Kerala Agricultural University RAISE 2026 — Stage 2 Finalist</h3>
+            <div class="experience-org">KAU Student Startup Programme</div>
+            <p style="font-size: 0.9375rem; color: var(--text-main); margin-top: 8px;">
+              Co-Founder of KAYORA. Selected for Stage 2 prototype commercialization track with potential grant funding up to <strong>₹5 Lakh</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="experience-entry">
+          <div class="experience-period">2025</div>
+          <div class="experience-content">
+            <h3 class="experience-role">e-Yantra Robotics National Challenge</h3>
+            <div class="experience-org">Indian Institute of Technology (IIT) Bombay</div>
+            <p style="font-size: 0.9375rem; color: var(--text-main); margin-top: 8px;">
+              Engineered autonomous simulation routines and algorithm control pipelines in the flagship national robotics initiative.
+            </p>
+          </div>
+        </div>
+
+        <div class="experience-entry">
+          <div class="experience-period">2026</div>
+          <div class="experience-content">
+            <h3 class="experience-role">AI Bhoomi 20h Startup Weekend</h3>
+            <div class="experience-org">AI Bhoomi Innovation Sprint</div>
+            <p style="font-size: 0.9375rem; color: var(--text-main); margin-top: 8px;">
+              Developed and pitched the ReFind multimodal semantic search engine during an intensive 20-hour sprint.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         LEADERSHIP & RESPONSIBILITY
+         ======================================================================== -->
+    <section class="editorial-section" id="section-leadership">
+      <div class="editorial-header-row">
+        <div>
+          <div class="section-tag">06 / COMMUNITY & ORGANIZATIONAL MANDATES</div>
+          <h2 class="editorial-display-heading">LEADERSHIP</h2>
+        </div>
+        <div class="section-counter">[06 / 07]</div>
+      </div>
+
+      <div class="skills-editorial-grid">
+        
+        <div class="skill-category-block">
+          <div class="section-tag" style="margin-bottom: 4px;">2025 — PRESENT</div>
+          <h3 class="skill-cat-title">Creative Head</h3>
+          <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--c-marigold); font-weight: 600; margin-bottom: 12px;">IEDC AJCE</div>
+          <p style="font-size: 0.875rem; color: var(--text-main); line-height: 1.7;">
+            Leading visual identity, design strategy, and promotional direction for campus-wide entrepreneurship summits and innovation bootcamps.
+          </p>
+        </div>
+
+        <div class="skill-category-block">
+          <div class="section-tag" style="margin-bottom: 4px;">2025 — 2026</div>
+          <h3 class="skill-cat-title">Treasurer</h3>
+          <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--c-marigold); font-weight: 600; margin-bottom: 12px;">ACM-W Student Chapter</div>
+          <p style="font-size: 0.875rem; color: var(--text-main); line-height: 1.7;">
+            Managing operational budgets, financial sponsorships, and coordinating technical workshops empowering women in computing.
+          </p>
+        </div>
+
+        <div class="skill-category-block">
+          <div class="section-tag" style="margin-bottom: 4px;">2024 — PRESENT</div>
+          <h3 class="skill-cat-title">Executive Member</h3>
+          <div style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--c-marigold); font-weight: 600; margin-bottom: 12px;">Computer Society of India (CSI)</div>
+          <p style="font-size: 0.875rem; color: var(--text-main); line-height: 1.7;">
+            Organizing coding symposiums, open-source seminars, and peer-learning hackathons for engineering scholars.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CONTACT SECTION
+         ======================================================================== -->
+    <section class="contact-section" id="section-contact">
+      <div class="section-tag">07 / GET IN TOUCH</div>
+      <h2 class="contact-big-title">
+        LET'S BUILD SOMETHING MEANINGFUL TOGETHER.
+      </h2>
+      <p style="font-size: 1.125rem; color: var(--text-muted); max-width: 680px; margin-bottom: 36px; line-height: 1.8;">
+        Open to research collaborations, machine learning internships, scientific partnerships, and startup opportunities.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+        <a href="mailto:melizabyiju@gmail.com" class="contact-email-btn">
+          <span>MELIZABYIJU@GMAIL.COM</span>
+          <span>↗</span>
+        </a>
+
+        <a href="https://linkedin.com/in/melizabyiju" target="_blank" rel="noopener noreferrer" class="btn-header-contact" style="padding: 18px 28px; font-size: 0.9375rem;">
+          <span>LINKEDIN</span>
+          <span>↗</span>
+        </a>
+
+        <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="btn-header-contact" style="padding: 18px 28px; font-size: 0.9375rem;">
+          <span>GITHUB</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </section>
+
   </main>
 
   <!-- ========================================================================
-       FOOTER
-       ======================================================================== -->
-  <footer class="bg-aubergine-deep text-slate-400 py-8 px-4 sm:px-6 border-t border-white/5 text-xs text-center">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <div class="w-6 h-6 rounded-full bg-marigold text-aubergine font-bold flex items-center justify-center text-xs">M</div>
-        <span class="font-bold text-white text-sm">Meliza Mariya Byiju</span>
-      </div>
-      <div>
-        Designed with Ice Silver, Deep Aubergine, and Marigold.
-      </div>
-      <div class="flex items-center gap-4 text-slate-300">
-        <a href="#hero" class="hover:text-marigold transition-colors">Back to Top ↑</a>
-      </div>
+     SITE FOOTER
+     ======================================================================== -->
+  <footer class="site-footer">
+    <div>
+      © 2026 MELIZA MARIYA BYIJU. ALL RIGHTS RESERVED.
+    </div>
+    <div style="color: var(--c-marigold);">
+      EDITORIAL SYSTEM • ICE SILVER, DEEP AUBERGINE & MARIGOLD
+    </div>
+    <div>
+      <a href="#hero" style="color: var(--text-heading); text-decoration: none;">BACK TO TOP ↑</a>
     </div>
   </footer>
 
-  <!-- Main JavaScript Logic -->
+  <!-- ========================================================================
+       PROJECT DETAIL INSPECTION MODAL / DRAWER
+       ======================================================================== -->
+  <div class="detail-backdrop-overlay" id="detail-overlay">
+    <div class="detail-sheet-panel" id="detail-panel">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close project inspection">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div id="detail-content"></div>
+    </div>
+
+    <!-- Side Navigation Drawer -->
+    <aside class="side-panel-drawer" id="side-panel">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-main); padding-bottom: 16px;">
+          <div>
+            <div style="font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; color: var(--text-heading);">NAVIGATION</div>
+            <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--c-marigold);">MELIZA MARIYA BYIJU</div>
+          </div>
+          <button class="modal-close-btn" id="side-panel-close" style="position: static;" aria-label="Close menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <nav class="side-nav-links">
+          <a href="#hero" class="side-nav-link"><span>HOME</span><span>↗</span></a>
+          <a href="#section-about" class="side-nav-link"><span>ABOUT</span><span>↗</span></a>
+          <a href="#section-projects" class="side-nav-link"><span>WORK</span><span>↗</span></a>
+          <a href="#section-experience" class="side-nav-link"><span>EXPERIENCE</span><span>↗</span></a>
+          <a href="#section-skills" class="side-nav-link"><span>SKILLS</span><span>↗</span></a>
+          <a href="#section-education" class="side-nav-link"><span>EDUCATION</span><span>↗</span></a>
+          <a href="#section-leadership" class="side-nav-link"><span>LEADERSHIP</span><span>↗</span></a>
+          <a href="#section-contact" class="side-nav-link"><span>CONTACT</span><span>↗</span></a>
+        </nav>
+      </div>
+
+      <div style="border-top: 1px solid var(--border-main); padding-top: 20px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+        <div>AMAL JYOTHI COLLEGE OF ENGINEERING</div>
+        <div style="color: var(--c-marigold); margin-top: 4px;">10.0 CGPA • KTU RANK 1</div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
