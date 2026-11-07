@@ -1,10 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { Search, LayoutGrid, List, ArrowUpRight, Award, ExternalLink, Filter } from 'lucide-react';
+import { LayoutGrid, List, ArrowUpRight, Award, Filter } from 'lucide-react';
 
 export default function ProjectExplorer({ onSelectProject }) {
   const { projects } = portfolioData;
-  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'table'
 
@@ -19,17 +18,9 @@ export default function ProjectExplorer({ onSelectProject }) {
 
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
-      const matchesCategory =
-        selectedCategory === 'All' || p.category === selectedCategory;
-      const q = searchQuery.toLowerCase();
-      const matchesSearch =
-        p.title.toLowerCase().includes(q) ||
-        p.subtitle.toLowerCase().includes(q) ||
-        p.shortDesc.toLowerCase().includes(q) ||
-        p.techStack.some((t) => t.toLowerCase().includes(q));
-      return matchesCategory && matchesSearch;
+      return selectedCategory === 'All' || p.category === selectedCategory;
     });
-  }, [projects, selectedCategory, searchQuery]);
+  }, [projects, selectedCategory]);
 
   return (
     <section id="projects" className="py-20 sm:py-28 max-w-6xl mx-auto px-4 sm:px-6">
@@ -48,31 +39,28 @@ export default function ProjectExplorer({ onSelectProject }) {
         </div>
       </div>
 
-      {/* Interactive Controls Bar: Search, Category Filters, View Switcher */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-8">
-        
-        {/* Search Input */}
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search projects by tech (PyTorch, YOLO, Jina, etc.)..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-plum-900/15 dark:border-white/15 bg-white dark:bg-plum-900/40 text-plum-950 dark:text-white text-xs font-mono placeholder:text-slate-400 focus:outline-none focus:border-gold-500 transition-colors"
-          />
-          {searchQuery && (
+      {/* Filter Category Pills & View Switcher Bar */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+        {/* Category Filter Pills */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none w-full sm:w-auto">
+          <Filter className="w-3.5 h-3.5 text-gold-600 dark:text-gold-400 flex-shrink-0" />
+          {categories.map((cat) => (
             <button
-              onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-400 hover:text-plum-900 dark:hover:text-white"
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono whitespace-nowrap transition-all ${
+                selectedCategory === cat
+                  ? 'bg-plum-800 text-white dark:bg-gold-500 dark:text-plum-950 font-bold shadow-sm'
+                  : 'bg-white dark:bg-plum-900/50 border border-plum-900/10 dark:border-white/10 text-slate-700 dark:text-ice-200 hover:border-gold-500'
+              }`}
             >
-              ✕
+              {cat === 'All' ? 'All Domains' : cat.split('&')[0]}
             </button>
-          )}
+          ))}
         </div>
 
         {/* View Switcher: Grid vs Table */}
-        <div className="flex items-center gap-2 self-end md:self-auto">
+        <div className="flex items-center gap-2 self-end sm:self-auto flex-shrink-0">
           <span className="font-mono text-xs text-slate-500 dark:text-slate-400 mr-1 hidden sm:inline">
             VIEW:
           </span>
@@ -103,42 +91,6 @@ export default function ProjectExplorer({ onSelectProject }) {
         </div>
       </div>
 
-      {/* Filter Category Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
-        <Filter className="w-3.5 h-3.5 text-gold-600 dark:text-gold-400 flex-shrink-0" />
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono whitespace-nowrap transition-all ${
-              selectedCategory === cat
-                ? 'bg-plum-800 text-white dark:bg-gold-500 dark:text-plum-950 font-bold shadow-sm'
-                : 'bg-white dark:bg-plum-900/50 border border-plum-900/10 dark:border-white/10 text-slate-700 dark:text-ice-200 hover:border-gold-500'
-            }`}
-          >
-            {cat === 'All' ? 'All Domains' : cat.split('&')[0]}
-          </button>
-        ))}
-      </div>
-
-      {/* Empty State */}
-      {filteredProjects.length === 0 && (
-        <div className="p-12 text-center rounded-2xl border border-dashed border-plum-900/20 dark:border-white/20">
-          <p className="font-mono text-sm text-slate-500 dark:text-slate-400 mb-2">
-            No engineering projects matched "{searchQuery}"
-          </p>
-          <button
-            onClick={() => {
-              setSearchQuery('');
-              setSelectedCategory('All');
-            }}
-            className="text-xs font-mono text-gold-600 dark:text-gold-400 underline underline-offset-4"
-          >
-            Reset Filters
-          </button>
-        </div>
-      )}
-
       {/* VIEW MODE 1: Rich Cards Grid */}
       {viewMode === 'grid' && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -148,7 +100,7 @@ export default function ProjectExplorer({ onSelectProject }) {
               onClick={() => onSelectProject(project)}
               className="group cursor-pointer rounded-2xl border border-plum-900/10 dark:border-white/10 bg-white dark:bg-plum-950 p-6 flex flex-col justify-between hover:border-gold-500 dark:hover:border-gold-500 hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
             >
-              {/* Subtle accent line on top */}
+              {/* Accent line on top */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-plum-800 to-gold-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
               <div>
@@ -245,7 +197,7 @@ export default function ProjectExplorer({ onSelectProject }) {
                     </span>
                   ))}
                 </div>
-                <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-plum-900/15 dark:border-white/15 text-xs font-mono font-bold text-plum-900 dark:text-gold-400 group-hover:border-gold-500">
+                <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-plum-900/15 dark:border-white/10 text-xs font-mono font-bold text-plum-900 dark:text-gold-400 group-hover:border-gold-500">
                   <span>INSPECT</span>
                   <span>↗</span>
                 </span>

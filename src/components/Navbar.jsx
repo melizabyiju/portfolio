@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Sun, Moon, Search, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Navbar({
   theme,
-  toggleTheme,
-  openCommandPalette,
-  openTerminal
+  toggleTheme
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -58,31 +56,6 @@ export default function Navbar({
 
         {/* Action Buttons */}
         <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* Quick Search / Command Palette (Ctrl+K) */}
-          <button
-            onClick={openCommandPalette}
-            className="hidden sm:flex items-center gap-2 px-2.5 py-1.5 rounded-xl border border-plum-900/15 dark:border-white/15 bg-white/60 dark:bg-plum-900/40 text-plum-900/80 dark:text-ice-200 hover:border-gold-500 hover:text-gold-600 dark:hover:text-gold-400 transition-all text-xs font-mono group"
-            title="Open Command Palette (Ctrl+K)"
-            aria-label="Open Command Palette"
-          >
-            <Search className="w-3.5 h-3.5 text-plum-700 dark:text-gold-400 group-hover:scale-110 transition-transform" />
-            <span className="hidden md:inline font-sans font-medium text-xs">Search</span>
-            <kbd className="text-[10px] bg-plum-100 dark:bg-plum-800/80 px-1.5 py-0.5 rounded border border-plum-200 dark:border-plum-700 text-plum-700 dark:text-gold-300 font-mono">
-              ⌘K
-            </kbd>
-          </button>
-
-          {/* Developer Terminal Trigger */}
-          <button
-            onClick={openTerminal}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-plum-900/15 dark:border-white/15 bg-white/60 dark:bg-plum-900/40 text-plum-900 dark:text-ice-200 hover:border-gold-500 hover:text-gold-600 dark:hover:text-gold-400 transition-all text-xs font-mono"
-            title="Launch Interactive Terminal"
-            aria-label="Open Terminal"
-          >
-            <Terminal className="w-3.5 h-3.5 text-gold-600 dark:text-gold-400" />
-            <span className="hidden xl:inline font-medium">Terminal</span>
-          </button>
-
           {/* Theme Toggle (Light / Dark) */}
           <button
             onClick={toggleTheme}
@@ -91,7 +64,7 @@ export default function Navbar({
             aria-label="Toggle visual theme"
           >
             {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-gold-400 animate-spin-slow" />
+              <Sun className="w-4 h-4 text-gold-400" />
             ) : (
               <Moon className="w-4 h-4 text-plum-800" />
             )}
@@ -100,9 +73,9 @@ export default function Navbar({
           {/* Direct CTA */}
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-plum-800 hover:bg-plum-900 text-white dark:bg-gold-500 dark:hover:bg-gold-400 dark:text-plum-950 font-mono text-xs font-semibold tracking-wider transition-all shadow-sm hover:shadow-gold-glow uppercase"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-plum-800 hover:bg-plum-900 text-white dark:bg-gold-500 dark:hover:bg-gold-400 dark:text-plum-950 font-mono text-xs font-semibold tracking-wider transition-all shadow-sm hover:shadow-gold-glow uppercase"
           >
-            <span>Touch</span>
+            <span>Get In Touch</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
 
@@ -124,13 +97,6 @@ export default function Navbar({
             <span className="font-mono text-xs text-gold-600 dark:text-gold-400 font-semibold tracking-widest uppercase">
               Navigation Menu
             </span>
-            <button
-              onClick={openCommandPalette}
-              className="flex items-center gap-1.5 text-xs font-mono text-plum-700 dark:text-ice-300 px-2 py-1 rounded-lg bg-plum-100 dark:bg-plum-900"
-            >
-              <Search className="w-3 h-3 text-gold-500" />
-              <span>Ctrl+K</span>
-            </button>
           </div>
           <div className="grid grid-cols-2 gap-2">
             {navLinks.map((link) => (

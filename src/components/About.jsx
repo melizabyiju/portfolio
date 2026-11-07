@@ -42,13 +42,6 @@ export default function About() {
                   e.currentTarget.src = "Images/hero.jpeg";
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-plum-950/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl glass-card border border-white/20 text-xs font-mono">
-                <span className="text-gold-600 dark:text-gold-400 font-bold">[02] RESEARCH PROFILE</span>
-                <p className="text-plum-950 dark:text-white font-semibold mt-0.5">
-                  SE4AI Fellow • KAU RAISE Finalist
-                </p>
-              </div>
             </div>
 
             {/* Quick Credentials Card */}
