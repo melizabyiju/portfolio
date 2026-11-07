@@ -1,8 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-plum-50: #FDF7FD;
+  --color-plum-100: #F8ECF7;
+  --color-plum-200: #F1D6EF;
+  --color-plum-300: #E4B3E0;
+  --color-plum-400: #CE82C7;
+  --color-plum-500: #A64F9D;
+  --color-plum-600: #7E2F75;
+  --color-plum-700: #52184A;
+  --color-plum-800: #3A0F34;
+  --color-plum-850: #2C0927;
+  --color-plum-900: #22061F;
+  --color-plum-950: #140313;
+
+  --color-gold-50: #FFFEF5;
+  --color-gold-100: #FFFBE6;
+  --color-gold-200: #FFF4BF;
+  --color-gold-300: #FFE98F;
+  --color-gold-400: #F5CE38;
+  --color-gold-500: #EAAA00;
+  --color-gold-600: #D49900;
+  --color-gold-700: #B07D00;
+  --color-gold-800: #8A6000;
+  --color-gold-900: #664600;
+
+  --color-ice-50: #F8FAFC;
+  --color-ice-100: #F1F5F9;
+  --color-ice-200: #E2E8F0;
+  --color-ice-300: #DDE3E8;
+  --color-ice-400: #94A3B8;
+  --color-ice-500: #64748B;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-accent: 'Anton', 'Bebas Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans', 'Manrope', -apple-system, sans-serif;
+}
 
 :root {
   --color-plum: #3A0F34;
@@ -44,8 +81,8 @@ body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -67,14 +104,14 @@ body {
 
 /* Glassmorphism Classes */
 .glass-header {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(58, 15, 52, 0.08);
 }
 
 .dark .glass-header {
-  background: rgba(25, 5, 24, 0.85);
+  background: rgba(25, 5, 24, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(234, 170, 0, 0.15);
@@ -96,17 +133,6 @@ body {
 ::selection {
   background: #EAAA00;
   color: #1A0519;
-}
-
-/* Subtle Grid Background Pattern */
-.bg-grid-pattern {
-  background-image: radial-gradient(rgba(58, 15, 52, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.dark .bg-grid-pattern {
-  background-image: radial-gradient(rgba(234, 170, 0, 0.09) 1px, transparent 1px);
-  background-size: 24px 24px;
 }
 
 /* Custom Cursor */
@@ -146,14 +172,28 @@ body {
   border-color: rgba(234, 170, 0, 0.4);
 }
 
+/* Marquee continuous scroll */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* Terminal Scanline */
 .terminal-crt::before {
   content: " ";
   display: block;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
   z-index: 2;
-  background-size: 100% 2px, 3px 100%;
+  background-size: 100% 2px;
   pointer-events: none;
 }

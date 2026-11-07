@@ -1,5 +1,6 @@
 {
   "name": "portfolio",
+  "type": "module",
   "version": "1.0.0",
   "description": "A modern, high-performance, responsive portfolio website created for **Meliza Mariya Byiju**, Computer Science Engineering scholar (10.0 CGPA) at Amal Jyothi College of Engineering and SE4AI Research Intern at National Institute of Technology Calicut (NIT Calicut).",
   "main": "script.js",
@@ -17,6 +18,8 @@
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@tailwindcss/vite": "^4.3.5",
     "@vitejs/plugin-react": "^6.2.1",
     "autoprefixer": "^10.6.2",
     "postcss": "^8.5.32",
