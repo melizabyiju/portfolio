@@ -148,7 +148,7 @@ export default function CustomCursor() {
       return false;
     };
 
-    // Combined detection: Is the cursor over dark/purple background OR dark/purple text/icon?
+    // Combined detection: Is the cursor over dark/purple background, text/icon, or dark image pixel?
     const shouldBeYellow = (x, y) => {
       if (
         document.documentElement.classList.contains('dark') ||
@@ -156,7 +156,89 @@ export default function CustomCursor() {
       ) {
         return true;
       }
-      return isDarkOrPurpleBg(x, y) || isOverDarkTextOrGlyph(x, y);
+      return isDarkOrPurpleBg(x, y) || isOverDarkTextOrGlyph(x, y) || isOverDarkImage(x, y);
+    };
+
+    // Cache canvas for sampling images without redrawing every frame
+    const imageCanvasCache = new WeakMap();
+
+    const getPixelFromImage = (img, clientX, clientY) => {
+      try {
+        if (!img.complete || img.naturalWidth === 0) return null;
+
+        let cache = imageCanvasCache.get(img);
+        if (!cache) {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          const ctx = canvas.getContext('2d', { willReadFrequently: true });
+          if (!ctx) return null;
+          ctx.drawImage(img, 0, 0);
+          cache = { canvas, ctx };
+          imageCanvasCache.set(img, cache);
+        }
+
+        const rect = img.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return null;
+
+        const normX = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        const normY = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+
+        const pxX = Math.floor(normX * img.naturalWidth);
+        const pxY = Math.floor(normY * img.naturalHeight);
+
+        const pixel = cache.ctx.getImageData(pxX, pxY, 1, 1).data;
+        const a = pixel[3] / 255;
+        if (a < 0.15) {
+          return null; // transparent cutout background
+        }
+        return {
+          r: pixel[0],
+          g: pixel[1],
+          b: pixel[2],
+        };
+      } catch (err) {
+        return null;
+      }
+    };
+
+    const isOverDarkImage = (x, y) => {
+      const el = document.elementFromPoint(x, y);
+      if (!el) return false;
+
+      // Find image under cursor (directly or inside container)
+      let targetImg = null;
+      if (el.tagName === 'IMG') {
+        targetImg = el;
+      } else {
+        const imgs = el.querySelectorAll ? el.querySelectorAll('img') : [];
+        for (const img of imgs) {
+          const r = img.getBoundingClientRect();
+          if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) {
+            targetImg = img;
+            break;
+          }
+        }
+        if (!targetImg && el.parentElement) {
+          const pImgs = el.parentElement.querySelectorAll('img');
+          for (const img of pImgs) {
+            const r = img.getBoundingClientRect();
+            if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) {
+              targetImg = img;
+              break;
+            }
+          }
+        }
+      }
+
+      if (targetImg) {
+        const pixel = getPixelFromImage(targetImg, x, y);
+        if (pixel) {
+          return checkIsDarkOrPurpleColor(pixel);
+        }
+      }
+
+      return false;
     };
 
     // Initial color setup
