@@ -1,32 +1,86 @@
 import React from 'react';
-import { ArrowUpRight, Mail } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Hero() {
-  const { personal, stats } = portfolioData;
+  const { personal } = portfolioData;
 
   return (
-    <section id="hero" className="relative pt-28 sm:pt-36 pb-16 md:pb-24 overflow-hidden">
-      {/* Background Subtle Geometric Vector Linework */}
-      <div className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-15 flex items-center justify-center -z-10">
+    <section id="hero" className="relative pt-28 sm:pt-36 pb-24 md:pb-32 overflow-hidden bg-[#FAF6F2] dark:bg-[#10030F] transition-colors duration-300">
+      
+      {/* ========================================================================
+          HERO BACKGROUND COMPOSITION (WARM BLUSH, PEACH/GOLD GLOWS, CURVES & WAVES)
+          ======================================================================== */}
+      
+      {/* 1. Subtle Peach and Golden Radial Glow behind Profile Photo */}
+      <div
+        className="absolute right-0 lg:right-4 top-1/2 -translate-y-1/2 w-[420px] sm:w-[580px] lg:w-[720px] h-[420px] sm:h-[580px] lg:h-[720px] pointer-events-none -z-10"
+        style={{
+          background: 'radial-gradient(circle at 55% 45%, rgba(254, 215, 170, 0.55) 0%, rgba(234, 170, 0, 0.22) 38%, rgba(243, 232, 255, 0.12) 58%, transparent 72%)',
+        }}
+      />
+
+      {/* 2. Elegant Abstract Curves sweeping behind the photo (Inspired by Reference) */}
+      <div className="absolute right-0 lg:right-6 top-1/2 -translate-y-1/2 w-[360px] sm:w-[480px] lg:w-[620px] h-[360px] sm:h-[480px] lg:h-[620px] pointer-events-none -z-10">
         <svg
-          viewBox="0 0 1000 600"
-          className="w-full max-w-5xl h-auto text-plum-900 dark:text-gold-400"
+          viewBox="0 0 600 600"
+          className="w-full h-full text-gold-500/60 dark:text-gold-400/40"
           fill="none"
-          stroke="currentColor"
         >
-          <circle cx="500" cy="300" r="140" strokeWidth="1" strokeDasharray="3 4" />
-          <circle cx="500" cy="300" r="260" strokeWidth="1" strokeOpacity="0.4" />
-          <circle cx="500" cy="300" r="380" strokeWidth="0.75" strokeDasharray="6 8" strokeOpacity="0.3" />
-          <line x1="0" y1="300" x2="1000" y2="300" strokeWidth="0.75" strokeDasharray="4 6" strokeOpacity="0.3" />
-          <line x1="500" y1="0" x2="500" y2="600" strokeWidth="0.75" strokeDasharray="4 6" strokeOpacity="0.3" />
+          {/* Outer sweeping ellipse */}
+          <ellipse cx="320" cy="300" rx="265" ry="245" stroke="currentColor" strokeWidth="1.25" />
+          {/* Inner sweeping curve */}
+          <ellipse cx="300" cy="290" rx="205" ry="190" stroke="currentColor" strokeWidth="1" strokeDasharray="5 5" strokeOpacity="0.5" />
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      {/* 3. Layered Flowing Waves at the Bottom in Lavender, Plum, Burgundy, and Gold */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-0">
+        <svg
+          viewBox="0 0 1440 140"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-16 sm:h-20 md:h-24 lg:h-28"
+          preserveAspectRatio="none"
+        >
+          {/* Wave 1: Soft Pale Lavender / Blush Wave (Back Layer) */}
+          <path
+            d="M 0,80 C 300,35 560,110 880,70 C 1120,40 1300,75 1440,60 L 1440,140 L 0,140 Z"
+            fill="#F3EBF2"
+            className="dark:fill-[#260A26] opacity-85"
+          />
+
+          {/* Wave 2: Deep Rich Plum Wave */}
+          <path
+            d="M 0,115 C 240,95 460,60 760,75 C 1020,85 1240,118 1440,100 L 1440,140 L 0,140 Z"
+            fill="#461240"
+            className="dark:fill-[#360833]"
+          />
+
+          {/* Wave 3: Dark Velvety Burgundy Wave */}
+          <path
+            d="M 0,140 L 0,130 C 280,115 580,95 900,105 C 1160,115 1330,135 1440,130 L 1440,140 Z"
+            fill="#280825"
+            className="dark:fill-[#1C041B]"
+          />
+
+          {/* Wave 4: Vibrant Warm Golden-Yellow Wave (Right side swoop from reference) */}
+          <path
+            d="M 1020,140 C 1120,105 1250,55 1440,50 L 1440,140 Z"
+            fill="#EAAA00"
+            className="dark:fill-[#D49900]"
+          />
+        </svg>
+      </div>
+
+      {/* ========================================================================
+          PRESERVED HERO CONTENT, LAYOUT, TEXT, BADGES, BUTTONS & PROFILE IMAGE
+          ======================================================================== */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        
         {/* Hero Main Presentation Stage */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="mt-2 sm:mt-4 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left Column: "Hello There!" Bounding Box, Headline & Pitch */}
           <div className="lg:col-span-7 flex flex-col items-start">
@@ -60,7 +114,7 @@ export default function Hero() {
             </h2>
 
             {/* Academic highlights badges */}
-            <div className="inline-flex flex-wrap items-center gap-2 mb-6">
+            <div className="inline-flex flex-wrap items-center gap-2 mb-5">
               <span className="px-2.5 py-1 rounded-md bg-plum-800 text-white dark:bg-gold-500 dark:text-plum-950 font-mono text-xs font-bold uppercase tracking-wider">
                 Rank 1 • 10.0 CGPA
               </span>
@@ -70,6 +124,29 @@ export default function Hero() {
               <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-plum-900/60 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-ice-200 font-mono text-xs font-medium">
                 KAU RAISE 2026 Stage 2
               </span>
+            </div>
+
+            <p className="font-sans text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6 max-w-xl">
+              Computer Science scholar at Amal Jyothi with a perfect 10.0 CGPA and SE4AI Research Scholar at <strong className="text-plum-900 dark:text-gold-400 font-semibold">NIT Calicut</strong>. I build autonomous computer vision algorithms, benchmark machine learning requirements, and create verified sustainability tech.
+            </p>
+
+            {/* Quick CTAs */}
+            <div className="flex flex-wrap gap-3 items-center pt-2">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-plum-800 hover:bg-plum-900 text-white dark:bg-gold-500 dark:hover:bg-gold-400 dark:text-plum-950 font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-gold-glow hover:-translate-y-0.5"
+              >
+                <span>Explore Work</span>
+                <ArrowDown className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-plum-900/20 dark:border-gold-500/30 bg-white/80 dark:bg-plum-900/40 text-plum-900 dark:text-ice-100 font-mono text-xs font-semibold tracking-wider hover:border-gold-500 hover:bg-gold-50/50 dark:hover:bg-plum-900/80 transition-all hover:-translate-y-0.5"
+              >
+                <span>Get In Touch</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
             </div>
 
             {/* Social Links Row */}
@@ -106,35 +183,48 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Exact Reference Composition — Seamless Transparent Cutout over Organic Fluid Marigold Backdrop & Accent Arc */}
+          {/* Right Column: Profile Photo Area with Soft Peach/Gold Gradient, Overlapping Circular Outlines & Radiating Plum Strokes */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative select-none">
             <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] flex items-center justify-center pt-4 sm:pt-6 pb-2">
               
-              {/* Asymmetric Organic Fluid Marigold Backdrop (Directly Matching Reference) */}
-              <div 
-                className="absolute w-[290px] h-[290px] sm:w-[350px] sm:h-[350px] md:w-[390px] md:h-[390px] bg-[#EAAA00] rounded-[62%_38%_56%_44%/48%_56%_44%_52%] -z-10 transform -rotate-6 transition-transform duration-700 hover:rotate-0 shadow-2xl shadow-gold-500/30"
-              />
-
-              {/* Minimal Curved Accent Arc Line on the Left (Echoing the Reference Arc) */}
+              {/* Three Radiating Plum Strokes Above Head (from Reference Image) */}
               <svg
-                className="absolute -left-2 sm:-left-4 md:-left-7 top-[28%] w-8 sm:w-10 h-28 text-slate-800 dark:text-gold-400/80 pointer-events-none -z-5"
-                viewBox="0 0 40 110"
+                className="absolute -top-1 sm:top-1 right-12 sm:right-16 w-8 h-8 text-[#3A0F34] dark:text-gold-400/90 pointer-events-none z-20"
+                viewBox="0 0 36 36"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.75"
+                strokeWidth="2.25"
                 strokeLinecap="round"
               >
-                <path d="M 32 10 Q 6 55 30 100" />
+                <line x1="18" y1="26" x2="18" y2="10" />
+                <line x1="10" y1="23" x2="3" y2="13" />
+                <line x1="26" y1="23" x2="33" y2="13" />
               </svg>
 
-              {/* Transparent Person Cutout — No rectangular box, no border, zero stickers/badges */}
-              <div className="relative z-10 w-full flex justify-center [mask-image:linear-gradient(to_bottom,black_88%,transparent_100%)]">
+              {/* Large Soft Peach and Golden Gradient Organic Shape Behind Portrait */}
+              <div 
+                className="absolute w-[290px] h-[320px] sm:w-[350px] sm:h-[380px] md:w-[390px] md:h-[420px] -left-4 sm:-left-8 top-1/2 -translate-y-1/2 bg-gradient-to-tr from-[#FED7AA]/70 via-[#FDE68A]/65 to-[#F59E0B]/35 dark:from-gold-600/30 dark:via-gold-500/25 dark:to-transparent rounded-[60%_40%_55%_45%/45%_55%_45%_55%] -z-10 filter blur-[0.5px] transition-transform duration-700"
+              />
+
+              {/* Thin Overlapping Golden Circular Outlines (Matching Reference) */}
+              <svg
+                className="absolute -left-10 sm:-left-16 top-1/2 -translate-y-1/2 w-[380px] sm:w-[460px] md:w-[500px] h-[380px] sm:h-[460px] md:h-[500px] pointer-events-none -z-5 text-gold-500/60 dark:text-gold-400/40"
+                viewBox="0 0 500 500"
+                fill="none"
+              >
+                {/* Primary thin golden circular curve sweeping around left side */}
+                <ellipse cx="230" cy="250" rx="190" ry="180" stroke="currentColor" strokeWidth="1.15" />
+                {/* Secondary overlapping thin circular outline sweeping rightward */}
+                <ellipse cx="270" cy="270" rx="170" ry="160" stroke="currentColor" strokeWidth="0.85" strokeOpacity="0.65" />
+              </svg>
+
+              {/* Transparent Person Cutout with Natural Shadows & Smooth Image-Edge Blending */}
+              <div className="relative z-10 w-full flex justify-center [mask-image:linear-gradient(to_bottom,black_86%,transparent_100%)]">
                 <img
                   src="Images/hero_cutout.png"
                   alt="Meliza Mariya Byiju"
-                  className="w-[280px] sm:w-[340px] md:w-[380px] h-auto object-contain pointer-events-none transition-transform duration-700 hover:scale-[1.02] filter drop-shadow-[0_15px_25px_rgba(58,15,52,0.18)] dark:drop-shadow-[0_15px_25px_rgba(0,0,0,0.5)]"
+                  className="w-[280px] sm:w-[340px] md:w-[380px] h-auto object-contain pointer-events-none transition-transform duration-700 hover:scale-[1.015] filter drop-shadow-[0_12px_24px_rgba(58,15,52,0.13)] dark:drop-shadow-[0_12px_24px_rgba(0,0,0,0.45)]"
                   onError={(e) => {
-                    // Fallback to hero.jpeg if png cutout isn't loaded
                     e.currentTarget.src = "Images/hero.jpeg";
                     e.currentTarget.className = "w-[260px] sm:w-[300px] aspect-[4/5] object-cover object-top rounded-3xl shadow-xl";
                   }}
@@ -144,27 +234,6 @@ export default function Hero() {
             </div>
           </div>
 
-        </div>
-
-        {/* 4 Academic Metrics Grid */}
-        <div className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-plum-900/10 dark:border-white/10">
-          {stats.map((stat, idx) => (
-            <div
-              key={idx}
-              className="p-4 rounded-xl border border-plum-900/10 dark:border-white/10 bg-white/60 dark:bg-plum-900/30 hover:border-gold-500 transition-colors"
-            >
-              <div className="font-display font-bold text-2xl sm:text-3xl text-plum-950 dark:text-white flex items-baseline gap-1">
-                <span>{stat.value}</span>
-                {stat.highlight && <span className="text-gold-500 text-lg">✦</span>}
-              </div>
-              <div className="font-mono text-xs text-gold-700 dark:text-gold-400 font-semibold uppercase tracking-wider mt-1">
-                {stat.label}
-              </div>
-              <div className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-                {stat.detail}
-              </div>
-            </div>
-          ))}
         </div>
 
       </div>
