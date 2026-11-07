@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-plum: #3A0F34;
+  --color-gold: #EAAA00;
+  --color-ice: #DDE3E8;
+  --bg-page: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F1F5F9;
+  --border-subtle: rgba(58, 15, 52, 0.1);
+  --border-active: #3A0F34;
+  --text-primary: #18191B;
+  --text-secondary: #526071;
+  --text-heading: #3A0F34;
+}
+
+.dark {
+  --bg-page: #0F030E;
+  --bg-surface: #190518;
+  --bg-surface-elevated: #240822;
+  --border-subtle: rgba(221, 227, 232, 0.14);
+  --border-active: #EAAA00;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-heading: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', 'Manrope', -apple-system, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #3A0F34;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #EAAA00;
+}
+
+/* Glassmorphism Classes */
+.glass-header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(58, 15, 52, 0.08);
+}
+
+.dark .glass-header {
+  background: rgba(25, 5, 24, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(234, 170, 0, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(58, 15, 52, 0.08);
+}
+
+.dark .glass-card {
+  background: rgba(25, 5, 24, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(221, 227, 232, 0.1);
+}
+
+/* Custom Selection */
+::selection {
+  background: #EAAA00;
+  color: #1A0519;
+}
+
+/* Subtle Grid Background Pattern */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(58, 15, 52, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(rgba(234, 170, 0, 0.09) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom Cursor */
+.custom-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #3A0F34;
+  border-radius: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out;
+}
+
+.dark .custom-cursor-dot {
+  background-color: #EAAA00;
+}
+
+.custom-cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(58, 15, 52, 0.35);
+  border-radius: 50%;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+}
+
+.dark .custom-cursor-ring {
+  border-color: rgba(234, 170, 0, 0.4);
+}
+
+/* Terminal Scanline */
+.terminal-crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}

@@ -1,0 +1,260 @@
+import React, { useState, useMemo } from 'react';
+import { portfolioData } from '../data/portfolioData';
+import { Search, LayoutGrid, List, ArrowUpRight, Award, ExternalLink, Filter } from 'lucide-react';
+
+export default function ProjectExplorer({ onSelectProject }) {
+  const { projects } = portfolioData;
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'table'
+
+  const categories = [
+    'All',
+    'AI/ML & Sustainability',
+    'AI/ML & Semantic Search',
+    'Computer Vision & Edge AI',
+    'Healthcare AI & Deep Learning',
+    'Full-Stack Systems & Databases'
+  ];
+
+  const filteredProjects = useMemo(() => {
+    return projects.filter((p) => {
+      const matchesCategory =
+        selectedCategory === 'All' || p.category === selectedCategory;
+      const q = searchQuery.toLowerCase();
+      const matchesSearch =
+        p.title.toLowerCase().includes(q) ||
+        p.subtitle.toLowerCase().includes(q) ||
+        p.shortDesc.toLowerCase().includes(q) ||
+        p.techStack.some((t) => t.toLowerCase().includes(q));
+      return matchesCategory && matchesSearch;
+    });
+  }, [projects, selectedCategory, searchQuery]);
+
+  return (
+    <section id="projects" className="py-20 sm:py-28 max-w-6xl mx-auto px-4 sm:px-6">
+      {/* Section Header */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 border-b border-plum-900/10 dark:border-white/10 mb-8 sm:mb-12">
+        <div>
+          <div className="font-mono text-xs font-bold tracking-widest text-gold-600 dark:text-gold-400 uppercase mb-2">
+            03 / SELECTED WORK & CASE STUDIES
+          </div>
+          <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-plum-950 dark:text-white tracking-tight">
+            ENGINEERING INDEX
+          </h2>
+        </div>
+        <div className="font-mono text-xs text-slate-500 dark:text-slate-400 mt-2 sm:mt-0 flex items-center gap-2">
+          <span>SHOWING {filteredProjects.length} OF {projects.length} PROJECTS</span>
+        </div>
+      </div>
+
+      {/* Interactive Controls Bar: Search, Category Filters, View Switcher */}
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-8">
+        
+        {/* Search Input */}
+        <div className="relative flex-1 max-w-md">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search projects by tech (PyTorch, YOLO, Jina, etc.)..."
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-plum-900/15 dark:border-white/15 bg-white dark:bg-plum-900/40 text-plum-950 dark:text-white text-xs font-mono placeholder:text-slate-400 focus:outline-none focus:border-gold-500 transition-colors"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-400 hover:text-plum-900 dark:hover:text-white"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+
+        {/* View Switcher: Grid vs Table */}
+        <div className="flex items-center gap-2 self-end md:self-auto">
+          <span className="font-mono text-xs text-slate-500 dark:text-slate-400 mr-1 hidden sm:inline">
+            VIEW:
+          </span>
+          <button
+            onClick={() => setViewMode('grid')}
+            className={`p-2 rounded-lg border text-xs flex items-center gap-1.5 font-mono transition-colors ${
+              viewMode === 'grid'
+                ? 'bg-plum-800 text-white dark:bg-gold-500 dark:text-plum-950 border-transparent shadow-sm'
+                : 'border-plum-900/15 dark:border-white/15 text-slate-600 dark:text-ice-200 hover:bg-slate-100 dark:hover:bg-plum-900'
+            }`}
+            title="Card Grid View"
+          >
+            <LayoutGrid className="w-4 h-4" />
+            <span className="hidden sm:inline">Cards</span>
+          </button>
+          <button
+            onClick={() => setViewMode('table')}
+            className={`p-2 rounded-lg border text-xs flex items-center gap-1.5 font-mono transition-colors ${
+              viewMode === 'table'
+                ? 'bg-plum-800 text-white dark:bg-gold-500 dark:text-plum-950 border-transparent shadow-sm'
+                : 'border-plum-900/15 dark:border-white/15 text-slate-600 dark:text-ice-200 hover:bg-slate-100 dark:hover:bg-plum-900'
+            }`}
+            title="Editorial Index Table View"
+          >
+            <List className="w-4 h-4" />
+            <span className="hidden sm:inline">Index Table</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Filter Category Pills */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+        <Filter className="w-3.5 h-3.5 text-gold-600 dark:text-gold-400 flex-shrink-0" />
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setSelectedCategory(cat)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-mono whitespace-nowrap transition-all ${
+              selectedCategory === cat
+                ? 'bg-plum-800 text-white dark:bg-gold-500 dark:text-plum-950 font-bold shadow-sm'
+                : 'bg-white dark:bg-plum-900/50 border border-plum-900/10 dark:border-white/10 text-slate-700 dark:text-ice-200 hover:border-gold-500'
+            }`}
+          >
+            {cat === 'All' ? 'All Domains' : cat.split('&')[0]}
+          </button>
+        ))}
+      </div>
+
+      {/* Empty State */}
+      {filteredProjects.length === 0 && (
+        <div className="p-12 text-center rounded-2xl border border-dashed border-plum-900/20 dark:border-white/20">
+          <p className="font-mono text-sm text-slate-500 dark:text-slate-400 mb-2">
+            No engineering projects matched "{searchQuery}"
+          </p>
+          <button
+            onClick={() => {
+              setSearchQuery('');
+              setSelectedCategory('All');
+            }}
+            className="text-xs font-mono text-gold-600 dark:text-gold-400 underline underline-offset-4"
+          >
+            Reset Filters
+          </button>
+        </div>
+      )}
+
+      {/* VIEW MODE 1: Rich Cards Grid */}
+      {viewMode === 'grid' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => onSelectProject(project)}
+              className="group cursor-pointer rounded-2xl border border-plum-900/10 dark:border-white/10 bg-white dark:bg-plum-950 p-6 flex flex-col justify-between hover:border-gold-500 dark:hover:border-gold-500 hover:shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+            >
+              {/* Subtle accent line on top */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-plum-800 to-gold-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+              <div>
+                {/* Meta row */}
+                <div className="flex items-center justify-between font-mono text-[11px] text-slate-500 dark:text-slate-400 mb-3">
+                  <span className="font-bold text-gold-600 dark:text-gold-400">
+                    [{project.index}]
+                  </span>
+                  <span>{project.category.split('&')[0]}</span>
+                </div>
+
+                {/* Title & Tagline */}
+                <h3 className="font-display font-bold text-xl text-plum-950 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors flex items-center justify-between">
+                  <span>{project.title}</span>
+                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-gold-500 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </h3>
+                <p className="font-mono text-xs text-gold-700 dark:text-gold-400 font-semibold mt-0.5 mb-3">
+                  {project.subtitle}
+                </p>
+
+                <p className="font-sans text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-3">
+                  {project.shortDesc}
+                </p>
+
+                {/* Highlight Badge */}
+                {project.featuredBadge && (
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gold-50 dark:bg-plum-900/80 border border-gold-300 dark:border-gold-500/30 text-plum-900 dark:text-gold-300 font-mono text-[11px] font-semibold mb-4">
+                    <Award className="w-3 h-3 text-gold-600 dark:text-gold-400" />
+                    <span>{project.featuredBadge}</span>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                {/* Tech Chips */}
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-plum-900/10 dark:border-white/10">
+                  {project.techStack.slice(0, 4).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-plum-900/60 text-slate-700 dark:text-ice-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.techStack.length > 4 && (
+                    <span className="px-1.5 py-0.5 rounded text-[10px] font-mono text-slate-400">
+                      +{project.techStack.length - 4}
+                    </span>
+                  )}
+                </div>
+
+                {/* Inspect Action */}
+                <div className="mt-4 pt-3 flex items-center justify-between text-xs font-mono text-gold-600 dark:text-gold-400 font-bold group-hover:underline">
+                  <span>INSPECT ARCHITECTURE</span>
+                  <span>↗</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* VIEW MODE 2: Swiss-Brutalist Editorial Index Table */}
+      {viewMode === 'table' && (
+        <div className="border border-plum-900/15 dark:border-white/10 rounded-2xl overflow-hidden bg-white dark:bg-plum-950 divide-y divide-plum-900/10 dark:divide-white/10">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => onSelectProject(project)}
+              className="p-4 sm:p-6 hover:bg-gold-50/40 dark:hover:bg-plum-900/50 cursor-pointer transition-colors flex flex-col md:flex-row md:items-center justify-between gap-4 group"
+            >
+              <div className="flex items-start gap-4">
+                <span className="font-mono text-sm font-bold text-gold-600 dark:text-gold-400 pt-0.5">
+                  [{project.index}]
+                </span>
+                <div>
+                  <h3 className="font-display font-bold text-lg text-plum-950 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
+                    {project.title} — <span className="font-sans font-normal text-sm text-slate-600 dark:text-slate-400">{project.subtitle}</span>
+                  </h3>
+                  <p className="font-sans text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
+                    {project.shortDesc}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 self-end md:self-auto flex-shrink-0">
+                <div className="hidden lg:flex flex-wrap gap-1.5 max-w-xs">
+                  {project.techStack.slice(0, 3).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-plum-900/60 text-slate-700 dark:text-ice-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-plum-900/15 dark:border-white/15 text-xs font-mono font-bold text-plum-900 dark:text-gold-400 group-hover:border-gold-500">
+                  <span>INSPECT</span>
+                  <span>↗</span>
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+    </section>
+  );
+}

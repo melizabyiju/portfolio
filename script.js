@@ -1,5 +1,6 @@
 // ==========================================================================
 // Editorial Swiss-Brutalist Portfolio Scripts for Meliza Mariya Byiju
+// Data strictly verified against official resume
 // Inspired by joyelshaji.pages.dev
 // ==========================================================================
 
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 2. Minimal Custom Cursor (Dot & Ring)
+  // 2. Minimal Custom Cursor (Dot & Smooth Ring)
   // --------------------------------------------------------------------------
   const cursorDot = document.getElementById('cursor-dot');
   const cursorRing = document.getElementById('cursor-ring');
@@ -55,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(renderCursorRing);
 
-    // Expand ring on interactive elements
     document.querySelectorAll('a, button, .project-row').forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursorRing.style.width = '48px';
@@ -71,88 +71,93 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 3. Project Detail Drawer Modal
+  // 3. Project Detail Inspection Drawer (Exact Resume Data)
   // --------------------------------------------------------------------------
   const projectData = {
     'kayora': {
       index: '01',
-      category: 'STARTUP & SUSTAINABILITY',
-      title: 'KAYORA — AI-Assisted Aquatic Biomass Recovery System',
-      lead: 'Selected for Stage 2 of Kerala Agricultural University RAISE 2026 Student Startup Programme (Grant potential up to ₹5 Lakh).',
-      description: 'KAYORA tackles invasive freshwater weed infestation through an autonomous computer vision and harvesting pipeline. Built to safeguard natural water bodies, it combines edge image classification on aquatic biomass density, tracking growth cycles, and directing harvesting without ecological disruption.',
-      architecture: [
-        'Computer vision classification of aquatic biomass coverage',
-        'Autonomous monitoring to optimize biomass harvesting routes',
-        'Ecological circular conversion roadmap into bio-products',
-        'State board presentation and Stage 2 grant track'
+      period: '2025 — PRESENT',
+      category: 'AI SUSTAINABILITY & CLEAN TECH',
+      title: 'KAYORA — AI-Assisted Aquatic Biomass Recovery',
+      lead: 'Selected for the second stage of Kerala Agricultural University’s RAISE 2026 Student Startup Programme (funding support up to Rs. 5 lakh).',
+      description: 'Worked on an AI-based approach to identify and recover aquatic biomass, with a focus on environmental sustainability and aquatic resource management. Protects freshwater ecosystems from invasive aquatic weed infestation through automated tracking and organized biomass recovery cycles.',
+      highlights: [
+        'AI-based methodology to identify, monitor, and recover aquatic biomass',
+        'Focused on environmental sustainability and aquatic resource management',
+        'Selected for Stage 2 of KAU RAISE 2026 Student Startup Programme',
+        'Eligible for government prototype funding support up to Rs. 5 Lakh'
       ],
-      technologies: ['Python', 'Computer Vision', 'PyTorch', 'Robotics', 'Environmental IoT'],
+      technologies: ['Python', 'Computer Vision', 'PyTorch', 'IoT', 'Environmental Tech'],
       github: 'https://github.com/melizabyiju'
     },
     'refind': {
       index: '02',
-      category: 'AI & SEMANTIC RETRIEVAL',
-      title: 'ReFind — AI-Powered Semantic Search & Retrieval Engine',
-      lead: 'Engineered and live demoed at the 20-hour AI Bhoomi Startup Weekend Hackathon Sprint.',
-      description: 'ReFind is a high precision semantic information retrieval pipeline designed to connect associative human memory cues to deep document corpora. Combines Google EmbeddingGemma 2 for dense semantic vectors, cross encoder reranking via Jina, and Gemini 2.5 Flash Lite for context synthesis.',
-      architecture: [
-        'Dense vector space mapping using EmbeddingGemma 2',
-        'High precision reranking layer powered by Jina Reranker',
-        'Contextual grounded explanation generator via Gemini 2.5 Flash Lite',
-        'Subsecond query latency on technical documentation sets'
+      period: '2026',
+      category: 'SEMANTIC RETRIEVAL & NLP',
+      title: 'ReFind — AI-Powered Semantic Search & Information Retrieval',
+      lead: 'Presented at the AI Bhoomi Startup Weekend, a 20-hour startup sprint.',
+      description: 'Developed an AI-based retrieval system using EmbeddingGemma 2, Jina reranking, and Gemini 2.5 Flash Lite to improve search relevance and generate contextual explanations.',
+      highlights: [
+        'Built an AI retrieval pipeline using Google EmbeddingGemma 2 for dense vector space mapping',
+        'Integrated cross-encoder reranking via Jina to maximize search result relevance',
+        'Synthesized coherent contextual explanations using Gemini 2.5 Flash Lite',
+        'Pitched and demoed the system live at the AI Bhoomi 20-hour startup sprint'
       ],
-      technologies: ['EmbeddingGemma 2', 'Jina Reranker', 'Gemini 2.5 Flash', 'FastAPI', 'Vector Search'],
+      technologies: ['EmbeddingGemma 2', 'Jina Reranker', 'Gemini 2.5 Flash Lite', 'Python', 'Vector Search'],
       github: 'https://github.com/melizabyiju'
     },
     'riverclean': {
       index: '03',
-      category: 'COMPUTER VISION & CIVIC GOVERNANCE',
-      title: 'RiverClean — Real-Time River Pollution & Waste Detection',
-      lead: 'National Fellowship tier Round 1 selection for the AICTE Anuvadini & Prajjawala Fellowship.',
-      description: 'RiverClean applies object detection to surface waters, identifying plastic contaminants, industrial runoffs, and floating organic waste in real time. Designed for municipal civic bodies to receive instantaneous alerts and schedule remediation dispatch.',
-      architecture: [
-        'Custom YOLOv8 convolutional detector for aquatic debris',
-        'Optimized for lightweight edge inference on drone and camera units',
-        'REST telemetry API serving real time pollution alerts',
-        'Civic sanitation dashboard integration'
+      period: '2025 — PRESENT',
+      category: 'COMPUTER VISION & ENVIRONMENTAL ML',
+      title: 'RiverClean — ML Engineer — AI River Pollution Detection System',
+      lead: 'Achieved a national Round 1 shortlist in the AICTE Production Fellowship (APF), validating real-world impact and technical merit nationwide.',
+      description: 'Built a multi-class image classification pipeline using TensorFlow CNNs to detect river pollution severity from environmental imagery, training on a labeled visual dataset with multi-class output. Designed a Python/Flask inference API to serve model predictions in real time, incorporating NumPy-based preprocessing and feature normalization end-to-end.',
+      highlights: [
+        'Multi-class image classification pipeline built with TensorFlow CNNs',
+        'Trained on labeled environmental imagery for multi-class river pollution severity detection',
+        'Engineered Python/Flask inference REST API serving predictions in real time',
+        'End-to-end NumPy-based image preprocessing and input normalization',
+        'Shortlisted nationally for Round 1 of the AICTE Production Fellowship (APF)'
       ],
-      technologies: ['YOLOv8', 'Python', 'Flask REST API', 'OpenCV', 'Edge AI'],
+      technologies: ['TensorFlow', 'CNNs', 'Python', 'Flask', 'NumPy', 'Computer Vision'],
       github: 'https://github.com/melizabyiju'
     },
-    'd-detect': {
+    'restyle': {
       index: '04',
-      category: 'HEALTHCARE DEEP LEARNING',
-      title: 'D-Detect — Dermatological Lesion Classifier with CNN',
-      lead: 'Deep convolutional neural network trained on dermoscopic datasets for multi class skin lesion diagnosis.',
-      description: 'D-Detect assists clinical practitioners in early screening of dermatological anomalies. Utilizing transfer learning on the HAM10000 dataset, the model classifies 7 distinct lesion classes, including melanoma and basal cell carcinoma, with risk confidence metrics.',
-      architecture: [
-        'Convolutional neural network architecture with transfer learning',
-        'Balanced data augmentation addressing clinical class imbalances',
-        'High validation sensitivity for early stage melanoma diagnosis',
-        'Automated diagnostic triage and probability scoring'
+      period: '2025 — PRESENT',
+      category: 'ML BACKEND & SUSTAINABLE FASHION',
+      title: 'ReStyle — ML Developer — Sustainable Fashion AI Platform',
+      lead: 'Engineered a Python/Flask REST backend for an AI-driven clothing redesign engine.',
+      description: 'Designed the data pipeline to preprocess user-uploaded images and route them through an ML inference module for category-based recommendation generation. Applied NumPy-based image transformations for input standardization and integrated model outputs into a structured recommendation response layer.',
+      highlights: [
+        'Engineered Python/Flask REST backend for AI clothing redesign platform',
+        'Constructed data pipeline preprocessing user images for inference routing',
+        'Category-based recommendation generation based on clothing visual attributes',
+        'NumPy-based image transformations for input normalization and standardized response layer'
       ],
-      technologies: ['PyTorch', 'HAM10000', 'Medical AI', 'Computer Vision'],
+      technologies: ['Python', 'Flask', 'NumPy', 'REST API', 'Machine Learning'],
       github: 'https://github.com/melizabyiju'
     },
-    'kalyanam': {
+    'internmatch': {
       index: '05',
-      category: 'FULL-STACK SYSTEMS',
-      title: 'Kalyanam.com — Relational Matrimonial Web Platform',
-      lead: 'Full-stack database portal featuring authenticated user profiles and criteria based matching.',
-      description: 'A scalable web application designed with third normal form relational database schemas. Provides session authentication, fine grained privacy settings, dynamic profile query filtering, and automated compatibility scores.',
-      architecture: [
-        'Normalized relational database schema for scalable concurrency',
-        'Encrypted credential storage with fine grained profile privacy',
-        'Dynamic query matching algorithms on user compatibility preferences',
-        'Responsive full stack interface with media asset management'
+      period: '2025 — PRESENT',
+      category: 'ALGORITHMIC MATCHING & PIPELINES',
+      title: 'InternMatch — Algorithm Developer — Skill-Based Recommendation System',
+      lead: 'Designed a skill-vector matching algorithm in SQL with Oracle Database triggers for automated deadline validation.',
+      description: 'Integrated BeautifulSoup and APScheduler for real-time opportunity scraping and personalized student alerts. Built a 3-stage candidate tracking pipeline (applied → interview → offer) reducing manual internship search effort through automated matching logic.',
+      highlights: [
+        'Skill-vector matching algorithm developed in SQL with Oracle triggers',
+        'Automated deadline validation and real-time opportunity scraping via BeautifulSoup',
+        'Automated cron alert scheduling powered by APScheduler',
+        '3-stage candidate tracking pipeline (applied → interview → offer) automating student workflows'
       ],
-      technologies: ['Python Flask', 'MySQL Database', 'REST APIs', 'Full Stack'],
+      technologies: ['SQL', 'Oracle Database', 'Python', 'BeautifulSoup', 'APScheduler'],
       github: 'https://github.com/melizabyiju'
     }
   };
 
   const detailBackdrop = document.getElementById('detail-overlay');
-  const detailPanel = document.getElementById('detail-panel');
   const detailContent = document.getElementById('detail-content');
   const modalCloseBtn = document.getElementById('modal-close-btn');
 
@@ -162,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     detailContent.innerHTML = `
       <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--c-marigold); letter-spacing: 0.14em; font-weight: 600; text-transform: uppercase;">
-        [${data.index}] ${data.category}
+        [${data.index}] ${data.category} • ${data.period}
       </div>
 
       <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--text-heading); margin: 12px 0 16px; line-height: 1.2;">
@@ -174,19 +179,19 @@ document.addEventListener('DOMContentLoaded', () => {
       </p>
 
       <div style="border-top: 1px solid var(--border-main); padding-top: 24px; margin-bottom: 24px;">
-        <h4 style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px;">Overview</h4>
+        <h4 style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px;">Resume Technical Overview</h4>
         <p style="font-size: 0.9375rem; line-height: 1.8; color: var(--text-main);">
           ${data.description}
         </p>
       </div>
 
       <div style="border-top: 1px solid var(--border-main); padding-top: 24px; margin-bottom: 24px;">
-        <h4 style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px;">System Architecture</h4>
+        <h4 style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px;">Verified Engineering Highlights</h4>
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9375rem;">
-          ${data.architecture.map(a => `
+          ${data.highlights.map(h => `
             <li style="position: relative; padding-left: 20px;">
               <span style="position: absolute; left: 0; color: var(--c-marigold);">✦</span>
-              <span>${a}</span>
+              <span>${h}</span>
             </li>
           `).join('')}
         </ul>
@@ -201,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <div style="display: flex; gap: 16px; border-top: 1px solid var(--border-main); padding-top: 28px;">
         <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn-header-contact" style="padding: 12px 24px; font-size: 0.8125rem;">
-          <span>VIEW GITHUB REPOSITORY</span>
+          <span>VIEW REPOSITORY ON GITHUB</span>
           <span>↗</span>
         </a>
       </div>
@@ -266,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close drawers when navigating via side links
   document.querySelectorAll('.side-nav-link').forEach(link => {
     link.addEventListener('click', closeSidePanel);
   });
