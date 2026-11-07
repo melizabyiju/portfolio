@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { LayoutGrid, List, Award, Filter, ArrowRight } from 'lucide-react';
+import { LayoutGrid, List, Award, Filter, ArrowUpRight } from 'lucide-react';
 
 export default function ProjectExplorer({ onSelectProject }) {
   const { projects } = portfolioData;
@@ -152,12 +152,12 @@ export default function ProjectExplorer({ onSelectProject }) {
                   )}
                 </div>
 
-                {/* Circular Inspector Arrow Button (Purple/Plum theme with golden arrow) */}
+                {/* Circular Inspector Arrow Button (Consistent small diagonal arrow ↗ across the site) */}
                 <div
                   aria-label="Inspect project"
-                  className="w-9 h-9 rounded-full bg-plum-800 dark:bg-plum-900 flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-plum-950 dark:group-hover:bg-gold-400 dark:group-hover:text-plum-950 transition-all duration-300"
+                  className="w-8 h-8 rounded-full bg-plum-800 dark:bg-plum-900 flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-plum-950 dark:group-hover:bg-gold-400 dark:group-hover:text-plum-950 transition-all duration-300"
                 >
-                  <ArrowRight className="w-4 h-4 text-gold-400 group-hover:text-plum-950 transition-colors" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-gold-400 group-hover:text-plum-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
               </div>
 
@@ -201,12 +201,12 @@ export default function ProjectExplorer({ onSelectProject }) {
                   ))}
                 </div>
 
-                {/* Circular Inspector Arrow Button (Purple/Plum theme with golden arrow) */}
+                {/* Circular Inspector Arrow Button (Consistent small diagonal arrow ↗ across the site) */}
                 <div
                   aria-label="Inspect project"
-                  className="w-9 h-9 rounded-full bg-plum-800 dark:bg-plum-900 flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-plum-950 dark:group-hover:bg-gold-400 dark:group-hover:text-plum-950 transition-all duration-300"
+                  className="w-8 h-8 rounded-full bg-plum-800 dark:bg-plum-900 flex-shrink-0 flex items-center justify-center text-gold-400 shadow-sm group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-plum-950 dark:group-hover:bg-gold-400 dark:group-hover:text-plum-950 transition-all duration-300"
                 >
-                  <ArrowRight className="w-4 h-4 text-gold-400 group-hover:text-plum-950 transition-colors" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-gold-400 group-hover:text-plum-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
               </div>
             </div>
