@@ -1,16 +1,6 @@
 import React from 'react';
-import { portfolioData } from '../data/portfolioData';
-import { Sparkles, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
 
 export default function About() {
-  const { personal, pillars } = portfolioData;
-
-  const pillarIcons = [
-    <ShieldCheck className="w-5 h-5 text-gold-500" />,
-    <Sparkles className="w-5 h-5 text-gold-500" />,
-    <Zap className="w-5 h-5 text-gold-500" />,
-    <CheckCircle2 className="w-5 h-5 text-gold-500" />
-  ];
 
   return (
     <section id="about" className="py-20 sm:py-28 max-w-6xl mx-auto px-4 sm:px-6">
@@ -74,34 +64,6 @@ export default function About() {
             <p>
               Simultaneously, as co-founder of <strong className="text-plum-950 dark:text-white font-semibold">KAYORA</strong>, I engineer automated computer vision algorithms for aquatic biomass recovery, selected for Stage 2 of Kerala Agricultural University’s <strong className="text-gold-600 dark:text-gold-400 font-semibold">RAISE 2026 Student Startup Programme</strong> with potential grant funding of ₹5 Lakh.
             </p>
-          </div>
-
-          {/* 4 Pillars Grid */}
-          <div className="mt-6 pt-6 border-t border-plum-900/10 dark:border-white/10">
-            <h3 className="font-display font-bold text-lg text-plum-950 dark:text-white mb-4">
-              Core Engineering Pillars
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {pillars.map((pillar, index) => (
-                <div
-                  key={pillar.num}
-                  className="p-4 rounded-xl border border-plum-900/10 dark:border-white/10 bg-white/60 dark:bg-plum-900/30 hover:border-gold-500 hover:shadow-subtle transition-all group"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-xs text-gold-600 dark:text-gold-400 font-bold">
-                      [{pillar.num}]
-                    </span>
-                    {pillarIcons[index]}
-                  </div>
-                  <h4 className="font-display font-bold text-sm text-plum-950 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
-                    {pillar.title}
-                  </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
-                    {pillar.summary}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
