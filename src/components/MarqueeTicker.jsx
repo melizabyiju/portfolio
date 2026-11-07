@@ -4,15 +4,15 @@ export default function MarqueeTicker() {
   const items = [
     "SE4AI Research @ NIT Calicut",
     "10.0 CGPA • Department Rank 1",
-    "KAYORA — KAU RAISE 2026 Stage 2",
+    "KAYORA — KAU RAISE 2026 Stage 2 (₹5L)",
     "DeBERTa-v3 Multi-Label Classification",
-    "Autonomous Computer Vision (YOLOv8)",
-    "AICTE Anuvadini & Prajjawala Fellow",
+    "RiverClean — AICTE Production Fellowship Shortlist",
     "IIT Bombay e-Yantra Robotics Challenge",
     "ReFind Multimodal Semantic Retrieval",
     "EmbeddingGemma 2 & Jina Reranker",
-    "Empirical Software Engineering",
-    "PyTorch & Deep Neural Networks",
+    "2,500+ Requirements Classified across 5 Sustainability Dimensions",
+    "TensorFlow CNN & Real-time Flask API",
+    "Sacred Heart HSS (PCMB) — 98.9%",
     "Amal Jyothi College of Engineering"
   ];
 

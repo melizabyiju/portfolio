@@ -1,51 +1,53 @@
 # Meliza Mariya Byiju — Personal Portfolio Website
 
-A modern, high-performance, responsive portfolio website created for **Meliza Mariya Byiju**, Computer Science Engineering scholar (10.0 CGPA) at Amal Jyothi College of Engineering and SE4AI Research Intern at National Institute of Technology Calicut (NIT Calicut).
+A modern, high-performance, responsive portfolio created for **Meliza Mariya Byiju**, Computer Science Engineering scholar (10.0 CGPA, Dept Rank 1) at Amal Jyothi College of Engineering, and SE4AI Research Scholar at the National Institute of Technology Calicut (NIT Calicut).
 
 ---
 
-## 🎨 Color Scheme & Design System
-Designed with a light-theme aesthetic following the provided palette:
-- **Ice Silver (`#DDE3E8`)**: Used for soft, elegant surfaces, borders, and ambient background accents.
-- **Deep Aubergine (`#3A0F34`)**: Primary brand identity, headlines, cards, and navigation accents.
-- **Marigold (`#EAAA00`)**: Vibrant accents, interactive buttons, highlight badges, and the continuous marquee ribbon.
+## 🎨 Color Palette & Visual Identity
+Custom editorial design system engineered in **Ice Silver**, **Deep Aubergine**, and **Marigold**:
+- **Deep Aubergine (`#3A0F34`)**: Primary brand identity, headlines, cards, framed typography.
+- **Marigold (`#EAAA00`)**: Vibrant accents, active states, key metric highlights, and the continuous marquee ribbon.
+- **Ice Silver & White (`#F8FAFC` / `#FFFFFF` / `#DDE3E8`)**: Crisp, modern, airy surfaces for light theme, with seamless dark mode support.
+- **Monogram Brand Icon**: Architectural cyber-monolith slab monogram (`M + MELIZA BYIJU`).
 
 ---
 
-## 🚀 Sections Included
-1. **Floating Pill Header**: Responsive glassmorphism navigation with quick links and CTA.
-2. **Hero Section**: High-impact introduction, academic highlights (Rank 1, 10.0 CGPA), floating achievement badges, and dual CTAs.
-3. **Marquee Ticker Banner**: Smooth continuous animated track highlighting core technical domains.
-4. **About Me**: Academic summary, institutional credentials, and four core engineering pillars.
-5. **Specialized Domains**: In-depth cards for ML/Deep Learning, SE4AI Research, and Systems & APIs.
-6. **Technical Skills**: Structured categories covering Languages, AI/ML frameworks, Backend tools, and Theoretical CS foundations.
-7. **Research Experience Spotlight**: Featured focus on the SE4AI project at NIT Calicut (2,500+ requirements classified across 5 sustainability dimensions, DeBERTa-v3 fine-tuning, static code smell detection).
-8. **Featured Projects**: Filterable project gallery (KAYORA, ReFind, RiverClean, ReStyle, InternMatch, ExoSky) with live tags, funding achievements, and GitHub links.
-9. **Achievements & Hackathons**: 9 verified national and international recognitions (e-Yantra IIT Bombay, KAU RAISE 2026, AICTE APF, SIH 2025/2026, AI Bhoomi, NASA Space Apps, etc.).
-10. **Leadership & Community**: Roles in GDG on Campus, AI Club (AITHRA fest), Coding Club, Chess Team, and Hackathon Management.
-11. **Education Timeline**: B.Tech CSE (Amal Jyothi, 10.0 CGPA) and Higher Secondary (Sacred Heart HSS, 98.9%).
-12. **Contact Section**: Direct email (`melizabyiju@gmail.com`), location (Wayanad, Kerala, India), LinkedIn, GitHub, and an interactive message trigger. *(Note: Phone number intentionally excluded).*
+## 🚀 Features & Interactive Capabilities
+1. **Editorial Hero Section**: High-impact introduction, academic highlight badges (Rank 1, 10.0 CGPA), framed portrait with subtle geometric vector linework, and dual action CTAs.
+2. **Smooth Continuous Marquee**: Animated technical ribbon showcasing core research domains and verified honors.
+3. **Biography & 4 Engineering Pillars**: Empirical SE4AI Rigor, Ecological AI & Vision, Semantic Search & NLP, and Academic Pedigree.
+4. **SE4AI Research Spotlight**: In-depth showcase of residency at NIT Calicut (2,500+ classified requirements across 5 sustainability dimensions, DeBERTa-v3 fine-tuning, and static code smell mitigation) and AICTE APF Fellowship.
+5. **Interactive Project Explorer**:
+   - Live search by technology (Python, TensorFlow, Jina, Flask, etc.).
+   - Domain filter pills (CleanTech, Semantic Search, Computer Vision, etc.).
+   - View mode toggle between **Rich Cards** and **Editorial Index Table**.
+   - Interactive slide-over / modal inspection for deep system architecture breakdown.
+6. **Technical Skills Taxonomy**: Grouped into AI/ML & Deep Learning, Languages & Core CS, Backend & Systems Engineering, and Theoretical CS.
+7. **Education & Competitive Honors**: B.Tech CSE (10.0 CGPA, Amal Jyothi), Sacred Heart HSS (98.9%), KAU RAISE 2026 Stage 2 Finalist (₹5L Grant Track), IIT Bombay e-Yantra, AI Bhoomi 20h Sprint, and SIH.
+8. **Leadership Mandates**: GDG on Campus Campus Organizer, AI Club Vice Chair, Coding Club Joint Secretary, AJCE Women’s Chess Team, I²U Active Volunteer, NASA Space Apps Volunteer, and IEDC Startup Summit Volunteer.
+9. **Ctrl+K Command Palette**: Full keyboard-driven navigation (`Ctrl+K` or `⌘K`) to jump to any section, toggle themes, open the terminal, filter projects, or copy contact credentials.
+10. **Interactive Developer Terminal (CLI)**: Terminal interface (`meliza@nitc:~`) with executable commands (`help`, `bio`, `research`, `projects`, `skills`, `education`, `awards`, `contact`, `theme`, `clear`, `sudo`, `exit`).
+11. **Dark & Light Mode Toggle**: Smooth theme switching with persistent local storage.
+12. **Custom Minimal Cursor**: Interactive dot and ring cursor on desktop devices with hover expansion.
 
 ---
 
-## 🛠️ Tech Stack
-- **HTML5 & CSS3**
-- **Tailwind CSS** (via CDN for instant zero-config styling)
-- **Vanilla JavaScript** (lightweight, zero bundle dependencies)
+## 🛠️ Tech Stack & Tooling
+- **React 19**
+- **Tailwind CSS v4** & `@tailwindcss/vite`
+- **Vite 8**
 - **Lucide Icons**
-- **Google Fonts** (*Outfit* & *Plus Jakarta Sans*)
+- **Google Fonts** (*Space Grotesk*, *Plus Jakarta Sans*, *JetBrains Mono*, *Anton*, *Bebas Neue*)
 
 ---
 
-## 🌐 How to Deploy to GitHub Pages
-1. Go to your repository on GitHub: `https://github.com/melizabyiju/portfolio`
-2. Navigate to **Settings** > **Pages** (under "Code and automation").
-3. Under **Build and deployment** > **Source**, select **Deploy from a branch**.
-4. Choose **main** (or **master**) branch and `/ (root)` folder.
-5. Click **Save**. Within 1–2 minutes, your portfolio will be live at:
-   `https://melizabyiju.github.io/portfolio/`
+## 💻 Development & Build Scripts
 
----
+```bash
+# Run local development server
+npm run dev
 
-## 🔒 Privacy & Git Safety
-Personal photos and media files located in `Images/` are completely ignored by `.gitignore` and are not committed or pushed to the public repository.
+# Build production bundle
+npm run build
+```

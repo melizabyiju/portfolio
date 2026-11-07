@@ -1,6 +1,9 @@
 # Personal and Media Files
 [iI]mages/
 [iI]mage/
+public/[iI]mages/
+**/Images/
+**/images/
 logo_options/
 *.jpeg
 *.jpg

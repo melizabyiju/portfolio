@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, Compass, Terminal, Moon, Sun, Mail, Github, Linkedin, ArrowRight, Check, Sparkles } from 'lucide-react';
+import { Search, Compass, Terminal, Moon, Sun, Mail, ArrowRight, Check, Sparkles } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { portfolioData } from '../data/portfolioData';
 
 export default function CommandPalette({
@@ -136,7 +137,7 @@ export default function CommandPalette({
       id: 'github',
       name: 'Open GitHub Profile (@melizabyiju)',
       group: 'Social',
-      icon: <Github className="w-4 h-4 text-gold-500" />,
+      icon: <GithubIcon className="w-4 h-4 text-gold-500" />,
       perform: () => {
         window.open(personal.github, '_blank');
         onClose();
@@ -146,7 +147,7 @@ export default function CommandPalette({
       id: 'linkedin',
       name: 'Open LinkedIn Profile',
       group: 'Social',
-      icon: <Linkedin className="w-4 h-4 text-gold-500" />,
+      icon: <LinkedinIcon className="w-4 h-4 text-gold-500" />,
       perform: () => {
         window.open(personal.linkedin, '_blank');
         onClose();

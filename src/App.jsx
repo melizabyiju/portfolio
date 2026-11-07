@@ -18,7 +18,14 @@ import DeveloperTerminal from './components/DeveloperTerminal';
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('meliza_portfolio_theme') || 'light';
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        return localStorage.getItem('meliza_portfolio_theme') || 'light';
+      } catch (e) {
+        return 'light';
+      }
+    }
+    return 'light';
   });
 
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
@@ -35,7 +42,11 @@ export default function App() {
       root.classList.remove('dark');
       root.setAttribute('data-theme', 'light');
     }
-    localStorage.setItem('meliza_portfolio_theme', theme);
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('meliza_portfolio_theme', theme);
+      }
+    } catch (e) {}
   }, [theme]);
 
   const toggleTheme = () => {

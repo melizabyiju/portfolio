@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, ArrowUpRight, Copy, Check, Send, MapPin, Sparkles } from 'lucide-react';
+import { Mail, ArrowUpRight, Copy, Check, Send, MapPin, Sparkles } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Contact() {
@@ -103,7 +104,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-plum-900/15 dark:border-white/15 bg-white dark:bg-plum-900 text-xs font-mono font-bold text-plum-950 dark:text-white hover:border-gold-500 hover:text-gold-600 transition-all shadow-sm"
             >
-              <Github className="w-4 h-4" />
+              <GithubIcon className="w-4 h-4" />
               <span>GITHUB</span>
               <ArrowUpRight className="w-3 h-3 opacity-60" />
             </a>
@@ -114,7 +115,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-plum-900/15 dark:border-white/15 bg-white dark:bg-plum-900 text-xs font-mono font-bold text-plum-950 dark:text-white hover:border-gold-500 hover:text-gold-600 transition-all shadow-sm"
             >
-              <Linkedin className="w-4 h-4" />
+              <LinkedinIcon className="w-4 h-4" />
               <span>LINKEDIN</span>
               <ArrowUpRight className="w-3 h-3 opacity-60" />
             </a>

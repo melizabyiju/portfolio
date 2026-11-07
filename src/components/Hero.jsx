@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowDown, ArrowUpRight, Terminal, Sparkles, Award, BookOpen, Mail, Github, Linkedin } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Terminal, Sparkles, Award, BookOpen, Mail } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Hero({ openTerminal, openCommandPalette }) {
@@ -110,7 +111,7 @@ export default function Hero({ openTerminal, openCommandPalette }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-700 dark:text-slate-300 hover:text-gold-600 dark:hover:text-gold-400 transition-colors"
               >
-                <Github className="w-4 h-4" />
+                <GithubIcon className="w-4 h-4" />
                 <span>GitHub</span>
                 <ArrowUpRight className="w-3 h-3 opacity-60" />
               </a>
@@ -121,7 +122,7 @@ export default function Hero({ openTerminal, openCommandPalette }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-slate-700 dark:text-slate-300 hover:text-gold-600 dark:hover:text-gold-400 transition-colors"
               >
-                <Linkedin className="w-4 h-4" />
+                <LinkedinIcon className="w-4 h-4" />
                 <span>LinkedIn</span>
                 <ArrowUpRight className="w-3 h-3 opacity-60" />
               </a>

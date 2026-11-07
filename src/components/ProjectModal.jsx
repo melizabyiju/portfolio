@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { X, ArrowUpRight, Github, CheckCircle2, Layers, Cpu, Award } from 'lucide-react';
+import { X, ArrowUpRight, CheckCircle2, Layers, Cpu, Award } from 'lucide-react';
+import { GithubIcon } from './SocialIcons';
 
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
@@ -128,7 +129,7 @@ export default function ProjectModal({ project, onClose }) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-plum-800 hover:bg-plum-900 text-white dark:bg-gold-500 dark:hover:bg-gold-400 dark:text-plum-950 font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-sm hover:shadow-gold-glow"
           >
-            <Github className="w-4 h-4" />
+            <GithubIcon className="w-4 h-4" />
             <span>View GitHub Source</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
