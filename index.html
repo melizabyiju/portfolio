@@ -1,387 +1,1418 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meliza's 3D Portfolio Biodata</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meliza Mariya Byiju | AI & ML Researcher • CSE Student</title>
+  <meta name="description" content="Portfolio of Meliza Mariya Byiju - Computer Science Engineering Undergraduate (10.0 CGPA) & SE4AI Research Intern at NIT Calicut. Building intelligent ML & sustainability systems.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            aubergine: {
+              DEFAULT: '#3A0F34',
+              dark: '#260621',
+              light: '#53194B',
+              50: '#FAF4F9',
+              100: '#F3E5F1',
+              200: '#E4C7DF',
+            },
+            marigold: {
+              DEFAULT: '#EAAA00',
+              hover: '#D49900',
+              light: '#FFF8E6',
+              50: '#FFFDF7',
+            },
+            silver: {
+              DEFAULT: '#DDE3E8',
+              light: '#F4F7F9',
+              dark: '#CBD5E1',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
 
-  <!-- Boxicons for icons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #f0f0f0;
-      overflow: hidden;
-    }
-
-    .container {
-      width: 400px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-      overflow: hidden;
-      perspective: 1200px;
-      	
-    }
-
-    .pages {
-      position: relative;
-      height: 550px;
-      overflow: hidden;
-    }
-
-    .page {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      padding: 40px 30px 30px 30px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      box-shadow: inset 0 0 60px rgba(255,255,255,0.1);
-      transform-style: preserve-3d;
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(0.9);
-      transition: all 0.5s ease;
-    }
-
-    .page.active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: scale(1);
-      z-index: 10;
-    }
-.profile-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 20px;
-    }
-
-
-    .profile-content img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #00ffc3;
-      margin-bottom: 20px;
-      box-shadow: 0 0 15px #00ffc3;
-      transition: transform 0.5s ease;
-      	
-    }
-   .profile-content img:hover {
-     transform: scale(1.05);
-    }
-
-    h1 {
-      font-weight: 700;
-      font-size: 2.2rem;
-      margin-bottom: 8px;
-      color: #00ffc3;
-      text-align: center;
-    }
-
-    p.subtitle {
-      font-weight: 500;
-      color: #a0a0a0;
-      margin-bottom: 25px;
-      text-align: center;
-      font-size: 1rem;
-      letter-spacing: 1.2px;
-    }
-
-    ul {
-      list-style: none;
-      margin-bottom: 30px;
-      padding-left: 0;
-      line-height: 1.5;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      color: #d0d0d0;
-    }
-
-    .socials {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .socials a {
-      color: #00ffc3;
-      margin: 0 12px;
-      font-size: 1.6rem;
-      transition: color 0.3s ease;
-    }
-    .socials a:hover {
-      color: #00b386;
-    }
-
-    button {
-      cursor: pointer;
-      background: #00ffc3;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #02332a;
-      box-shadow: 0 4px 15px rgba(0,255,195,0.6);
-      transition: background 0.3s ease, transform 0.3s ease;
-      user-select: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    button:hover {
-      background: #00b386;
-      transform: scale(1.05);
-    }
-
-    .next-btn {
-      float: right;
-    }
-
-    .prev-btn {
-      float: left;
-      background: transparent;
-      color: #00ffc3;
-      box-shadow: none;
-      font-size: 1.1rem;
-      font-weight: 500;
-      padding: 8px 15px;
-      transition: color 0.3s ease;
-    }
-    .prev-btn:hover {
-      color: #00b386;
-      background: rgba(0,255,195,0.15);
-      border-radius: 20px;
-    }
-
-    a.contact-link {
-      color: #00ffc3;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a.contact-link:hover {
-      color: #00b386;
-      text-decoration: underline;
-    }
-
-    /* Scrollbar fix on container if needed */
-    .content {
-      max-height: 420px;
-      overflow-y: auto;
-      padding-right: 5px;
-    }
-    .content::-webkit-scrollbar {
-      width: 5px;
-    }
-    .content::-webkit-scrollbar-thumb {
-      background: #00ffc3;
-      border-radius: 10px;
-    }
-
-    /* Section Headers */
-    h1 {
-      border-bottom: 2px solid #00ffc3;
-      padding-bottom: 8px;
-      margin-bottom: 20px;
-      letter-spacing: 1.3px;
-    }
-
-  </style>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="container">
-    <div class="pages">
-      <!-- Profile page -->
-      <div class="page page0 active">
-        <div class="profile-content center">
-          <img src="meimage.jpeg" alt="Meliza Mariya Byiju" />
-          <h2>Meliza Mariya Byiju</h2>
-          <p class="subtitle">B.Tech Computer ScienceStudent & Aspiring Developer</p>
-          <div class="socials">
-            <a href="https://linkedin.com/in/melizabyiju" target="_blank" title="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
-            <a href="https://instagram.com/_meliza_lizz" target="_blank" title="Instagram"><i class='bx bxl-instagram'></i></a>
-            <a href="mailto:melizabyiju@gmail.com" title="Email"><i class='bx bx-envelope'></i></a>
-            <a href="https://github.com/melizabyiju" target="_blank" title="GitHub"><i class='bx bxl-github'></i></a>
-          </div>
-          <button class="next-btn">Next <i class='bx bx-right-arrow-alt'></i></button>
+<body class="bg-[#F8FAFC] text-slate-800 font-sans antialiased selection:bg-marigold selection:text-aubergine-dark relative overflow-x-hidden">
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-marigold/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse"></div>
+  <div class="fixed bottom-1/4 right-10 w-[600px] h-[600px] bg-aubergine/5 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed top-1/2 left-0 w-[400px] h-[400px] bg-silver/60 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+  <!-- FLOATING NAVIGATION BAR -->
+  <header class="fixed top-5 left-0 right-0 z-50 px-4 sm:px-6">
+    <nav class="max-w-6xl mx-auto backdrop-blur-xl bg-white/85 border border-silver/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full px-5 py-3 flex items-center justify-between transition-all duration-300">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 rounded-full bg-aubergine flex items-center justify-center text-marigold font-display font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
+          M
         </div>
+        <span class="font-display font-bold text-xl tracking-tight text-aubergine">Meliza<span class="text-marigold">.</span></span>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <div class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-600">
+        <a href="#about" class="hover:text-aubergine transition-colors">About</a>
+        <a href="#skills" class="hover:text-aubergine transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-aubergine transition-colors">Research</a>
+        <a href="#projects" class="hover:text-aubergine transition-colors">Projects</a>
+        <a href="#achievements" class="hover:text-aubergine transition-colors">Achievements</a>
+        <a href="#leadership" class="hover:text-aubergine transition-colors">Leadership</a>
+        <a href="#education" class="hover:text-aubergine transition-colors">Education</a>
       </div>
 
-      <!-- About Me -->
-      <div class="page pageA">
-        <div class="content">
-          <h1>About Me</h1>
-          <p>Hello! I'm Melia Mariya Byiju, a passionate B.Tech Computer Science student who thrives on creativity, leadership, and lifelong learning,passionate about crafting beautiful and user-friendly websites.
+      <!-- Header Action -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-aubergine text-white text-xs font-semibold hover:bg-aubergine-light transition-all shadow-sm hover:shadow-md hover:scale-[1.02]">
+          <span>Get in Touch</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-marigold"></i>
+        </a>
 
-I enjoy exploring the intersections of technology, design, and people — whether that’s through building innovative projects like RiverClean, participating in hackathons, or helping peers grow through collaborative initiatives.
-
-Beyond the world of code and campus events, I find joy in photography and drawing — they’re my creative outlets where I pause, observe, and express. Whether I’m sketching ideas or capturing moments, art helps me see the world with a fresh perspective.
-
-When I'm not coding or organizing, you’ll find me connecting with new people, sharing stories, and looking for the next spark of inspiration.</p>
-                    <button class="prev-btn"><i class='bx bx-left-arrow-alt'></i> Previous</button>
-          <button class="next-btn">Next <i class='bx bx-right-arrow-alt'></i></button>
-        </div>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="lg:hidden p-2 rounded-full text-aubergine hover:bg-silver/40 transition-colors">
+          <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
+        </button>
       </div>
+    </nav>
 
-      <!-- Skills -->
-      <div class="page pageS">
-        <div class="content">
-          <h1>Skills</h1>
-          <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>Python,C</li>
-            <li>UI/UX Design, Figma</li>
-            <li>TensorFlow,Keras</li>
-            <li>Git & GitHub</li>
-          </ul>
-                    <button class="prev-btn"><i class='bx bx-left-arrow-alt'></i> Previous</button>
-          <button class="next-btn">Next <i class='bx bx-right-arrow-alt'></i></button>
-        </div>
-      </div>
-
-      <!-- Projects -->
-      <div class="page pageP">
-        <div class="content">
-          <h1>Projects</h1>
-          <ul>
-            <li><strong>Portfolio Website</strong> - A personal 3D portfolio showcasing skills and projects. <a href="https://github.com/melizabyiju/portfolio" target="_blank">GitHub</a></li>
-            <li><strong>RiverClean</strong> - A project to clean plastic from rivers using smart technology.</li>
-            <li><strong>Design System</strong> - Created a reusable UI component library for enterprise projects.</li>
-          </ul>
-                    <button class="prev-btn"><i class='bx bx-left-arrow-alt'></i> Previous</button>
-          <button class="next-btn">Next <i class='bx bx-right-arrow-alt'></i></button>
-        </div>
-      </div>
-
-      <!-- Certifications -->
-      <div class="page pageC">
-        <div class="content">
-          <h1>Certifications</h1>
-          <ul>
-            <li>Web Developement </li>
-            <li>UI/UX Design </li>
-            <li>Digital Logic (2020)</li>
-          </ul>
-                    <button class="prev-btn"><i class='bx bx-left-arrow-alt'></i> Previous</button>
-          <button class="next-btn">Next <i class='bx bx-right-arrow-alt'></i></button>
-        </div>
-      </div>
-
-      <!-- Work Experience -->
-      <div class="page page1">
-        <div class="content">
-          <h1>Work Experience</h1>
-          <ul>
-            <li>Frontend Developer </li>
-            <li>UI/UX Designer </li>
-          </ul>
-                    <button class="prev-btn"><i class='bx bx-left-arrow-alt'></i> Previous</button>
-          <button class="next-btn">Next <i class='bx bx-right-arrow-alt'></i></button>
-        </div>
-      </div>
-
-      <!-- Education -->
-      <div class="page page2">
-        <div class="content">
-          <h1>Education</h1>
-          <ul>
-	<li>Sacred Heart HSS (2022-2024)</li>
-            <li>Bachelor of Science in Computer Science - Amal Jyothi College of Engineering (2024-2028)</li>
-            
-          </ul>
-                   <button class="prev-btn"><i class='bx bx-left-arrow-alt'></i> Previous</button>
-          <button class="next-btn">Next <i class='bx bx-right-arrow-alt'></i></button>
-        </div>
-      </div>
-
-      <!-- Contact -->
-      <div class="page page3">
-        <div class="content">
-          <h1>Contact Me</h1>
-          <p>Email: <a href="mailto:melizabyiju@gmail.com" class="contact-link">melizabyiju@gmail.com</a></p>
-          
-          
-          <div class="socials">
-            <a href="https://linkedin.com/in/melizabyiju" target="_blank" title="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
-            <a href="https://instagram.com/_meliza_lizz" target="_blank" title="Instagram"><i class='bx bxl-instagram'></i></a>
-            <a href="mailto:melizabyiju@gmail.com" title="Email"><i class='bx bx-envelope'></i></a>
-            <a href="https://github.com/melizabyiju" target="_blank" title="GitHub"><i class='bx bxl-github'></i></a>
-          </div>
-          <button class="prev-btn"><i class='bx bx-left-arrow-alt'></i> Previous</button>
-        </div>
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden max-w-md mx-auto mt-3 bg-white/95 backdrop-blur-2xl border border-silver rounded-3xl p-6 shadow-2xl transition-all duration-300">
+      <div class="flex flex-col space-y-4 text-sm font-semibold text-slate-700">
+        <a href="#about" class="mobile-nav-link py-2 border-b border-slate-100 flex items-center justify-between">About <span>→</span></a>
+        <a href="#skills" class="mobile-nav-link py-2 border-b border-slate-100 flex items-center justify-between">Skills <span>→</span></a>
+        <a href="#experience" class="mobile-nav-link py-2 border-b border-slate-100 flex items-center justify-between">Research Experience <span>→</span></a>
+        <a href="#projects" class="mobile-nav-link py-2 border-b border-slate-100 flex items-center justify-between">Projects <span>→</span></a>
+        <a href="#achievements" class="mobile-nav-link py-2 border-b border-slate-100 flex items-center justify-between">Achievements & Awards <span>→</span></a>
+        <a href="#leadership" class="mobile-nav-link py-2 border-b border-slate-100 flex items-center justify-between">Leadership <span>→</span></a>
+        <a href="#education" class="mobile-nav-link py-2 border-b border-slate-100 flex items-center justify-between">Education <span>→</span></a>
+        <a href="#contact" class="mobile-nav-link pt-2 text-center py-3 bg-aubergine text-white rounded-full font-bold">Contact Meliza</a>
       </div>
     </div>
-  </div>
+  </header>
 
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="pt-32 sm:pt-40 pb-16 sm:pb-24 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
+          <!-- Greeting Pill -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-silver shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-marigold animate-ping"></span>
+            <span class="w-2 h-2 rounded-full bg-marigold -ml-4"></span>
+            <span class="text-xs font-semibold tracking-wider uppercase text-aubergine">Hello There!</span>
+          </div>
+
+          <!-- Main Catchphrase Headline -->
+          <div class="space-y-2">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold text-aubergine leading-[1.15] tracking-tight">
+              I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-aubergine via-aubergine-light to-marigold">Meliza Mariya Byiju</span>,
+              <br class="hidden sm:inline">
+              <span class="text-slate-800">AI Researcher & CSE Scholar.</span>
+            </h1>
+          </div>
+
+          <!-- Concise Description -->
+          <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            Computer Science undergraduate at <strong class="text-aubergine font-semibold">Amal Jyothi College of Engineering</strong> with a perfect <span class="px-2 py-0.5 rounded-md bg-marigold/15 text-aubergine font-semibold">10.0 CGPA</span> and research experience in <strong class="text-aubergine font-semibold">Software Engineering for AI (SE4AI) at NIT Calicut</strong>. Dedicated to building impactful ML systems that solve real-world environmental and societal challenges.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#projects" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-aubergine text-white font-medium text-sm hover:bg-aubergine-light transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 group">
+              <span>Explore Projects</span>
+              <div class="w-6 h-6 rounded-full bg-marigold text-aubergine flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </div>
+            </a>
+            
+            <a href="#contact" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-aubergine border border-silver font-medium text-sm hover:border-aubergine/40 hover:bg-slate-50 transition-all shadow-sm">
+              <i data-lucide="mail" class="w-4 h-4 text-marigold"></i>
+              <span>Get in Touch</span>
+            </a>
+          </div>
+
+          <!-- Quick Stat Highlights -->
+          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-silver/70 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <div class="text-2xl sm:text-3xl font-display font-extrabold text-aubergine">10.0</div>
+              <div class="text-xs text-slate-500 font-medium">B.Tech CGPA (Rank 1)</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-display font-extrabold text-aubergine">2,500+</div>
+              <div class="text-xs text-slate-500 font-medium">SE4AI Requirements</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-display font-extrabold text-marigold font-display">₹5L</div>
+              <div class="text-xs text-slate-500 font-medium">Grant Track (RAISE '26)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual: Stylized Reference Frame with Real Photo & Badges -->
+        <div class="lg:col-span-5 flex justify-center relative">
+          <!-- Backing Organic Blob Shapes inspired by Olivia Smith layout -->
+          <div class="relative w-72 sm:w-80 md:w-96 aspect-[3/4] max-w-full">
+            
+            <!-- Mustard/Marigold Geometric Backdrop -->
+            <div class="absolute -top-4 -right-4 w-full h-full rounded-[40px] bg-marigold rotate-3 transition-transform group-hover:rotate-6"></div>
+            
+            <!-- Deep Aubergine Secondary Layer -->
+            <div class="absolute -bottom-3 -left-3 w-full h-full rounded-[40px] bg-aubergine -rotate-2"></div>
+
+            <!-- Image Frame -->
+            <div class="relative w-full h-full rounded-[36px] overflow-hidden bg-slate-100 border-4 border-white shadow-2xl z-10 flex items-center justify-center">
+              <img 
+                id="heroProfileImg"
+                src="Images/hero.jpeg" 
+                alt="Meliza Mariya Byiju" 
+                class="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                onerror="this.style.display='none'; document.getElementById('heroFallbackAvatar').classList.remove('hidden'); document.getElementById('heroFallbackAvatar').classList.add('flex');"
+              >
+              <!-- Graceful Fallback if image folder is excluded on public host -->
+              <div id="heroFallbackAvatar" class="hidden w-full h-full bg-gradient-to-br from-aubergine via-aubergine-light to-marigold items-center justify-center flex-col text-white p-6 text-center">
+                <div class="w-24 h-24 rounded-full bg-white/10 border-2 border-marigold/60 flex items-center justify-center text-3xl font-display font-extrabold text-marigold mb-3 shadow-inner">
+                  MB
+                </div>
+                <h4 class="font-display font-bold text-lg">Meliza Mariya Byiju</h4>
+                <p class="text-xs text-marigold font-medium mt-1">AI & SE4AI Researcher</p>
+                <div class="mt-4 px-3 py-1 rounded-full bg-white/10 text-[11px] font-semibold text-slate-200">Amal Jyothi • NIT Calicut</div>
+              </div>
+            </div>
+
+            <!-- Floating Badge 1: Top Left - NIT Calicut SE4AI -->
+            <div class="absolute -top-5 -left-6 z-20 bg-white/95 backdrop-blur-md border border-silver px-3.5 py-2 rounded-2xl shadow-lg flex items-center gap-2.5 animate-bounce-slow">
+              <div class="w-8 h-8 rounded-xl bg-aubergine/10 text-aubergine flex items-center justify-center font-bold">
+                <i data-lucide="flask-conical" class="w-4 h-4 text-aubergine"></i>
+              </div>
+              <div class="text-left">
+                <p class="text-[10px] uppercase font-bold text-slate-400 leading-none">Research</p>
+                <p class="text-xs font-bold text-aubergine">NIT Calicut SE4AI</p>
+              </div>
+            </div>
+
+            <!-- Floating Badge 2: Bottom Right - Rank 1 / 10.0 CGPA -->
+            <div class="absolute -bottom-6 -right-6 z-20 bg-white/95 backdrop-blur-md border border-silver px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-marigold text-aubergine-dark flex items-center justify-center font-bold">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <div class="text-left">
+                <p class="text-[10px] uppercase font-bold text-slate-400 leading-none">Academic Merit</p>
+                <p class="text-xs font-bold text-aubergine">10.0 CGPA • Rank 1</p>
+              </div>
+            </div>
+
+            <!-- Floating Badge 3: Mid Left - AICTE / RAISE -->
+            <div class="hidden sm:flex absolute top-1/2 -left-10 z-20 bg-white/95 backdrop-blur-md border border-silver px-3 py-1.5 rounded-full shadow-md items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span class="text-[11px] font-semibold text-slate-700">RAISE 2026 Finalist</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MARQUEE RIBBON BANNER (Direct Inspiration from Sample UI) -->
+    <div class="relative w-full overflow-hidden bg-gradient-to-r from-marigold via-[#F2B50D] to-marigold py-4 shadow-inner border-y border-marigold-hover/30">
+      <div class="flex marquee-track whitespace-nowrap text-aubergine-dark font-display font-bold text-base sm:text-lg tracking-wide uppercase select-none">
+        <span class="mx-6 flex items-center gap-4">Machine Learning <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">SE4AI Research <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Deep Learning CNNs <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">NLP & Transformers <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Sustainability Tech <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Python & TensorFlow <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Flask REST APIs <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Computer Vision <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Data Structures & Algorithms <span class="text-aubergine text-xs">✦</span></span>
+
+        <!-- Duplicated for Infinite Smooth Scroll -->
+        <span class="mx-6 flex items-center gap-4">Machine Learning <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">SE4AI Research <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Deep Learning CNNs <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">NLP & Transformers <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Sustainability Tech <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Python & TensorFlow <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Flask REST APIs <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Computer Vision <span class="text-aubergine text-xs">✦</span></span>
+        <span class="mx-6 flex items-center gap-4">Data Structures & Algorithms <span class="text-aubergine text-xs">✦</span></span>
+      </div>
+    </div>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Image Frame with secondary portrait -->
+        <div class="lg:col-span-5 order-2 lg:order-1 flex justify-center">
+          <div class="relative w-64 sm:w-72 md:w-80 aspect-[4/5] rounded-3xl p-3 bg-white border border-silver shadow-xl">
+            <div class="w-full h-full rounded-2xl overflow-hidden bg-slate-100 flex items-center justify-center">
+              <img 
+                id="aboutProfileImg"
+                src="Images/about.jpeg" 
+                alt="Meliza in College" 
+                class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                onerror="this.style.display='none'; document.getElementById('aboutFallbackAvatar').classList.remove('hidden'); document.getElementById('aboutFallbackAvatar').classList.add('flex');"
+              >
+              <!-- Graceful Fallback if image folder is excluded -->
+              <div id="aboutFallbackAvatar" class="hidden w-full h-full bg-gradient-to-tr from-aubergine-dark to-aubergine text-white items-center justify-center flex-col p-6 text-center">
+                <i data-lucide="graduation-cap" class="w-12 h-12 text-marigold mb-2"></i>
+                <h4 class="font-display font-bold text-base text-white">B.Tech CSE Scholar</h4>
+                <p class="text-xs text-marigold mt-1">Amal Jyothi College of Engineering</p>
+                <span class="mt-3 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded bg-marigold/20 text-marigold">Rank 1 • 10.0 CGPA</span>
+              </div>
+            </div>
+            <!-- Sub-card tag -->
+            <div class="absolute -bottom-5 left-6 right-6 bg-aubergine text-white p-3.5 rounded-2xl shadow-lg flex items-center justify-between">
+              <div>
+                <p class="text-[11px] text-marigold font-bold uppercase tracking-wider">Institution</p>
+                <p class="text-xs font-semibold">Amal Jyothi College of Engg</p>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-marigold font-bold text-xs">
+                CSE
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content -->
+        <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+            <span class="w-6 h-0.5 bg-marigold"></span>
+            <span>About Me</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-aubergine leading-tight">
+            Who is <span class="text-transparent bg-clip-text bg-gradient-to-r from-aubergine to-marigold">Meliza Mariya Byiju</span>?
+          </h2>
+
+          <p class="text-slate-600 leading-relaxed text-base sm:text-lg">
+            I am a third-year Computer Science Engineering student from Wayanad, Kerala, studying at Amal Jyothi College of Engineering. I hold a consistent <strong class="text-aubergine">10.0 CGPA</strong>, securing Rank 1 across 4 consecutive semesters, after graduating with <strong class="text-aubergine">98.9%</strong> in Higher Secondary Education (PCMB).
+          </p>
+
+          <p class="text-slate-600 leading-relaxed text-base">
+            My passion lies in <strong class="text-aubergine">Machine Learning, NLP, and Software Engineering for AI (SE4AI)</strong>. As a Research Intern at NIT Calicut, I investigate multi-dimensional sustainability-aware requirements engineering and code smell detection in AI systems. Alongside research, I actively build solutions addressing environmental challenges—such as aquatic biomass recovery (<strong class="text-aubergine">KAYORA</strong>) and river pollution image classification (<strong class="text-aubergine">RiverClean</strong>).
+          </p>
+
+          <!-- Core Pillars / Fast Facts Grid -->
+          <div class="grid sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-2xl bg-white border border-silver/80 shadow-sm flex items-start gap-3.5">
+              <div class="p-2.5 rounded-xl bg-aubergine/5 text-aubergine">
+                <i data-lucide="brain-circuit" class="w-5 h-5 text-marigold"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-aubergine">Applied AI & ML</h4>
+                <p class="text-xs text-slate-500 mt-0.5">End-to-end vision & transformer pipelines with real inference APIs.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-silver/80 shadow-sm flex items-start gap-3.5">
+              <div class="p-2.5 rounded-xl bg-aubergine/5 text-aubergine">
+                <i data-lucide="leaf" class="w-5 h-5 text-emerald-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-aubergine">Sustainability Focus</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Projects targeting ecological recovery, river health, and ethical AI.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-silver/80 shadow-sm flex items-start gap-3.5">
+              <div class="p-2.5 rounded-xl bg-aubergine/5 text-aubergine">
+                <i data-lucide="trophy" class="w-5 h-5 text-amber-500"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-aubergine">National Competitions</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Shortlisted in AICTE APF, SIH, e-Yantra Robotics, and KAU RAISE.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white border border-silver/80 shadow-sm flex items-start gap-3.5">
+              <div class="p-2.5 rounded-xl bg-aubergine/5 text-aubergine">
+                <i data-lucide="users" class="w-5 h-5 text-aubergine"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-aubergine">Leadership & Community</h4>
+                <p class="text-xs text-slate-500 mt-0.5">GDG Campus Organizer, AI Club Vice Chair & Coding Club Joint Secretary.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DOMAINS / WHAT I FOCUS ON (Inspired by Services section in reference) -->
+    <section class="py-16 bg-white border-y border-silver/70 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+            <span class="w-6 h-0.5 bg-marigold"></span>
+            <span>Focus Areas</span>
+            <span class="w-6 h-0.5 bg-marigold"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-aubergine">
+            Specialized Engineering & Research Domains
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Combining rigorous theoretical foundations with practical system implementations.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+          <!-- Card 1 -->
+          <div class="p-8 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold/60 transition-all hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden">
+            <div class="w-14 h-14 rounded-2xl bg-aubergine text-marigold flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+              <i data-lucide="sparkles" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-display font-bold text-aubergine mb-3">Machine Learning & Deep Learning</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              Designing multi-class CNN image classification pipelines and transformer-based classifiers (DeBERTa-v3, EmbeddingGemma 2) for complex real-world predictions.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs font-semibold text-aubergine">
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">TensorFlow</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">PyTorch & HF</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">CNNs</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">NumPy</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="p-8 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold/60 transition-all hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden">
+            <div class="w-14 h-14 rounded-2xl bg-aubergine text-marigold flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+              <i data-lucide="shield-check" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-display font-bold text-aubergine mb-3">SE4AI & Sustainable Systems</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              Researching sustainability-aware requirements engineering across 5 dimensions (Environmental, Economic, Social, Technical, Individual) and static code smell analysis.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs font-semibold text-aubergine">
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">Requirements Engg</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">Code Smells</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">Static Analysis</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">NIT Calicut</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="p-8 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold/60 transition-all hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden">
+            <div class="w-14 h-14 rounded-2xl bg-aubergine text-marigold flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+              <i data-lucide="layers" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-display font-bold text-aubergine mb-3">Intelligent Systems & APIs</h3>
+            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+              Building low-latency Python/Flask inference backends, vector-based skill retrieval with SQL/Oracle DB triggers, and automated web scrapers.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs font-semibold text-aubergine">
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">Flask REST</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">SQL & Triggers</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">BeautifulSoup</span>
+              <span class="px-2.5 py-1 rounded-full bg-white border border-silver">Cloudflare</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto space-y-3 mb-14">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+          <span class="w-6 h-0.5 bg-marigold"></span>
+          <span>Technical Arsenal</span>
+          <span class="w-6 h-0.5 bg-marigold"></span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold text-aubergine">
+          Skills, Tools & Theoretical Foundations
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          All skills verified directly from active research, coursework, and competitive hackathon systems.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Column 1: Languages -->
+        <div class="p-6 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="p-2 rounded-xl bg-aubergine/10 text-aubergine font-bold">
+              <i data-lucide="code" class="w-5 h-5 text-aubergine"></i>
+            </div>
+            <h3 class="font-display font-bold text-base text-aubergine">Languages</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Python</span>
+              <span class="text-[10px] uppercase font-bold text-marigold px-2 py-0.5 rounded bg-marigold/10">Core / ML</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Java</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">OOP</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">C</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Systems</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">SQL</span>
+              <span class="text-[10px] uppercase font-bold text-marigold px-2 py-0.5 rounded bg-marigold/10">Queries/Triggers</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">JavaScript & Node.js</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Web</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: AI, ML & NLP -->
+        <div class="p-6 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="p-2 rounded-xl bg-marigold/15 text-aubergine font-bold">
+              <i data-lucide="cpu" class="w-5 h-5 text-marigold"></i>
+            </div>
+            <h3 class="font-display font-bold text-base text-aubergine">AI & Machine Learning</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">TensorFlow</span>
+              <span class="text-[10px] uppercase font-bold text-marigold px-2 py-0.5 rounded bg-marigold/10">CNNs</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Hugging Face</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">DeBERTa-v3</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">EmbeddingGemma 2</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Embeddings</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Gemini 2.5 Flash Lite</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">LLM Inference</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">NumPy & Preprocessing</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Vector Math</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Backend, DB & Tools -->
+        <div class="p-6 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="p-2 rounded-xl bg-aubergine/10 text-aubergine font-bold">
+              <i data-lucide="server" class="w-5 h-5 text-aubergine"></i>
+            </div>
+            <h3 class="font-display font-bold text-base text-aubergine">Backend & Tools</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Flask REST APIs</span>
+              <span class="text-[10px] uppercase font-bold text-marigold px-2 py-0.5 rounded bg-marigold/10">Inference</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Git & GitHub</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">VCS</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">MySQL & Oracle DB</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">RDBMS</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Cloudflare</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Hosting</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Figma & MS Office</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4: Core CS Concepts -->
+        <div class="p-6 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="p-2 rounded-xl bg-marigold/15 text-aubergine font-bold">
+              <i data-lucide="binary" class="w-5 h-5 text-marigold"></i>
+            </div>
+            <h3 class="font-display font-bold text-base text-aubergine">Core CS Concepts</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Data Structures & Algos</span>
+              <span class="text-[10px] uppercase font-bold text-marigold px-2 py-0.5 rounded bg-marigold/10">DSA</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Graph Theory</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Networks</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Probability & Statistics</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">ML Math</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">Linear Algebra</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Matrices</span>
+            </div>
+            <div class="flex items-center justify-between p-2.5 rounded-xl bg-[#F8FAFC] border border-silver/50">
+              <span class="font-semibold text-xs text-slate-800">NoSQL Concepts</span>
+              <span class="text-[10px] uppercase font-bold text-slate-500 px-2 py-0.5 rounded bg-slate-100">Document</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESEARCH EXPERIENCE SPOTLIGHT -->
+    <section id="experience" class="py-20 bg-white border-y border-silver/70 px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto space-y-10">
+        
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+            <span class="w-6 h-0.5 bg-marigold"></span>
+            <span>Academic Research</span>
+            <span class="w-6 h-0.5 bg-marigold"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-aubergine">
+            Research Experience
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Contributing to Software Engineering for Artificial Intelligence (SE4AI).
+          </p>
+        </div>
+
+        <!-- Featured Experience Card -->
+        <div class="rounded-3xl bg-[#F8FAFC] border-2 border-silver/80 p-8 sm:p-10 shadow-lg relative overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-marigold/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-silver/70 pb-6 mb-6">
+            <div class="space-y-1">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-aubergine text-white text-xs font-semibold mb-2">
+                <i data-lucide="microscope" class="w-3.5 h-3.5 text-marigold"></i>
+                <span>Premier Research Internship</span>
+              </div>
+              <h3 class="text-2xl font-display font-bold text-aubergine">
+                Research Intern – SE4AI Project
+              </h3>
+              <p class="text-base font-semibold text-slate-700 flex items-center gap-2">
+                <span>National Institute of Technology Calicut (NIT Calicut)</span>
+                <span class="text-slate-400">•</span>
+                <span class="text-xs text-slate-500 font-normal">Calicut, Kerala</span>
+              </p>
+            </div>
+
+            <div class="text-left md:text-right">
+              <div class="inline-block px-4 py-1.5 rounded-full bg-marigold/15 border border-marigold/30 text-aubergine font-bold text-xs">
+                May 2026 – Present
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-marigold/20 text-aubergine flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</div>
+              <p>
+                <strong>Sustainability-Aware Requirements Engineering:</strong> Conducting specialized research on Software Engineering for AI (SE4AI), classifying <span class="font-semibold text-aubergine">2,500+ software requirements</span> across five key sustainability dimensions (Environmental, Economic, Social, Technical, and Individual).
+              </p>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-marigold/20 text-aubergine flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</div>
+              <p>
+                <strong>DeBERTa-v3 Multi-Label Classification:</strong> Fine-tuned DeBERTa-v3 using Hugging Face Transformers and Python, achieving structured multi-label classification over large-scale software requirement datasets with measurable precision.
+              </p>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-marigold/20 text-aubergine flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</div>
+              <p>
+                <strong>Code Smell Detection in AI Systems:</strong> Investigated and diagnosed architectural and code smells in AI-adjacent software systems to evaluate maintainability and defect density, applying both static code analysis and AI-assisted tooling.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-silver/70 flex flex-wrap gap-2 items-center">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2">Key Tech:</span>
+            <span class="px-3 py-1 rounded-full bg-white border border-silver text-xs font-semibold text-aubergine">DeBERTa-v3</span>
+            <span class="px-3 py-1 rounded-full bg-white border border-silver text-xs font-semibold text-aubergine">Hugging Face</span>
+            <span class="px-3 py-1 rounded-full bg-white border border-silver text-xs font-semibold text-aubergine">Python</span>
+            <span class="px-3 py-1 rounded-full bg-white border border-silver text-xs font-semibold text-aubergine">Static Analysis</span>
+            <span class="px-3 py-1 rounded-full bg-white border border-silver text-xs font-semibold text-aubergine">SE4AI</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+            <span class="w-6 h-0.5 bg-marigold"></span>
+            <span>Portfolio of Works</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-aubergine">
+            Featured Projects & Engineering Solutions
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base max-w-xl">
+            Real systems built with machine learning pipelines, algorithms, and full-stack APIs.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2 text-xs font-semibold" id="projectFilters">
+          <button class="project-filter-btn px-4 py-2 rounded-full bg-aubergine text-white transition-all shadow-sm active" data-filter="all">All Projects</button>
+          <button class="project-filter-btn px-4 py-2 rounded-full bg-white text-slate-600 border border-silver hover:bg-slate-50 transition-all" data-filter="ai">AI / ML</button>
+          <button class="project-filter-btn px-4 py-2 rounded-full bg-white text-slate-600 border border-silver hover:bg-slate-50 transition-all" data-filter="sustainability">Sustainability</button>
+          <button class="project-filter-btn px-4 py-2 rounded-full bg-white text-slate-600 border border-silver hover:bg-slate-50 transition-all" data-filter="systems">Systems & Web</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer">
+        
+        <!-- Project 1: KAYORA -->
+        <div class="project-card flex flex-col justify-between rounded-3xl bg-white border border-silver/80 p-7 shadow-sm hover:shadow-xl hover:border-marigold transition-all group" data-category="ai sustainability">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                RAISE 2026 Stage 2
+              </span>
+              <span class="text-xs font-bold text-slate-400">2025 – Present</span>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-display font-bold text-aubergine group-hover:text-marigold-hover transition-colors">
+                KAYORA
+              </h3>
+              <p class="text-xs font-semibold text-slate-500 mt-0.5">AI-Assisted Aquatic Biomass Recovery</p>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Developed an AI-based methodology to identify, monitor, and recover aquatic biomass with a focus on aquatic resource management and environmental protection. Selected for Stage 2 of Kerala Agricultural University’s RAISE 2026 Student Startup Programme with funding grant potential up to ₹5 Lakh.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-silver/70 space-y-4">
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-600">
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">AI Recovery</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Biomass Detection</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Resource Mgmt</span>
+              <span class="px-2 py-0.5 rounded-md bg-marigold/15 text-aubergine">₹5L Funding Track</span>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine hover:text-marigold transition-colors">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>View on GitHub</span>
+              </a>
+              <span class="text-xs font-bold text-marigold flex items-center gap-1">
+                KAU RAISE 2026 <i data-lucide="external-link" class="w-3 h-3"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: ReFind -->
+        <div class="project-card flex flex-col justify-between rounded-3xl bg-white border border-silver/80 p-7 shadow-sm hover:shadow-xl hover:border-marigold transition-all group" data-category="ai systems">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold border border-amber-200 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                AI Bhoomi 20h Sprint
+              </span>
+              <span class="text-xs font-bold text-slate-400">2026</span>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-display font-bold text-aubergine group-hover:text-marigold-hover transition-colors">
+                ReFind
+              </h3>
+              <p class="text-xs font-semibold text-slate-500 mt-0.5">AI-Powered Semantic Search & Info Retrieval</p>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Designed and built an intelligent semantic retrieval pipeline using EmbeddingGemma 2, Jina reranking, and Gemini 2.5 Flash Lite to maximize search relevance and generate coherent contextual explanations. Pitched and demoed at the AI Bhoomi Startup Weekend.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-silver/70 space-y-4">
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-600">
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">EmbeddingGemma 2</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Jina Reranker</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Gemini 2.5 Flash Lite</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Vector Search</span>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine hover:text-marigold transition-colors">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>Repository</span>
+              </a>
+              <span class="text-xs font-bold text-aubergine flex items-center gap-1">
+                Startup Demo <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-marigold"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: RiverClean -->
+        <div class="project-card flex flex-col justify-between rounded-3xl bg-white border border-silver/80 p-7 shadow-sm hover:shadow-xl hover:border-marigold transition-all group" data-category="ai sustainability systems">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-aubergine/10 text-aubergine text-xs font-bold border border-aubergine/20 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-aubergine"></span>
+                AICTE APF National Round 1
+              </span>
+              <span class="text-xs font-bold text-slate-400">2025 – Present</span>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-display font-bold text-aubergine group-hover:text-marigold-hover transition-colors">
+                RiverClean
+              </h3>
+              <p class="text-xs font-semibold text-slate-500 mt-0.5">ML Engineer – AI River Pollution Detection</p>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Constructed a multi-class image classification model using TensorFlow CNNs to classify river pollution severity from aerial and ground visual datasets. Designed a Python/Flask real-time inference API incorporating NumPy preprocessing. Shortlisted nationally in AICTE Production Fellowship (APF).
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-silver/70 space-y-4">
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-600">
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">TensorFlow CNN</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Flask Inference API</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">NumPy</span>
+              <span class="px-2 py-0.5 rounded-md bg-marigold/15 text-aubergine">AICTE APF Shortlist</span>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine hover:text-marigold transition-colors">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>Repository</span>
+              </a>
+              <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                National APF <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: ReStyle -->
+        <div class="project-card flex flex-col justify-between rounded-3xl bg-white border border-silver/80 p-7 shadow-sm hover:shadow-xl hover:border-marigold transition-all group" data-category="ai sustainability systems">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold">
+                ML Developer
+              </span>
+              <span class="text-xs font-bold text-slate-400">2025 – Present</span>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-display font-bold text-aubergine group-hover:text-marigold-hover transition-colors">
+                ReStyle
+              </h3>
+              <p class="text-xs font-semibold text-slate-500 mt-0.5">Sustainable Fashion AI Platform</p>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Engineered a Python/Flask REST backend for an AI-powered clothing redesign engine. Created the end-to-end data pipeline to preprocess uploaded wardrobe images, standardize input via NumPy transformations, and generate category-based redesign recommendations.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-silver/70 space-y-4">
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-600">
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Python / Flask</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Image Transform</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Recommendation</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Sustainable AI</span>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine hover:text-marigold transition-colors">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>Repository</span>
+              </a>
+              <span class="text-xs font-bold text-aubergine flex items-center gap-1">
+                REST Backend <i data-lucide="code" class="w-3.5 h-3.5 text-marigold"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: InternMatch -->
+        <div class="project-card flex flex-col justify-between rounded-3xl bg-white border border-silver/80 p-7 shadow-sm hover:shadow-xl hover:border-marigold transition-all group" data-category="systems">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold">
+                Algorithm Developer
+              </span>
+              <span class="text-xs font-bold text-slate-400">2025 – Present</span>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-display font-bold text-aubergine group-hover:text-marigold-hover transition-colors">
+                InternMatch
+              </h3>
+              <p class="text-xs font-semibold text-slate-500 mt-0.5">Skill-Based Recommendation System</p>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Designed a skill-vector matching algorithm in SQL with Oracle triggers for automated deadline validations. Integrated BeautifulSoup and APScheduler for real-time opportunity scraping, building a 3-stage candidate tracking pipeline (applied → interview → offer).
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-silver/70 space-y-4">
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-600">
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">SQL Vector Match</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Oracle Triggers</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">BeautifulSoup</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">APScheduler</span>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine hover:text-marigold transition-colors">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>Repository</span>
+              </a>
+              <span class="text-xs font-bold text-aubergine flex items-center gap-1">
+                Automated Pipeline <i data-lucide="check" class="w-3.5 h-3.5 text-marigold"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: ExoSky Visualizer (NASA Space Apps) -->
+        <div class="project-card flex flex-col justify-between rounded-3xl bg-white border border-silver/80 p-7 shadow-sm hover:shadow-xl hover:border-marigold transition-all group" data-category="systems ai">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
+                NASA Space Apps Challenge
+              </span>
+              <span class="text-xs font-bold text-slate-400">2024</span>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-display font-bold text-aubergine group-hover:text-marigold-hover transition-colors">
+                ExoSky Visualizer
+              </h3>
+              <p class="text-xs font-semibold text-slate-500 mt-0.5">Exoplanet Coordinate Celestial Engine</p>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Developed an international hackathon-winning Python computational tool to visualize the night sky from any exoplanet viewpoint, computing stellar positions and apparent brightness distributions based on raw coordinate and luminosity data.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-silver/70 space-y-4">
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-600">
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Python</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Astrophysics Math</span>
+              <span class="px-2 py-0.5 rounded-md bg-slate-100">Data Visualization</span>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-aubergine hover:text-marigold transition-colors">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>Repository</span>
+              </a>
+              <span class="text-xs font-bold text-aubergine flex items-center gap-1">
+                Global Challenge <i data-lucide="globe" class="w-3.5 h-3.5 text-marigold"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS & HACKATHONS SECTION -->
+    <section id="achievements" class="py-20 bg-white border-y border-silver/70 px-4 sm:px-6">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+            <span class="w-6 h-0.5 bg-marigold"></span>
+            <span>Honors & Recognitions</span>
+            <span class="w-6 h-0.5 bg-marigold"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-aubergine">
+            Competitive Achievements & Hackathons
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Demonstrated excellence in national robotics, government hackathons, and research initiatives.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Item 1: e-Yantra -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-marigold/15 text-aubergine font-bold flex items-center justify-center text-sm">🤖</span>
+                <span class="text-xs font-bold text-aubergine px-2.5 py-0.5 rounded-full bg-marigold/20">2026 (Ongoing)</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">e-Yantra Robotics Competition</h4>
+              <p class="text-xs font-semibold text-slate-500">IIT Bombay</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Qualified team entry competing in both the <strong>Khojo Drone</strong> and <strong>Pacbot</strong> robotics and autonomous navigation themes.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2: RAISE 2026 -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">🌱</span>
+                <span class="text-xs font-bold text-emerald-700 px-2.5 py-0.5 rounded-full bg-emerald-100">Stage 2</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">RAISE 2026 Startup Programme</h4>
+              <p class="text-xs font-semibold text-slate-500">Kerala Agricultural University</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Selected for Stage 2 funding track (up to ₹5 Lakh grant) for KAYORA's AI-assisted aquatic biomass recovery and resource management framework.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3: AICTE Production Fellowship -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-aubergine/10 text-aubergine font-bold flex items-center justify-center text-sm">🎖️</span>
+                <span class="text-xs font-bold text-aubergine px-2.5 py-0.5 rounded-full bg-aubergine/15">National Round 1</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">AICTE Production Fellowship (APF)</h4>
+              <p class="text-xs font-semibold text-slate-500">Government of India (2025)</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Achieved a national shortlist for <strong>RiverClean</strong>, validating real-world environmental impact and technical merit among teams nationwide.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4: Smart India Hackathon -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-orange-100 text-orange-800 font-bold flex items-center justify-center text-sm">🇮🇳</span>
+                <span class="text-xs font-bold text-slate-500">2025 & 2026</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">Smart India Hackathon (SIH)</h4>
+              <p class="text-xs font-semibold text-slate-500">Ministry of Education / AICTE</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Developed and presented technical innovations in India’s premier government hackathon with over 1 Million registered student innovators.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 5: Idea from Industry Winner -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-marigold/15 text-aubergine font-bold flex items-center justify-center text-sm">🏆</span>
+                <span class="text-xs font-bold text-marigold px-2.5 py-0.5 rounded-full bg-marigold/20">Consecutive Winner</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">Idea from Industry Winner</h4>
+              <p class="text-xs font-semibold text-slate-500">2024 & 2025</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Won recognition two years in a row for pitching technically feasible, industry-oriented engineering problem formulations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 6: C-Zone Chess Championship -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-800 font-bold flex items-center justify-center text-sm">♟️</span>
+                <span class="text-xs font-bold text-indigo-700 px-2.5 py-0.5 rounded-full bg-indigo-100">2nd Runner-Up</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">C-Zone Chess Championship</h4>
+              <p class="text-xs font-semibold text-slate-500">University Tournament (2026)</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Secured Second Runner-Up as a vital member of the official Amal Jyothi College Women's Chess Team.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 7: AI Bhoomi Startup Weekend -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-purple-100 text-purple-800 font-bold flex items-center justify-center text-sm">🚀</span>
+                <span class="text-xs font-bold text-slate-500">20-Hour Sprint</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">AI Bhoomi Startup Weekend</h4>
+              <p class="text-xs font-semibold text-slate-500">Startup Sprint 2026</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Built and presented <strong>ReFind</strong>, an AI-powered vector embedding and reranking semantic engine under intense 20-hour sprint constraints.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 8: HackFest & Tink-Her-Hack -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-pink-100 text-pink-800 font-bold flex items-center justify-center text-sm">⚡</span>
+                <span class="text-xs font-bold text-pink-700 px-2.5 py-0.5 rounded-full bg-pink-100">State & National</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">HackFest 2025 & Tink-Her-Hack 4.0</h4>
+              <p class="text-xs font-semibold text-slate-500">Innovation Challenges</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Advanced to state-level round in HackFest 2025; independently handled full end-to-end development for Tink-Her-Hack 4.0.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 9: NASA Space Apps Challenge -->
+          <div class="p-6 rounded-3xl bg-[#F8FAFC] border border-silver/80 hover:border-marigold transition-all flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 font-bold flex items-center justify-center text-sm">🌌</span>
+                <span class="text-xs font-bold text-slate-500">International</span>
+              </div>
+              <h4 class="font-display font-bold text-base text-aubergine">NASA Space Apps Challenge</h4>
+              <p class="text-xs font-semibold text-slate-500">Global Hackathon (2024)</p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Engineered the Python-based <strong>ExoSky</strong> visualizer calculating stellar coordinates and apparent brightness from exoplanetary vantage points.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP & EXTRACURRICULAR INITIATIVES -->
+    <section id="leadership" class="py-20 sm:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto space-y-3 mb-14">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+          <span class="w-6 h-0.5 bg-marigold"></span>
+          <span>Community Impact</span>
+          <span class="w-6 h-0.5 bg-marigold"></span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-display font-bold text-aubergine">
+          Leadership & Extracurricular Activities
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Fostering tech communities, organizing national hackathons, and driving peer learning.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Role 1: GDG on Campus -->
+        <div class="p-7 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-aubergine/10 text-aubergine flex items-center justify-center mb-4">
+            <i data-lucide="compass" class="w-5 h-5 text-aubergine"></i>
+          </div>
+          <span class="text-xs font-bold text-marigold px-2.5 py-0.5 rounded-full bg-marigold/10 inline-block mb-2">2026 – Present</span>
+          <h3 class="text-lg font-display font-bold text-aubergine">Campus Organizer</h3>
+          <p class="text-xs font-semibold text-slate-500 mb-3">GDG on Campus • AJCE</p>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li>Organize campus-wide technology workshops and events.</li>
+            <li>Promote Google developer programs, student outreach, and community mentorship.</li>
+          </ul>
+        </div>
+
+        <!-- Role 2: AI Club Vice Chair -->
+        <div class="p-7 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-marigold/15 text-aubergine flex items-center justify-center mb-4">
+            <i data-lucide="bot" class="w-5 h-5 text-marigold"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-500 px-2.5 py-0.5 rounded-full bg-slate-100 inline-block mb-2">2025 – 2026</span>
+          <h3 class="text-lg font-display font-bold text-aubergine">Vice Chair | AI Club</h3>
+          <p class="text-xs font-semibold text-slate-500 mb-3">Amal Jyothi College of Engineering</p>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li>Spearheaded ML/AI workshop programming for <strong>AITHRA</strong> (national-level tech fest).</li>
+            <li>Curated technical content on core ML concepts and coordinated 5+ departmental events.</li>
+          </ul>
+        </div>
+
+        <!-- Role 3: Joint Secretary Coding Club -->
+        <div class="p-7 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-aubergine/10 text-aubergine flex items-center justify-center mb-4">
+            <i data-lucide="terminal" class="w-5 h-5 text-aubergine"></i>
+          </div>
+          <span class="text-xs font-bold text-marigold px-2.5 py-0.5 rounded-full bg-marigold/10 inline-block mb-2">2026 – Present</span>
+          <h3 class="text-lg font-display font-bold text-aubergine">Joint Secretary | Coding Club</h3>
+          <p class="text-xs font-semibold text-slate-500 mb-3">Amal Jyothi College of Engineering</p>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li>Support core leadership in designing coding contests, practice sessions, and peer learning.</li>
+            <li>Mobilize departmental participation in programming challenges.</li>
+          </ul>
+        </div>
+
+        <!-- Role 4: Chess Team -->
+        <div class="p-7 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-aubergine flex items-center justify-center mb-4">
+            <i data-lucide="crown" class="w-5 h-5 text-aubergine"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-500 px-2.5 py-0.5 rounded-full bg-slate-100 inline-block mb-2">2026</span>
+          <h3 class="text-lg font-display font-bold text-aubergine">Women's Chess Team Member</h3>
+          <p class="text-xs font-semibold text-slate-500 mb-3">Amal Jyothi College of Engineering</p>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li>Represented college in inter-collegiate tournaments.</li>
+            <li>Secured Second Runner-Up in the C-Zone Chess Championship.</li>
+          </ul>
+        </div>
+
+        <!-- Role 5: Active Volunteer I2U -->
+        <div class="p-7 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-marigold/15 text-aubergine flex items-center justify-center mb-4">
+            <i data-lucide="heart-handshake" class="w-5 h-5 text-marigold"></i>
+          </div>
+          <span class="text-xs font-bold text-marigold px-2.5 py-0.5 rounded-full bg-marigold/10 inline-block mb-2">2025 – Present</span>
+          <h3 class="text-lg font-display font-bold text-aubergine">Active Volunteer | I²U</h3>
+          <p class="text-xs font-semibold text-slate-500 mb-3">Innovation & Outreach</p>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li>Organized and promoted innovation initiatives across campus to encourage student projects.</li>
+            <li>Facilitated participant engagement and program logistics.</li>
+          </ul>
+        </div>
+
+        <!-- Role 6: NASA Space Apps Volunteer & IEDC -->
+        <div class="p-7 rounded-3xl bg-white border border-silver shadow-sm hover:shadow-md transition-shadow">
+          <div class="w-10 h-10 rounded-xl bg-aubergine/10 text-aubergine flex items-center justify-center mb-4">
+            <i data-lucide="calendar-check" class="w-5 h-5 text-aubergine"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-500 px-2.5 py-0.5 rounded-full bg-slate-100 inline-block mb-2">2025 & 2026</span>
+          <h3 class="text-lg font-display font-bold text-aubergine">Volunteer & Management</h3>
+          <p class="text-xs font-semibold text-slate-500 mb-3">NASA Space Apps & IEDC Summit</p>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside leading-relaxed">
+            <li><strong>NASA Space Apps (2025):</strong> Managed judge onboarding and evaluation schedules.</li>
+            <li><strong>IEDC Summit (2026):</strong> Discipline Committee coordinator for conference attendees.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="py-20 bg-white border-y border-silver/70 px-4 sm:px-6">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+            <span class="w-6 h-0.5 bg-marigold"></span>
+            <span>Academic Background</span>
+            <span class="w-6 h-0.5 bg-marigold"></span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-aubergine">
+            Education
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base">
+            Exceptional academic performance and rigorous foundations in engineering and science.
+          </p>
+        </div>
+
+        <div class="relative border-l-2 border-silver pl-6 sm:pl-8 space-y-10 ml-4">
+          
+          <!-- Degree 1 -->
+          <div class="relative group">
+            <div class="absolute -left-[35px] sm:-left-[43px] top-1.5 w-6 h-6 rounded-full bg-aubergine border-4 border-white shadow-md flex items-center justify-center">
+              <span class="w-2 h-2 rounded-full bg-marigold"></span>
+            </div>
+
+            <div class="p-6 sm:p-8 rounded-3xl bg-[#F8FAFC] border border-silver/80 shadow-sm group-hover:border-marigold transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <span class="px-3 py-1 rounded-full bg-aubergine text-white text-xs font-bold w-fit">2024 – 2028</span>
+                <span class="text-xs font-semibold text-slate-500">Kottayam, Kerala</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-aubergine">
+                B.Tech in Computer Science and Engineering
+              </h3>
+              <p class="text-sm font-semibold text-slate-700 mt-1">
+                Amal Jyothi College of Engineering
+              </p>
+              
+              <div class="mt-4 pt-4 border-t border-silver/70 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-marigold/20 text-aubergine flex items-center justify-center font-bold">
+                  ★
+                </div>
+                <div>
+                  <div class="text-sm font-extrabold text-aubergine">CGPA: 10.0 / 10.0</div>
+                  <div class="text-xs text-slate-500">Rank 1 for 4 consecutive semesters</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Degree 2 -->
+          <div class="relative group">
+            <div class="absolute -left-[35px] sm:-left-[43px] top-1.5 w-6 h-6 rounded-full bg-silver-dark border-4 border-white shadow-md flex items-center justify-center">
+              <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+            </div>
+
+            <div class="p-6 sm:p-8 rounded-3xl bg-[#F8FAFC] border border-silver/80 shadow-sm group-hover:border-marigold transition-all">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                <span class="px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-xs font-bold w-fit">2022 – 2024</span>
+                <span class="text-xs font-semibold text-slate-500">Wayanad, Kerala</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-aubergine">
+                Higher Secondary Education (Science – PCMB)
+              </h3>
+              <p class="text-sm font-semibold text-slate-700 mt-1">
+                Sacred Heart HSS, Dwaraka
+              </p>
+              
+              <div class="mt-4 pt-4 border-t border-silver/70 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                  ✓
+                </div>
+                <div>
+                  <div class="text-sm font-extrabold text-aubergine">Percentage: 98.9%</div>
+                  <div class="text-xs text-slate-500">Physics, Chemistry, Mathematics, Biology</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 sm:py-28 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="rounded-3xl bg-gradient-to-br from-aubergine via-aubergine-dark to-[#1E041A] text-white p-8 sm:p-14 shadow-2xl relative overflow-hidden">
+        
+        <!-- Ambient Decor Glow -->
+        <div class="absolute -top-20 -right-20 w-80 h-80 bg-marigold/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="grid lg:grid-cols-12 gap-10 items-center relative z-10">
+          
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-marigold">
+              <span class="w-6 h-0.5 bg-marigold"></span>
+              <span>Let's Connect</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl font-display font-bold leading-tight">
+              Let's collaborate on impactful <span class="text-marigold">AI & research</span> projects.
+            </h2>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Whether you are interested in discussing research opportunities in SE4AI, environmental ML solutions, hackathon collaborations, or technical projects, I'd love to hear from you.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <!-- Email Card -->
+              <a href="mailto:melizabyiju@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
+                <div class="w-11 h-11 rounded-xl bg-marigold text-aubergine-dark flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400">Email Directly</p>
+                  <p class="text-sm font-semibold text-white tracking-wide">melizabyiju@gmail.com</p>
+                </div>
+              </a>
+
+              <!-- Location Card -->
+              <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div class="w-11 h-11 rounded-xl bg-white/10 text-marigold flex items-center justify-center">
+                  <i data-lucide="map-pin" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400">Location</p>
+                  <p class="text-sm font-semibold text-white">Wayanad, Kerala, India</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Profiles -->
+            <div class="flex items-center gap-3 pt-2">
+              <a href="https://linkedin.com/in/melizabyiju" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-marigold hover:text-aubergine font-semibold text-xs transition-all">
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/melizabyiju" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-marigold hover:text-aubergine font-semibold text-xs transition-all">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Message Form Box -->
+          <div class="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 text-slate-800 shadow-xl border border-silver/50">
+            <h3 class="text-xl font-display font-bold text-aubergine mb-2">Send a Direct Message</h3>
+            <p class="text-xs text-slate-500 mb-6">Fill in your message and it will trigger an email directly to Meliza.</p>
+
+            <form id="contactForm" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Your Name</label>
+                <input type="text" id="senderName" required placeholder="Dr. / Prof. / Full Name" class="w-full px-4 py-2.5 rounded-xl bg-[#F8FAFC] border border-silver text-sm focus:outline-none focus:border-aubergine focus:ring-1 focus:ring-aubergine transition-all">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Email Address</label>
+                <input type="email" id="senderEmail" required placeholder="name@domain.com" class="w-full px-4 py-2.5 rounded-xl bg-[#F8FAFC] border border-silver text-sm focus:outline-none focus:border-aubergine focus:ring-1 focus:ring-aubergine transition-all">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Message</label>
+                <textarea id="senderMessage" rows="4" required placeholder="Hi Meliza, I'd like to discuss your research on SE4AI / a project collaboration..." class="w-full px-4 py-2.5 rounded-xl bg-[#F8FAFC] border border-silver text-sm focus:outline-none focus:border-aubergine focus:ring-1 focus:ring-aubergine transition-all resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-full bg-aubergine text-white font-bold text-sm hover:bg-aubergine-light transition-all shadow-md flex items-center justify-center gap-2 group">
+                <span>Send Message</span>
+                <i data-lucide="send" class="w-4 h-4 text-marigold group-hover:translate-x-1 transition-transform"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-silver/80 py-10 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-full bg-aubergine text-marigold font-bold text-xs flex items-center justify-center">M</div>
+        <span class="font-display font-bold text-aubergine">Meliza Mariya Byiju</span>
+        <span>•</span>
+        <span>Computer Science & Engineering</span>
+      </div>
+
+      <div class="text-xs text-center sm:text-right text-slate-400">
+        <p>© 2026 Meliza Mariya Byiju. Designed with modern light UI principles.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
   <script>
-    const pages = document.querySelectorAll('.page');
-    let currentIndex = 0;
-
-    function showPage(index) {
-      pages.forEach((page, i) => {
-        page.classList.toggle('active', i === index);
-      });
-    }
-
-    // Map for order of pages - sequence of navigation
-    const order = [
-      'page0', // Profile
-      'pageA', // About Me
-      'pageS', // Skills
-      'pageP', // Projects
-      'pageC', // Certifications
-      'page1', // Work Experience
-      'page2', // Education
-      'page3', // Contact
-    ];
-
-    // Get indexes for navigation convenience
-    function indexOfClass(className) {
-      return [...pages].findIndex(p => p.classList.contains(className));
-    }
-
-    // Event delegation for next and prev buttons
-    document.querySelector('.container').addEventListener('click', (e) => {
-      if (e.target.closest('.next-btn')) {
-        e.preventDefault();
-        if (currentIndex < pages.length -1) {
-          currentIndex++;
-          showPage(currentIndex);
-        }
-      }
-      if (e.target.closest('.prev-btn')) {
-        e.preventDefault();
-        if (currentIndex > 0) {
-          currentIndex--;
-          showPage(currentIndex);
-        }
-      }
-    });
-
-    // Initialize
-    showPage(currentIndex);
+    // Initialize Lucide Icons
+    lucide.createIcons();
   </script>
 </body>
 </html>

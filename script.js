@@ -1,74 +1,94 @@
-const pages = document.querySelectorAll('.page');
-let currentIndex = 0;
+// ==========================================================================
+// JavaScript for Meliza Mariya Byiju Portfolio
+// ==========================================================================
 
-function showPage(newIndex) {
-  if (newIndex === currentIndex) return;
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-  if (newIndex < 0 || newIndex >= pages.length) return;
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-  const currentPage = pages[currentIndex];
-  const nextPage = pages[newIndex];
-
-  // Animate current page sliding out left
-  currentPage.classList.remove('active');
-  currentPage.classList.add('exit-left');
-
-  // After animation, hide old page and reset classes
-  setTimeout(() => {
-    currentPage.classList.remove('exit-left');
-  }, 500);
-
-  // Show next page sliding in from right
-  nextPage.classList.add('active');
-
-  currentIndex = newIndex;
-}
-
-document.querySelector('.container').addEventListener('click', (e) => {
-  if (e.target.closest('.next-btn')) {
-    e.preventDefault();
-    if (currentIndex < pages.length - 1) {
-      showPage(currentIndex + 1);
-    }
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
   }
-  if (e.target.closest('.prev-btn')) {
-    e.preventDefault();
-    if (currentIndex > 0) {
-      showPage(currentIndex - 1);
-    }
-  }
-});
 
-// Keyboard navigation support
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowRight') {
-    if (currentIndex < pages.length - 1) {
-      showPage(currentIndex + 1);
-    }
-  } else if (e.key === 'ArrowLeft') {
-    if (currentIndex > 0) {
-      showPage(currentIndex - 1);
-    }
-  }
-});
+  // 2. Project Filtering
+  const filterButtons = document.querySelectorAll('.project-filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
 
-// Allow profile picture to rotate on click for extra interaction
-const profileImage = document.querySelector('.profile-content img');
-if (profileImage) {
-  profileImage.addEventListener('click', () => {
-    profileImage.style.transition = 'transform 1s ease';
-    profileImage.style.transform = 'rotateY(360deg)';
-    setTimeout(() => {
-      profileImage.style.transform = 'rotateY(0deg)';
-    }, 1000);
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all
+      filterButtons.forEach(b => {
+        b.classList.remove('active');
+        b.classList.remove('bg-aubergine', 'text-white');
+        b.classList.add('bg-white', 'text-slate-600');
+      });
+
+      // Add active state to clicked button
+      btn.classList.add('active');
+      btn.classList.remove('bg-white', 'text-slate-600');
+      btn.classList.add('bg-aubergine', 'text-white');
+
+      const filter = btn.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        const categories = card.getAttribute('data-category') || '';
+        if (filter === 'all' || categories.includes(filter)) {
+          card.classList.remove('hidden-card');
+          card.style.display = 'flex';
+        } else {
+          card.classList.add('hidden-card');
+          card.style.display = 'none';
+        }
+      });
+    });
   });
-}
 
-// Initialize first page visible
-pages.forEach((page, i) => {
-  if (i === currentIndex) {
-    page.classList.add('active');
-  } else {
-    page.classList.remove('active');
+  // 3. Contact Form Submission handling (Opens mail client with populated content)
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const message = document.getElementById('senderMessage').value.trim();
+
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+      // Open mail client
+      window.location.href = `mailto:melizabyiju@gmail.com?subject=${subject}&body=${body}`;
+
+      // Show confirmation toast
+      showToast('Opening your email client to send message to Meliza...');
+    });
+  }
+
+  // 4. Toast Notification helper
+  function showToast(text) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-6 right-6 z-50 px-5 py-3 rounded-2xl bg-aubergine text-white text-xs font-semibold shadow-2xl border border-marigold/30 flex items-center gap-3 animate-fade-in';
+    toast.innerHTML = `<span class="w-2 h-2 rounded-full bg-marigold"></span><span>${text}</span>`;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.4s ease';
+      setTimeout(() => toast.remove(), 400);
+    }, 4000);
+  }
+
+  // Re-run Lucide icon parser
+  if (window.lucide) {
+    window.lucide.createIcons();
   }
 });
