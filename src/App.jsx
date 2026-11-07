@@ -53,6 +53,11 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  // Ensure document body scrolling is active and unlocked
+  useEffect(() => {
+    document.body.style.overflow = '';
+  }, []);
+
   // Keyboard shortcut listener for Ctrl+K (Command Palette) and Backtick ` for Terminal
   useEffect(() => {
     const handleGlobalKeyDown = (e) => {
