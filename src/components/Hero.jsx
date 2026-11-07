@@ -86,7 +86,7 @@ export default function Hero() {
             </h2>
 
             {/* Academic highlights badges */}
-            <div className="inline-flex flex-wrap items-center gap-2 mb-5">
+            <div className="inline-flex flex-wrap items-center gap-2 mb-8 sm:mb-10">
               <span className="px-2.5 py-1 rounded-md bg-plum-800 text-white dark:bg-gold-500 dark:text-plum-950 font-mono text-xs font-bold uppercase tracking-wider">
                 Rank 1 • 10.0 CGPA
               </span>
@@ -97,10 +97,6 @@ export default function Hero() {
                 KAU RAISE 2026 Stage 2
               </span>
             </div>
-
-            <p className="font-sans text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6 max-w-xl">
-              Computer Science scholar at Amal Jyothi with a perfect 10.0 CGPA and SE4AI Research Scholar at <strong className="text-plum-900 dark:text-gold-400 font-semibold">NIT Calicut</strong>. I build autonomous computer vision algorithms, benchmark machine learning requirements, and create verified sustainability tech.
-            </p>
 
             {/* Quick CTAs */}
             <div className="flex flex-wrap gap-3 items-center pt-2">
@@ -155,38 +151,37 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Inspired directly by reference image with golden-yellow organic blob backdrop, arc accent line, and clean portrait (zero attached badges/stickers) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-            <div className="relative w-full max-w-sm sm:max-w-md flex items-center justify-center py-4">
+          {/* Right Column: Exact Reference Composition — Seamless Transparent Cutout over Organic Fluid Marigold Backdrop & Accent Arc */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center relative select-none">
+            <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] flex items-center justify-center pt-4 sm:pt-6 pb-2">
               
-              {/* Golden-Yellow Organic Fluid Backdrop (Matching Reference Image) */}
+              {/* Asymmetric Organic Fluid Marigold Backdrop (Directly Matching Reference) */}
               <div 
-                className="absolute w-[300px] h-[360px] sm:w-[350px] sm:h-[420px] bg-gold-500 rounded-[55%_45%_52%_48%/48%_54%_46%_52%] -z-10 transform -rotate-3 transition-transform duration-700 hover:rotate-0 shadow-xl shadow-gold-500/25"
-                style={{
-                  clipPath: 'none'
-                }}
+                className="absolute w-[290px] h-[290px] sm:w-[350px] sm:h-[350px] md:w-[390px] md:h-[390px] bg-[#EAAA00] rounded-[62%_38%_56%_44%/48%_56%_44%_52%] -z-10 transform -rotate-6 transition-transform duration-700 hover:rotate-0 shadow-2xl shadow-gold-500/30"
               />
 
-              {/* Minimal Curved Accent Arc Line (Matching Reference Image Arc) */}
+              {/* Minimal Curved Accent Arc Line on the Left (Echoing the Reference Arc) */}
               <svg
-                className="absolute -left-2 sm:-left-6 top-1/4 w-8 sm:w-10 h-24 text-slate-800 dark:text-slate-200 pointer-events-none -z-5"
-                viewBox="0 0 40 100"
+                className="absolute -left-2 sm:-left-4 md:-left-7 top-[28%] w-8 sm:w-10 h-28 text-slate-800 dark:text-gold-400/80 pointer-events-none -z-5"
+                viewBox="0 0 40 110"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.5"
+                strokeWidth="2.75"
                 strokeLinecap="round"
               >
-                <path d="M 32 10 Q 8 50 32 90" />
+                <path d="M 32 10 Q 6 55 30 100" />
               </svg>
 
-              {/* Clean Framed Portrait: Overlapping the golden backdrop, zero attached badges/stickers */}
-              <div className="relative w-[270px] sm:w-[320px] aspect-[3/4] rounded-[36px] overflow-hidden border-4 border-white dark:border-plum-950 shadow-2xl bg-plum-900 group">
+              {/* Transparent Person Cutout — No rectangular box, no border, zero stickers/badges */}
+              <div className="relative z-10 w-full flex justify-center [mask-image:linear-gradient(to_bottom,black_88%,transparent_100%)]">
                 <img
-                  src="Images/hero.jpeg"
+                  src="Images/hero_cutout.png"
                   alt="Meliza Mariya Byiju"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="w-[280px] sm:w-[340px] md:w-[380px] h-auto object-contain pointer-events-none transition-transform duration-700 hover:scale-[1.02] filter drop-shadow-[0_15px_25px_rgba(58,15,52,0.18)] dark:drop-shadow-[0_15px_25px_rgba(0,0,0,0.5)]"
                   onError={(e) => {
-                    e.currentTarget.src = "Images/about.jpeg";
+                    // Fallback to hero.jpeg if png cutout isn't loaded
+                    e.currentTarget.src = "Images/hero.jpeg";
+                    e.currentTarget.className = "w-[260px] sm:w-[300px] aspect-[4/5] object-cover object-top rounded-3xl shadow-xl";
                   }}
                 />
               </div>
