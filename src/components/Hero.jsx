@@ -8,11 +8,11 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative pt-28 sm:pt-36 pb-24 md:pb-32 overflow-hidden bg-[#FAF6F2] dark:bg-[#10030F] transition-colors duration-300">
-      
+
       {/* ========================================================================
           HERO BACKGROUND COMPOSITION (WARM BLUSH, PEACH/GOLD GLOWS, CURVES & WAVES)
           ======================================================================== */}
-      
+
       {/* 1. Subtle Peach and Golden Radial Glow behind Profile Photo */}
       <div
         className="absolute right-0 lg:right-4 top-1/2 -translate-y-1/2 w-[420px] sm:w-[580px] lg:w-[720px] h-[420px] sm:h-[580px] lg:h-[720px] pointer-events-none -z-10"
@@ -78,13 +78,13 @@ export default function Hero() {
           PRESERVED HERO CONTENT, LAYOUT, TEXT, BADGES, BUTTONS & PROFILE IMAGE
           ======================================================================== */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        
+
         {/* Hero Main Presentation Stage */}
         <div className="mt-2 sm:mt-4 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
+
           {/* Left Column: "Hello There!" Bounding Box, Headline & Pitch */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            
+
             {/* Interactive Design Anchor Box: "Hello There!" (from Image Reference) */}
             <div className="inline-block relative mb-4">
               <div className="relative inline-flex items-center px-4 py-1.5 border border-slate-400 dark:border-plum-600 bg-white dark:bg-plum-900/70 shadow-sm select-none">
@@ -93,7 +93,7 @@ export default function Hero() {
                 <span className="absolute -top-1.5 -right-1.5 w-2.5 h-2.5 bg-gold-500 border border-slate-900 dark:border-white rounded-[1px]"></span>
                 <span className="absolute -bottom-1.5 -left-1.5 w-2.5 h-2.5 bg-gold-500 border border-slate-900 dark:border-white rounded-[1px]"></span>
                 <span className="absolute -bottom-1.5 -right-1.5 w-2.5 h-2.5 bg-gold-500 border border-slate-900 dark:border-white rounded-[1px]"></span>
-                
+
                 <span className="font-sans text-xs sm:text-sm font-semibold tracking-wide text-slate-800 dark:text-slate-100">
                   Hello There!
                 </span>
@@ -127,8 +127,7 @@ export default function Hero() {
             </div>
 
             <p className="font-sans text-base sm:text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6 max-w-xl">
-              Computer Science scholar at Amal Jyothi with a perfect 10.0 CGPA and SE4AI Research Scholar at <strong className="text-plum-900 dark:text-gold-400 font-semibold">NIT Calicut</strong>. I build autonomous computer vision algorithms, benchmark machine learning requirements, and create verified sustainability tech.
-            </p>
+              I'm a Computer Science undergraduate passionate about Artificial Intelligence, Machine Learning, and Software Engineering. I enjoy building intelligent systems, exploring innovative technologies, and transforming ideas into practical solutions that create meaningful real-world impact.            </p>
 
             {/* Quick CTAs */}
             <div className="flex flex-wrap gap-3 items-center pt-2">
@@ -186,25 +185,25 @@ export default function Hero() {
           {/* Right Column: Profile Photo Area with Soft Peach/Gold Gradient, Overlapping Circular Outlines & Radiating Plum Strokes */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative select-none">
             <div className="relative isolate w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] flex items-center justify-center pt-4 sm:pt-6 pb-2">
-              
-              {/* Three Radiating Plum Strokes Above Head (from Reference Image) */}
+
+              {/* Three Accent Tick Marks Radiating Toward Top-Right (Matching Reference Image) */}
               <svg
                 className="absolute -top-1 sm:top-1 right-12 sm:right-16 w-8 h-8 text-[#3A0F34] dark:text-gold-400/90 pointer-events-none z-20"
                 viewBox="0 0 36 36"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.25"
+                strokeWidth="2.5"
                 strokeLinecap="round"
               >
-                <line x1="18" y1="26" x2="18" y2="10" />
-                <line x1="10" y1="23" x2="3" y2="13" />
-                <line x1="26" y1="23" x2="33" y2="13" />
+                <line x1="12" y1="17" x2="18" y2="6" />
+                <line x1="16" y1="20" x2="27" y2="14" />
+                <line x1="18" y1="26" x2="30" y2="24" />
               </svg>
 
               {/* Large Soft Peach and Golden Gradient Organic Shape Behind Portrait */}
               <div
                 aria-hidden="true"
-                className="profile-organic-shape absolute left-1/2 top-[53%] -translate-x-[53%] -translate-y-1/2 w-[270px] h-[320px] sm:w-[330px] sm:h-[380px] md:w-[365px] md:h-[410px] blur-[0.5px] z-0"
+                className="profile-organic-shape absolute left-[36%] sm:left-[38%] top-[53%] -translate-x-1/2 -translate-y-1/2 w-[200px] h-[320px] sm:w-[240px] sm:h-[380px] md:w-[260px] md:h-[410px] blur-[0.5px] z-0"
               />
 
               {/* Thin Overlapping Golden Circular Outlines (Matching Reference) */}
