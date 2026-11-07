@@ -135,9 +135,8 @@ body {
   color: #1A0519;
 }
 
-/* Custom Cursor: Brand 'm' Letter & Smooth Ring */
-.custom-cursor-m,
-.custom-cursor-dot {
+/* Custom Cursor: Brand 'm' inside 'o' Ring */
+.custom-cursor-m {
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -145,25 +144,38 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 14px;
-  height: 14px;
-  color: #3A0F34;
+  width: 16px;
+  height: 16px;
   font-family: 'Plus Jakarta Sans', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 13px;
   font-weight: 800;
   line-height: 1;
   text-align: center;
   user-select: none;
-  z-index: 9999;
+  z-index: 10001;
+  will-change: transform;
   transform: translate(-50%, -50%);
-  transition: opacity 0.2s ease, transform 0.12s cubic-bezier(0.2, 0, 0, 1), color 0.2s ease;
+  transition: color 0.22s cubic-bezier(0.2, 0, 0, 1),
+              text-shadow 0.22s cubic-bezier(0.2, 0, 0, 1),
+              opacity 0.2s ease;
 }
 
-.dark .custom-cursor-m,
-.dark .custom-cursor-dot {
+/* Palette Color States for 'm' */
+.custom-cursor-m.is-purple {
+  color: #3A0F34;
+  text-shadow: none;
+}
+
+.custom-cursor-m.is-yellow {
   color: #EAAA00;
+  text-shadow: 0 0 8px rgba(234, 170, 0, 0.45);
 }
 
+.dark .custom-cursor-m {
+  color: #EAAA00 !important;
+}
+
+/* Outer follower ring 'o' */
 .custom-cursor-ring {
   pointer-events: none;
   position: fixed;
@@ -171,20 +183,41 @@ body {
   left: 0;
   width: 32px;
   height: 32px;
-  border: 1.5px solid rgba(58, 15, 52, 0.35);
   border-radius: 50%;
-  z-index: 9998;
+  z-index: 10000;
+  will-change: transform;
   transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  transition: border-color 0.22s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.22s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.22s cubic-bezier(0.2, 0, 0, 1),
+              opacity 0.2s ease;
+}
+
+/* Palette Color States for ring 'o' */
+.custom-cursor-ring.is-purple {
+  border: 1.5px solid rgba(58, 15, 52, 0.45);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.custom-cursor-ring.is-yellow {
+  border: 1.5px solid #EAAA00;
+  background-color: rgba(234, 170, 0, 0.08);
+  box-shadow: 0 0 10px rgba(234, 170, 0, 0.25);
+}
+
+.custom-cursor-ring.is-hovered {
+  border-color: #EAAA00 !important;
+  background-color: rgba(234, 170, 0, 0.14) !important;
+  box-shadow: 0 0 16px rgba(234, 170, 0, 0.35) !important;
 }
 
 .dark .custom-cursor-ring {
-  border-color: rgba(234, 170, 0, 0.4);
+  border-color: #EAAA00;
 }
 
 @media (pointer: coarse) {
   .custom-cursor-m,
-  .custom-cursor-dot,
   .custom-cursor-ring {
     display: none !important;
   }
