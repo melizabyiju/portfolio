@@ -41,7 +41,7 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 28s linear infinite;
+  animation: marquee-scroll 24s linear infinite;
 }
 
 .marquee-track:hover {
@@ -55,6 +55,20 @@
   100% {
     transform: translateX(-50%);
   }
+}
+
+/* Rotating Stamp Badge Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 16s linear infinite;
 }
 
 /* Gentle Floating Badges Animation */
@@ -71,13 +85,42 @@
   animation: float-slow 4s ease-in-out infinite;
 }
 
-/* Card Hover Elevate */
-.project-card, .achievement-card {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+/* Project Accordion Card Transitions */
+.project-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  border-color: #EAAA00;
+  box-shadow: 0 14px 35px -10px rgba(58, 15, 52, 0.08);
+}
+
+.project-card.is-expanded {
+  border-color: #3A0F34;
+  box-shadow: 0 20px 40px -12px rgba(58, 15, 52, 0.12);
+  background: #FFFFFF;
+}
+
+/* Expandable content area */
+.project-expanded-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, margin-top 0.35s ease;
+}
+
+.project-card.is-expanded .project-expanded-body {
+  max-height: 800px;
+  opacity: 1;
+  margin-top: 1.25rem;
+}
+
+/* Chevron icon rotation on expand */
+.project-card.is-expanded .expand-icon {
+  transform: rotate(180deg);
+  background-color: #3A0F34;
+  color: #EAAA00;
 }
 
 /* Filter Transitions */
@@ -90,4 +133,34 @@
   background-color: #3A0F34 !important;
   color: #FFFFFF !important;
   border-color: #3A0F34 !important;
+}
+
+/* Custom Corner Bracket Tag from Reference */
+.corner-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 1rem;
+}
+
+.corner-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #EAAA00;
+  border-left: 2px solid #EAAA00;
+}
+
+.corner-tag::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #EAAA00;
+  border-right: 2px solid #EAAA00;
 }
