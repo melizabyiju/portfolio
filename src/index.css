@@ -237,18 +237,18 @@ body {
 }
 
 .profile-portrait-image {
-  translate: -1.25rem 0;
+  translate: -1.5rem 0;
 }
 
 @media (min-width: 640px) {
   .profile-portrait-image {
-    translate: -1.75rem 0;
+    translate: -2rem 0;
   }
 }
 
 @media (min-width: 768px) {
   .profile-portrait-image {
-    translate: -2rem 0;
+    translate: -3rem 0;
   }
 }
 

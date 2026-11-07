@@ -7,7 +7,7 @@ export default function Hero() {
   const { personal } = portfolioData;
 
   return (
-    <section id="hero" className="relative pt-28 sm:pt-32 pb-6 sm:pb-8 md:pb-10 overflow-hidden bg-[#FAF6F2] dark:bg-[#10030F] transition-colors duration-300">
+    <section id="hero" className="relative pt-28 sm:pt-36 pb-24 md:pb-32 overflow-hidden bg-[#FAF6F2] dark:bg-[#10030F] transition-colors duration-300">
 
       {/* ========================================================================
           HERO BACKGROUND COMPOSITION (WARM BLUSH, PEACH/GOLD GLOWS, CURVES & WAVES)
@@ -149,7 +149,7 @@ export default function Hero() {
             </div>
 
             {/* Social Links Row */}
-            <div className="flex items-center gap-4 mt-6 pt-4 border-t border-plum-900/10 dark:border-white/10">
+            <div className="flex items-center gap-4 mt-8 pt-6 border-t border-plum-900/10 dark:border-white/10">
               <a
                 href={personal.github}
                 target="_blank"
@@ -184,7 +184,7 @@ export default function Hero() {
 
           {/* Right Column: Profile Photo Area with Soft Peach/Gold Gradient, Overlapping Circular Outlines & Radiating Plum Strokes */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative select-none">
-            <div className="relative isolate w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] flex items-center justify-center pt-4 sm:pt-6 pb-0">
+            <div className="relative isolate w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] flex items-center justify-center pt-4 sm:pt-6 pb-2">
 
               {/* Three Accent Tick Marks Radiating Toward Top-Right (Matching Reference Image) */}
               <svg
