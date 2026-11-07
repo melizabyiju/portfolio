@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Design System for Meliza Byiju Portfolio
+   Design System & Swarm Rebuild for Meliza Byiju Portfolio
    Conforms strictly to landing-page-design specifications
    - Single Typeface: Manrope
    - Code / Data: Geist Mono
@@ -33,7 +33,7 @@
   --text-main: #1E293B;
   --text-muted: #64748B;
   --text-heading: #3A0F34;
-  --nav-bg: rgba(58, 15, 52, 0.95);
+  --nav-bg: #3A0F34;
   --nav-text: #F8FAFC;
   
   /* Base Motion Curve */
@@ -50,7 +50,7 @@
   --text-main: #DDE3E8;
   --text-muted: #94A3B8;
   --text-heading: #FFFFFF;
-  --nav-bg: rgba(26, 6, 23, 0.95);
+  --nav-bg: #1A0617;
   --nav-text: #FFFFFF;
 }
 
@@ -209,8 +209,38 @@ p, li, span, label {
   color: var(--color-marigold);
 }
 
+/* Corner bracket tag */
+.corner-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+}
+
+.corner-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--color-marigold);
+  border-left: 2px solid var(--color-marigold);
+}
+
+.corner-tag::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid var(--color-marigold);
+  border-right: 2px solid var(--color-marigold);
+}
+
 /* ==========================================================================
-   SWARM REBUILD EXTENSION STYLES
+   SWARM REBUILD EXTENSION (Figma / IDE Canvas Style)
    ========================================================================== */
 
 #swarm-canvas-container {
@@ -221,89 +251,143 @@ p, li, span, label {
   overflow: hidden;
 }
 
-/* Agent Cursor Pointer */
+/* Canvas Rulers (Top & Left) shown during Rebuild phase */
+.editor-ruler-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: rgba(31, 7, 28, 0.94);
+  border-bottom: 1px solid rgba(234, 170, 0, 0.3);
+  z-index: 9993;
+  display: none;
+  font-family: 'Geist Mono', monospace;
+  font-size: 9px;
+  color: #EAAA00;
+  padding-left: 24px;
+  line-height: 18px;
+  overflow: hidden;
+  letter-spacing: 40px;
+}
+
+.editor-ruler-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 18px;
+  background: rgba(31, 7, 28, 0.94);
+  border-right: 1px solid rgba(234, 170, 0, 0.3);
+  z-index: 9993;
+  display: none;
+  font-family: 'Geist Mono', monospace;
+  font-size: 9px;
+  color: #EAAA00;
+  padding-top: 24px;
+  overflow: hidden;
+  writing-mode: vertical-rl;
+  letter-spacing: 40px;
+}
+
+body.is-building .editor-ruler-top,
+body.is-building .editor-ruler-left {
+  display: block;
+}
+
+/* Minimal Sleek Cursors (Figma Style) */
 .swarm-agent-cursor {
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 9995;
-  transition: transform 60ms linear;
+  z-index: 9996;
   will-change: transform;
+  transition: transform 70ms linear;
 }
 
 .swarm-cursor-arrow {
-  width: 18px;
-  height: 18px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  width: 15px;
+  height: 15px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
 }
 
+/* Tiny clean tag (Figma multiplayer style, NOT giant bulky box) */
 .swarm-agent-badge {
   position: absolute;
-  left: 14px;
-  top: 14px;
+  left: 12px;
+  top: 12px;
   white-space: nowrap;
   font-family: 'Geist Mono', monospace;
-  font-size: 10px;
-  font-weight: 600;
-  padding: 2px 6px;
-  border-radius: 4px;
-  color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.swarm-agent-action {
   font-size: 9px;
-  opacity: 0.85;
-  background: rgba(0,0,0,0.2);
-  padding: 1px 4px;
-  border-radius: 2px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
 }
 
-/* Dynamic Laser Guidelines */
+/* Figma Selection Bounding Box with 4 Corner Handles */
+.editor-selection-box {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9992;
+  border: 1.5px solid #06B6D4;
+  background: rgba(6, 182, 212, 0.05);
+  opacity: 0;
+  transition: opacity 150ms ease, top 200ms var(--motion-curve), left 200ms var(--motion-curve), width 200ms var(--motion-curve), height 200ms var(--motion-curve);
+}
+
+.editor-selection-box.is-active {
+  opacity: 1;
+}
+
+.editor-selection-box::before,
+.editor-selection-box::after,
+.editor-handle-bl,
+.editor-handle-br {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #FFFFFF;
+  border: 1.5px solid #06B6D4;
+  border-radius: 1px;
+}
+
+.editor-selection-box::before { top: -4px; left: -4px; }
+.editor-selection-box::after { top: -4px; right: -4px; }
+.editor-handle-bl { bottom: -4px; left: -4px; }
+.editor-handle-br { bottom: -4px; right: -4px; }
+
+/* Laser Alignment Guides */
 .swarm-laser-line {
   position: absolute;
   pointer-events: none;
   z-index: 9991;
   opacity: 0;
-  transition: opacity 200ms ease;
+  transition: opacity 150ms ease;
 }
 
 .swarm-laser-line.is-active {
-  opacity: 0.45;
+  opacity: 0.6;
 }
 
 .swarm-laser-h {
   height: 1px;
   width: 100%;
   left: 0;
-  background: linear-gradient(90deg, transparent, #EAAA00, transparent);
+  background: linear-gradient(90deg, transparent, #EC4899, #06B6D4, transparent);
 }
 
 .swarm-laser-v {
   width: 1px;
   height: 100%;
   top: 0;
-  background: linear-gradient(180deg, transparent, #EAAA00, transparent);
-}
-
-/* Inspection Bounding Box */
-.swarm-inspect-box {
-  position: absolute;
-  pointer-events: none;
-  z-index: 9992;
-  border: 1.5px dashed #EAAA00;
-  background-color: rgba(234, 170, 0, 0.04);
-  border-radius: 8px;
-  opacity: 0;
-  transition: opacity 180ms ease, top 250ms var(--motion-curve), left 250ms var(--motion-curve), width 250ms var(--motion-curve), height 250ms var(--motion-curve);
-}
-
-.swarm-inspect-box.is-active {
-  opacity: 1;
+  background: linear-gradient(180deg, transparent, #EC4899, #06B6D4, transparent);
 }
 
 /* Floating Extension Control Dock */
@@ -313,12 +397,12 @@ p, li, span, label {
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
-  background: rgba(31, 7, 28, 0.92);
+  background: rgba(26, 6, 23, 0.95);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(221, 227, 232, 0.2);
+  border: 1px solid rgba(234, 170, 0, 0.3);
   border-radius: 9999px;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  padding: 0.45rem 1rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -389,34 +473,4 @@ p, li, span, label {
 
 .swarm-restore-pill:hover {
   transform: scale(1.05);
-}
-
-/* Corner bracket tag */
-.corner-tag {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.35rem 0.85rem;
-}
-
-.corner-tag::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid var(--color-marigold);
-  border-left: 2px solid var(--color-marigold);
-}
-
-.corner-tag::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 8px;
-  height: 8px;
-  border-bottom: 2px solid var(--color-marigold);
-  border-right: 2px solid var(--color-marigold);
 }

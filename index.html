@@ -61,17 +61,23 @@
 <body class="selection:bg-marigold selection:text-aubergine-dark relative overflow-x-hidden min-h-screen">
 
   <!-- ========================================================================
-       SWARM REBUILD EXTENSION OVERLAY & CURSORS
+       SWARM REBUILD EXTENSION (Figma / IDE Editor Canvas Overlay)
        ======================================================================== -->
+  <div class="editor-ruler-top">0 100 200 300 400 500 600 700 800 900 1000 1100 1200 1300 1400</div>
+  <div class="editor-ruler-left">0 100 200 300 400 500 600 700 800 900</div>
+
   <div id="swarm-canvas-container" aria-hidden="true">
-    <!-- Active Inspection Bounding Box -->
-    <div id="swarmInspectBox" class="swarm-inspect-box"></div>
-    <!-- Dynamic Laser Crosshairs -->
+    <!-- Active Figma Selection Bounding Box with Corner Handles -->
+    <div id="editorSelectionBox" class="editor-selection-box">
+      <div class="editor-handle-bl"></div>
+      <div class="editor-handle-br"></div>
+    </div>
+    <!-- Alignment Laser Lines -->
     <div id="swarmLaserH" class="swarm-laser-line swarm-laser-h"></div>
     <div id="swarmLaserV" class="swarm-laser-line swarm-laser-v"></div>
   </div>
 
-  <!-- FLOATING EXTENSION CONTROL DOCK (Inspired by Autonomous Agent Swarm Video) -->
+  <!-- FLOATING EXTENSION CONTROL DOCK -->
   <aside id="swarmDock" class="swarm-dock" aria-label="Swarm Rebuild Extension Bar">
     <div class="flex items-center gap-2">
       <div class="flex gap-1">
@@ -84,11 +90,11 @@
 
     <span class="text-slate-500">|</span>
     
-    <span id="swarmLayerCounter" class="text-marigold font-semibold">142 / 364 layers</span>
+    <span id="swarmLayerCounter" class="text-marigold font-semibold">364 / 364 layers</span>
 
     <span class="text-slate-500">|</span>
 
-    <button id="swarmModeBtn" class="swarm-dock-btn text-marigold" title="Toggle autonomous tour mode">
+    <button id="swarmModeBtn" class="swarm-dock-btn text-marigold" title="Toggle autonomous mode">
       Touring
     </button>
 
@@ -96,11 +102,11 @@
       1x
     </button>
 
-    <button id="swarmRebuildBtn" class="swarm-dock-btn font-bold text-white hover:text-marigold" title="Trigger full swarm rebuild cascade">
-      <i class="ph ph-sparkle text-marigold"></i> Pulse
+    <button id="swarmRebuildBtn" class="swarm-dock-btn font-bold text-white hover:text-marigold" title="Trigger full cursor build sequence">
+      <i class="ph ph-arrow-clockwise text-marigold"></i> Rebuild
     </button>
 
-    <button id="swarmCloseBtn" class="text-slate-400 hover:text-white p-1 ml-1" title="Minimize swarm control dock" aria-label="Close dock">
+    <button id="swarmCloseBtn" class="text-slate-400 hover:text-white p-1 ml-1" title="Minimize dock" aria-label="Close dock">
       <i class="ph ph-x text-xs"></i>
     </button>
   </aside>
@@ -112,86 +118,89 @@
   </button>
 
   <!-- ========================================================================
-       TOP EDITORIAL STATUS BAR (Inspired by Joyel Shaji Editorial Layout)
+       TOP FIXED NAVIGATION BAR (Editorial Style per Reference)
        ======================================================================== -->
-  <div class="bg-aubergine-dark text-slate-300 border-b border-white/10 text-[11px] font-mono py-1.5 px-4 hidden sm:block">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <span><strong class="text-marigold font-semibold">ROLE:</strong> AI and SE4AI Researcher</span>
-        <span><strong class="text-marigold font-semibold">LOCATION:</strong> Kerala, India</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="text-slate-200 uppercase tracking-wider font-semibold">Available for AI Collaborations</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================
-       FLOATING NAVIGATION BAR
-       ======================================================================== -->
-  <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6">
-    <nav class="max-w-6xl mx-auto bg-aubergine text-white rounded-full px-5 sm:px-7 py-3 flex items-center justify-between shadow-[0_12px_36px_rgba(58,15,52,0.25)] border border-white/10 transition-all duration-300">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#F8F9FA]/95 dark:bg-[#120611]/95 backdrop-blur-md border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[68px] flex items-center justify-between">
       
-      <!-- Brand Logo -->
-      <a href="#hero" class="flex items-center gap-2.5 group">
-        <div class="w-9 h-9 rounded-full bg-marigold flex items-center justify-center text-aubergine font-bold text-base shadow-sm group-hover:scale-105 transition-transform">
-          M
-        </div>
-        <span class="font-bold text-xl tracking-tight text-white">Meliza<span class="text-marigold">.</span></span>
+      <!-- Left: Brand Logo & Title -->
+      <a href="#hero" class="flex flex-col select-none group leading-none">
+        <span class="font-extrabold text-[15px] sm:text-base tracking-tight text-slate-900 dark:text-white uppercase leading-none group-hover:text-marigold transition-colors font-sans">
+          MELIZA BYIJU
+        </span>
+        <span class="text-[9.5px] sm:text-[10px] font-mono tracking-[0.24em] text-slate-400 dark:text-slate-400 uppercase font-semibold mt-1">
+          PORTFOLIO
+        </span>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <div class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-200">
-        <a href="#hero" class="hover:text-marigold transition-colors">Home</a>
-        <a href="#services" class="hover:text-marigold transition-colors">Expertise</a>
-        <a href="#methodology" class="hover:text-marigold transition-colors">Methodology</a>
-        <a href="#projects" class="hover:text-marigold transition-colors">Projects</a>
-        <a href="#experience" class="hover:text-marigold transition-colors">Research</a>
-        <a href="#milestones" class="hover:text-marigold transition-colors">Milestones</a>
-        <a href="#faq" class="hover:text-marigold transition-colors">FAQ</a>
-      </div>
+      <!-- Center: Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-[11.5px] sm:text-xs font-bold tracking-wider uppercase text-slate-800 dark:text-slate-200">
+        <a href="#about" class="hover:text-marigold transition-colors py-1">ABOUT</a>
+        <a href="#work" class="hover:text-marigold transition-colors py-1">WORK</a>
+        <a href="#experience" class="hover:text-marigold transition-colors py-1">EXPERIENCE</a>
+        <a href="#skills" class="hover:text-marigold transition-colors py-1">SKILLS</a>
+        <a href="#education" class="hover:text-marigold transition-colors py-1">EDUCATION</a>
+        <a href="#leadership" class="hover:text-marigold transition-colors py-1">LEADERSHIP</a>
+        <a href="#contact" class="hover:text-marigold transition-colors py-1">CONTACT</a>
+      </nav>
 
-      <!-- Action Items & Theme Toggle -->
-      <div class="flex items-center gap-3">
-        <!-- Theme Toggle Button -->
-        <button id="themeToggleBtn" aria-label="Toggle visual theme" class="p-2 rounded-full bg-white/10 text-marigold hover:bg-white/20 transition-all">
-          <i id="themeIcon" class="ph ph-moon text-base"></i>
-        </button>
-
-        <!-- Primary Header CTA -->
-        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-aubergine text-xs font-bold hover:bg-marigold hover:text-aubergine-dark transition-all shadow-md hover:scale-[1.02]">
-          <span>Contact Meliza</span>
+      <!-- Right: Action Controls (Get in Touch + Theme Toggle + Menu Toggle) -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <!-- GET IN TOUCH Outline Button -->
+        <a href="#contact" class="inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-4 py-2 border border-slate-900 dark:border-white text-slate-900 dark:text-white font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-950 transition-all duration-150 shadow-sm">
+          <span>GET IN TOUCH</span>
           <i class="ph ph-arrow-up-right text-xs"></i>
         </a>
 
-        <!-- Mobile Menu Toggle Button -->
-        <button id="mobileMenuBtn" aria-label="Toggle navigation drawer" class="lg:hidden p-2 rounded-full text-white hover:bg-white/10 transition-colors">
-          <i class="ph ph-list text-xl"></i>
+        <!-- Square Theme Toggle Box Button -->
+        <button id="themeToggleBtn" aria-label="Toggle visual theme" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-slate-300 dark:border-white/20 text-slate-800 dark:text-slate-200 hover:border-slate-900 dark:hover:border-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors" title="Toggle theme">
+          <i id="themeIcon" class="ph ph-moon text-base"></i>
+        </button>
+
+        <!-- Square Hamburger Menu Box Button -->
+        <button id="mobileMenuBtn" aria-label="Toggle navigation drawer" class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-slate-300 dark:border-white/20 text-slate-800 dark:text-slate-200 hover:border-slate-900 dark:hover:border-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors" title="Open navigation menu">
+          <i class="ph ph-list text-lg"></i>
         </button>
       </div>
-    </nav>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden lg:hidden max-w-md mx-auto mt-3 bg-aubergine text-white border border-white/10 rounded-3xl p-6 shadow-2xl transition-all duration-300">
-      <div class="flex flex-col space-y-4 text-sm font-semibold text-slate-200">
-        <a href="#hero" class="mobile-nav-link py-2 border-b border-white/10 flex items-center justify-between hover:text-marigold">Home <i class="ph ph-arrow-right"></i></a>
-        <a href="#services" class="mobile-nav-link py-2 border-b border-white/10 flex items-center justify-between hover:text-marigold">Expertise <i class="ph ph-arrow-right"></i></a>
-        <a href="#methodology" class="mobile-nav-link py-2 border-b border-white/10 flex items-center justify-between hover:text-marigold">Methodology <i class="ph ph-arrow-right"></i></a>
-        <a href="#projects" class="mobile-nav-link py-2 border-b border-white/10 flex items-center justify-between hover:text-marigold">Projects <i class="ph ph-arrow-right"></i></a>
-        <a href="#experience" class="mobile-nav-link py-2 border-b border-white/10 flex items-center justify-between hover:text-marigold">Research Experience <i class="ph ph-arrow-right"></i></a>
-        <a href="#milestones" class="mobile-nav-link py-2 border-b border-white/10 flex items-center justify-between hover:text-marigold">Milestones <i class="ph ph-arrow-right"></i></a>
-        <a href="#faq" class="mobile-nav-link py-2 border-b border-white/10 flex items-center justify-between hover:text-marigold">FAQ <i class="ph ph-arrow-right"></i></a>
-        <a href="#contact" class="mobile-nav-link pt-2 text-center py-3 bg-marigold text-aubergine-dark rounded-full font-bold">Get in Touch</a>
+    </div>
+
+    <!-- Dropdown / Drawer Menu -->
+    <div id="mobileMenu" class="hidden bg-[#F8F9FA] dark:bg-[#150713] border-b border-slate-200 dark:border-white/10 shadow-2xl transition-all duration-200">
+      <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col space-y-3 font-bold text-xs uppercase tracking-wider text-slate-800 dark:text-slate-200">
+        <a href="#about" class="mobile-nav-link py-2.5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between hover:text-marigold transition-colors">ABOUT <i class="ph ph-arrow-right text-xs"></i></a>
+        <a href="#work" class="mobile-nav-link py-2.5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between hover:text-marigold transition-colors">WORK <i class="ph ph-arrow-right text-xs"></i></a>
+        <a href="#experience" class="mobile-nav-link py-2.5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between hover:text-marigold transition-colors">EXPERIENCE <i class="ph ph-arrow-right text-xs"></i></a>
+        <a href="#skills" class="mobile-nav-link py-2.5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between hover:text-marigold transition-colors">SKILLS <i class="ph ph-arrow-right text-xs"></i></a>
+        <a href="#education" class="mobile-nav-link py-2.5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between hover:text-marigold transition-colors">EDUCATION <i class="ph ph-arrow-right text-xs"></i></a>
+        <a href="#leadership" class="mobile-nav-link py-2.5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between hover:text-marigold transition-colors">LEADERSHIP <i class="ph ph-arrow-right text-xs"></i></a>
+        <a href="#contact" class="mobile-nav-link py-2.5 border-b border-slate-200 dark:border-white/10 flex items-center justify-between hover:text-marigold transition-colors">CONTACT <i class="ph ph-arrow-right text-xs"></i></a>
+        <a href="#contact" class="mobile-nav-link mt-2 text-center py-3 border border-slate-900 dark:border-white bg-slate-900 text-white dark:bg-white dark:text-slate-950 font-mono text-xs font-bold uppercase tracking-wider">
+          GET IN TOUCH <i class="ph ph-arrow-up-right ml-1"></i>
+        </a>
       </div>
     </div>
   </header>
 
   <main>
     <!-- ========================================================================
-         HERO SECTION (Outcome + Audience, Olivia layout & Joyel editorial touches)
+         HERO SECTION
          ======================================================================== -->
-    <section id="hero" class="pt-36 sm:pt-44 pb-16 sm:pb-24 px-4 sm:px-6 max-w-7xl mx-auto">
+    <div id="about" class="scroll-mt-24"></div>
+    <section id="hero" class="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6 max-w-7xl mx-auto scroll-mt-20">
+      
+      <!-- Top Editorial Status Pills (Integrated cleanly above hero content) -->
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-8 pt-2 text-[11px] font-mono border-b border-silver/80 dark:border-white/10 pb-3">
+        <div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+          <span><strong class="text-aubergine dark:text-marigold">ROLE:</strong> AI & SE4AI Researcher</span>
+          <span><strong class="text-aubergine dark:text-marigold">LOCATION:</strong> Kerala, India</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-slate-600 dark:text-slate-300 font-semibold uppercase tracking-wider">Available for Collaborations</span>
+        </div>
+      </div>
+
       <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         
         <!-- Left Column: Big Bold Typography & Outcome -->
@@ -204,8 +213,8 @@
             </div>
           </div>
 
-          <!-- Giant Headline (Capped at 680px with meaningful line breaks per B5) -->
-          <div class="max-w-[680px] space-y-2">
+          <!-- Headline Container for Swarm Build Targeting -->
+          <div class="hero-headline max-w-[680px] space-y-2">
             <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-[1.08] tracking-tight">
               I am <span class="text-marigold">Meliza Byiju</span>,
               <br>
@@ -215,13 +224,13 @@
             </h1>
           </div>
 
-          <!-- Subheadline (Outcome driven, clarifies who and how, max width 680px) -->
+          <!-- Subheadline -->
           <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-[680px] mx-auto lg:mx-0 leading-relaxed font-normal">
             Computer Science scholar at Amal Jyothi with a perfect <strong class="text-aubergine dark:text-white font-bold">10.0 CGPA</strong> and <strong class="text-aubergine dark:text-white font-bold">SE4AI Researcher at NIT Calicut</strong>. Engineering intelligent machine learning architectures and real world sustainability systems.
           </p>
 
           <!-- Dual Pill Action Buttons -->
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+          <div class="hero-cta-row flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
             <!-- Left CTA: Pill with Attached Circular Marigold Play Badge -->
             <a href="#projects" class="inline-flex items-center rounded-full bg-aubergine text-white pl-7 pr-2 py-2 hover:bg-aubergine-light transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 group">
               <span class="font-bold text-sm tracking-wide mr-3">Explore Projects</span>
@@ -236,8 +245,8 @@
             </a>
           </div>
 
-          <!-- Quick Metrics Bar (Specific figures per A4, B8) -->
-          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-silver dark:border-white/10 max-w-lg mx-auto lg:mx-0">
+          <!-- Quick Metrics Bar -->
+          <div class="stat-counter pt-6 grid grid-cols-3 gap-4 border-t border-silver dark:border-white/10 max-w-lg mx-auto lg:mx-0">
             <div>
               <div class="text-3xl sm:text-4xl font-extrabold text-aubergine dark:text-white">10.0</div>
               <div class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider mt-0.5">KTU Rank 1</div>
@@ -255,9 +264,9 @@
 
         <!-- Right Column: Visual Frame with Rotating Stamp Badge & Pinned Pill Badges -->
         <div class="lg:col-span-5 flex justify-center relative">
-          <div class="relative w-80 sm:w-96 aspect-[4/5] max-w-full">
+          <div class="hero-portrait-frame relative w-80 sm:w-96 aspect-[4/5] max-w-full">
             
-            <!-- Flat Marigold Backdrop Shape (No gradient per B4) -->
+            <!-- Flat Marigold Backdrop Shape -->
             <div class="absolute -top-6 -right-6 w-full h-full rounded-[48px] bg-marigold rotate-3 transition-transform duration-500"></div>
             
             <!-- Flat Aubergine Layer -->
@@ -284,7 +293,7 @@
             </div>
 
             <!-- Rotating Stamp Badge (Top Right) -->
-            <div class="absolute -top-7 -right-7 z-20 w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center">
+            <div class="hero-rotating-stamp absolute -top-7 -right-7 z-20 w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center">
               <svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100">
                 <defs>
                   <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
@@ -300,14 +309,7 @@
               </div>
             </div>
 
-            <!-- Floating Pill Tag 1: AI and ML Engineer -->
-            <div class="absolute bottom-16 -left-6 z-20 bg-aubergine text-white px-4 py-2 rounded-full shadow-xl flex items-center gap-2 border border-white/20">
-              <span class="w-2 h-2 rounded-full bg-marigold"></span>
-              <span class="text-xs font-bold tracking-wide">AI and ML Engineer</span>
-              <i class="ph ph-arrow-up-right text-marigold text-xs"></i>
-            </div>
-
-            <!-- Floating Pill Tag 2: SE4AI Researcher -->
+            <!-- Floating Pill Tag: SE4AI Researcher -->
             <div class="absolute top-1/2 -right-8 z-20 bg-marigold text-aubergine-dark px-4 py-2 rounded-full shadow-xl flex items-center gap-2 border border-white/40">
               <span class="text-xs font-extrabold tracking-wide">SE4AI Researcher</span>
               <i class="ph ph-sparkle text-xs"></i>
@@ -320,7 +322,7 @@
     </section>
 
     <!-- ========================================================================
-         MARQUEE BANNER (Flat Marigold Background per B4)
+         MARQUEE BANNER
          ======================================================================== -->
     <div class="relative w-full overflow-hidden bg-marigold py-4 shadow-inner border-y border-marigold-hover/40">
       <div class="flex marquee-track whitespace-nowrap text-aubergine-dark font-extrabold text-base sm:text-lg tracking-wider uppercase select-none">
@@ -346,7 +348,6 @@
 
     <!-- ========================================================================
          MANDATORY TAGLINE REVEAL SECTION (B11)
-         Words start at ~28% opacity and light up one by one on scroll
          ======================================================================== -->
     <section class="py-24 sm:py-32 px-4 sm:px-6 max-w-5xl mx-auto text-center">
       <div class="space-y-4">
@@ -360,7 +361,7 @@
     </section>
 
     <!-- ========================================================================
-         SERVICES / CORE CAPABILITIES (Benefits Section)
+         SERVICES / CORE CAPABILITIES
          ======================================================================== -->
     <section id="services" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -441,7 +442,7 @@
     </section>
 
     <!-- ========================================================================
-         HOW IT WORKS (Three Steps per A2, A5)
+         HOW IT WORKS
          ======================================================================== -->
     <section id="methodology" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -489,7 +490,7 @@
     </section>
 
     <!-- ========================================================================
-         FEATURED PROJECTS (Click to Expand / Collapse Only)
+         FEATURED PROJECTS (Accordion Click to Expand)
          ======================================================================== -->
     <section id="projects" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -505,7 +506,7 @@
           </p>
         </div>
 
-        <!-- Category Filter Buttons -->
+        <!-- Filter Buttons -->
         <div class="flex flex-wrap gap-2 text-xs font-bold" id="projectFilters">
           <button class="project-filter-btn px-4 py-2 rounded-full bg-aubergine text-white transition-all shadow-sm active" data-filter="all">All</button>
           <button class="project-filter-btn px-4 py-2 rounded-full bg-white dark:bg-white/10 text-slate-600 dark:text-slate-300 border border-silver dark:border-white/10 hover:bg-slate-50 transition-all" data-filter="ai">AI and ML</button>
@@ -545,7 +546,6 @@
             </div>
           </div>
 
-          <!-- Trigger Bar -->
           <div class="mt-6 pt-4 border-t border-silver dark:border-white/10 flex items-center justify-between text-xs font-bold text-aubergine dark:text-white">
             <span class="expand-text">View Details</span>
             <div class="expand-icon w-7 h-7 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center transition-transform duration-300">
@@ -553,7 +553,6 @@
             </div>
           </div>
 
-          <!-- Expanded Body -->
           <div class="project-expanded-body border-t border-slate-100 dark:border-white/10 pt-4 space-y-4 text-xs text-slate-600 dark:text-slate-300">
             <div class="space-y-1.5">
               <h4 class="font-bold text-aubergine dark:text-white uppercase tracking-wider text-[11px]">System Architecture and Impact</h4>
@@ -910,7 +909,7 @@
     </section>
 
     <!-- ========================================================================
-         COMPETITIVE MILESTONES & HONORS (Social Proof Section)
+         COMPETITIVE MILESTONES & HONORS
          ======================================================================== -->
     <section id="milestones" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-silver dark:border-white/10">
       <div class="text-center max-w-2xl mx-auto space-y-2 mb-12">
@@ -990,7 +989,7 @@
     </section>
 
     <!-- ========================================================================
-         FREQUENTLY ASKED QUESTIONS (FAQ Section per A2, A5)
+         FREQUENTLY ASKED QUESTIONS (FAQ)
          ======================================================================== -->
     <section id="faq" class="py-20 px-4 sm:px-6 max-w-4xl mx-auto border-t border-silver dark:border-white/10">
       <div class="text-center space-y-2 mb-12">
@@ -1065,14 +1064,14 @@
             <i class="ph ph-plus faq-icon text-lg transition-transform duration-300"></i>
           </button>
           <div class="faq-body text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            The Swarm Rebuild bar at the bottom simulates a distributed multi agent engineering cluster. Autonomous agents continuously inspect DOM elements, trace alignment guidelines, and verify requirements layers in real time.
+            The Swarm Rebuild bar simulates autonomous engineering cursors assembling the layout live with canvas coordinates, element selection frames, and laser alignment crosshairs.
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========================================================================
-         FINAL CTA SECTION (Matches top offer per A2, A5)
+         FINAL CTA SECTION
          ======================================================================== -->
     <section id="contact" class="py-24 sm:py-32 bg-aubergine text-white px-4 sm:px-6 relative overflow-hidden">
       <div class="max-w-4xl mx-auto relative z-10 text-center space-y-10">
@@ -1111,7 +1110,7 @@
           </a>
         </div>
 
-        <!-- Contact Form (Client side validated per B10) -->
+        <!-- Contact Form -->
         <div class="max-w-xl mx-auto mt-12 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 text-left">
           <h3 class="font-bold text-lg text-white mb-4 text-center">Send a Direct Message</h3>
           
