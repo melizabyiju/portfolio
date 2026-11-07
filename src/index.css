@@ -135,23 +135,33 @@ body {
   color: #1A0519;
 }
 
-/* Custom Cursor */
+/* Custom Cursor: Brand 'm' Letter & Smooth Ring */
+.custom-cursor-m,
 .custom-cursor-dot {
   pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
-  width: 8px;
-  height: 8px;
-  background-color: #3A0F34;
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  color: #3A0F34;
+  font-family: 'Plus Jakarta Sans', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  user-select: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: transform 0.08s ease-out;
+  transition: opacity 0.2s ease, transform 0.12s cubic-bezier(0.2, 0, 0, 1), color 0.2s ease;
 }
 
+.dark .custom-cursor-m,
 .dark .custom-cursor-dot {
-  background-color: #EAAA00;
+  color: #EAAA00;
 }
 
 .custom-cursor-ring {
@@ -165,11 +175,19 @@ body {
   border-radius: 50%;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .dark .custom-cursor-ring {
   border-color: rgba(234, 170, 0, 0.4);
+}
+
+@media (pointer: coarse) {
+  .custom-cursor-m,
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
 }
 
 /* Marquee continuous scroll */

@@ -97,19 +97,31 @@ body {
   background: var(--c-aubergine);
 }
 
-/* Minimal Custom Cursor */
+/* Minimal Custom Cursor: Brand 'm' Letter & Smooth Ring */
 .cursor-dot {
-  width: 6px;
-  height: 6px;
-  background-color: var(--c-marigold);
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  color: var(--c-aubergine, #3A0F34);
+  font-family: 'Manrope', -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
   position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
+  user-select: none;
   z-index: 10000;
-  transition: transform 0.08s ease;
+  transition: transform 0.08s ease, color 0.2s ease;
   transform: translate(-50%, -50%);
+}
+
+[data-theme="dark"] .cursor-dot {
+  color: var(--c-marigold, #EAAA00);
 }
 
 .cursor-ring {

@@ -65,11 +65,14 @@ export default function CustomCursor() {
   return (
     <>
       <div
-        className="custom-cursor-dot"
+        className="custom-cursor-m"
         style={{
-          transform: `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`,
+          transform: `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%) scale(${isHovered ? 1.25 : 1})`,
         }}
-      />
+        aria-hidden="true"
+      >
+        m
+      </div>
       <div
         className="custom-cursor-ring"
         style={{

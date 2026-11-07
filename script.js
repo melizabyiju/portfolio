@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cursorRing = document.getElementById('cursor-ring');
 
   if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+    cursorDot.textContent = 'm';
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let ringX = mouseX;
