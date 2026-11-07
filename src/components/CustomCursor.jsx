@@ -55,18 +55,20 @@ export default function CustomCursor() {
       };
     };
 
-    // Helper: Check if color is purple or dark
-    const checkIsPurpleOrDarkColor = ({ r, g, b }) => {
+    // Helper: Check if color is dark (black, charcoal, dark slate, deep navy, etc.) or purple
+    const checkIsDarkOrPurpleColor = ({ r, g, b }) => {
       const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-      // Purple / Plum hue: Red & Blue are higher than Green
+      // 1. Any dark color (black, charcoal, dark slate, dark plum, deep navy, etc.)
+      if (lum < 140) {
+        return true;
+      }
+      // 2. Purple / Plum hue even if slightly lighter
       const isPurple = r > g + 8 && b > g + 8 && lum < 165;
-      // Deep dark hue (plum-950, black, slate-950)
-      const isDark = lum < 95;
-      return isPurple || isDark;
+      return isPurple;
     };
 
-    // Check if background under (x, y) is purple or dark
-    const isPurpleOrDarkBg = (x, y) => {
+    // Check if background under (x, y) is dark (black, dark slate, etc.) or purple
+    const isDarkOrPurpleBg = (x, y) => {
       const el = document.elementFromPoint(x, y);
       if (!el) return false;
 
@@ -76,10 +78,10 @@ export default function CustomCursor() {
           const style = window.getComputedStyle(current);
           const bg = parseRgb(style.backgroundColor);
           if (bg && bg.a >= 0.4) {
-            if (checkIsPurpleOrDarkColor(bg)) {
+            if (checkIsDarkOrPurpleColor(bg)) {
               return true;
             } else {
-              // Found opaque light / non-purple background
+              // Found opaque light / non-dark background
               return false;
             }
           }
@@ -89,8 +91,8 @@ export default function CustomCursor() {
       return false;
     };
 
-    // Check if cursor is directly over purple text, letter, heading, or icon glyph
-    const isOverPurpleTextOrGlyph = (x, y) => {
+    // Check if cursor is directly over dark (black, slate, etc.) or purple text/glyph/icon
+    const isOverDarkTextOrGlyph = (x, y) => {
       // 1. Check exact character glyph via caret range
       if (document.caretRangeFromPoint) {
         try {
@@ -104,7 +106,7 @@ export default function CustomCursor() {
             if (parentNode && parentNode.nodeType === Node.ELEMENT_NODE) {
               const style = window.getComputedStyle(parentNode);
               const textColor = parseRgb(style.color);
-              if (textColor && checkIsPurpleOrDarkColor(textColor)) {
+              if (textColor && checkIsDarkOrPurpleColor(textColor)) {
                 const rects = range.getClientRects();
                 if (rects.length > 0) {
                   const r = rects[0];
@@ -123,15 +125,15 @@ export default function CustomCursor() {
         } catch (e) {}
       }
 
-      // 2. Check element directly under (x, y) for purple text / heading / icon
+      // 2. Check element directly under (x, y) for dark or purple text / heading / icon
       const el = document.elementFromPoint(x, y);
       if (el) {
         const tag = el.tagName;
-        if (/^(H[1-6]|SPAN|A|BUTTON|STRONG|B|EM|I|LABEL|LI|CODE|SVG|PATH)$/.test(tag)) {
+        if (/^(H[1-6]|SPAN|A|BUTTON|STRONG|B|EM|I|LABEL|LI|CODE|SVG|PATH|P|DIV|TD|TH)$/.test(tag)) {
           try {
             const style = window.getComputedStyle(el);
             const color = parseRgb(style.color) || parseRgb(style.fill);
-            if (color && checkIsPurpleOrDarkColor(color)) {
+            if (color && checkIsDarkOrPurpleColor(color)) {
               const rect = el.getBoundingClientRect();
               if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
                 if (el.textContent.trim().length > 0 || tag === 'SVG' || tag === 'PATH') {
@@ -146,7 +148,7 @@ export default function CustomCursor() {
       return false;
     };
 
-    // Combined detection: Is the cursor over purple background OR purple text/icon?
+    // Combined detection: Is the cursor over dark/purple background OR dark/purple text/icon?
     const shouldBeYellow = (x, y) => {
       if (
         document.documentElement.classList.contains('dark') ||
@@ -154,7 +156,7 @@ export default function CustomCursor() {
       ) {
         return true;
       }
-      return isPurpleOrDarkBg(x, y) || isOverPurpleTextOrGlyph(x, y);
+      return isDarkOrPurpleBg(x, y) || isOverDarkTextOrGlyph(x, y);
     };
 
     // Initial color setup
