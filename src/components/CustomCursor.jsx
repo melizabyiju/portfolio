@@ -19,7 +19,7 @@ export default function CustomCursor() {
     let isMoving = false;
     let isCurrentlyYellow = false;
 
-    // Apply color theme directly to DOM elements for zero-lag instant transition
+    // Apply color theme directly to DOM elements for instant 120fps transition
     const applyColorTheme = (yellow) => {
       isCurrentlyYellow = yellow;
       if (mRef.current) {
@@ -42,16 +42,31 @@ export default function CustomCursor() {
       }
     };
 
-    // Determine if the background under (x, y) is purple or dark
-    const checkIsPurpleOrDarkAt = (x, y) => {
-      // 1. Dark mode active -> always yellow
-      if (
-        document.documentElement.classList.contains('dark') ||
-        document.documentElement.getAttribute('data-theme') === 'dark'
-      ) {
-        return true;
-      }
+    // Helper: Parse RGB/RGBA strings into numeric components
+    const parseRgb = (str) => {
+      if (!str || str === 'transparent' || str === 'rgba(0, 0, 0, 0)') return null;
+      const m = str.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+      if (!m) return null;
+      return {
+        r: parseInt(m[1], 10),
+        g: parseInt(m[2], 10),
+        b: parseInt(m[3], 10),
+        a: m[4] !== undefined ? parseFloat(m[4]) : 1,
+      };
+    };
 
+    // Helper: Check if color is purple or dark
+    const checkIsPurpleOrDarkColor = ({ r, g, b }) => {
+      const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+      // Purple / Plum hue: Red & Blue are higher than Green
+      const isPurple = r > g + 8 && b > g + 8 && lum < 165;
+      // Deep dark hue (plum-950, black, slate-950)
+      const isDark = lum < 95;
+      return isPurple || isDark;
+    };
+
+    // Check if background under (x, y) is purple or dark
+    const isPurpleOrDarkBg = (x, y) => {
       const el = document.elementFromPoint(x, y);
       if (!el) return false;
 
@@ -59,40 +74,87 @@ export default function CustomCursor() {
       while (current && current !== document.documentElement) {
         try {
           const style = window.getComputedStyle(current);
-          const bg = style.backgroundColor;
-          if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') {
-            const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-            if (match) {
-              const r = parseInt(match[1], 10);
-              const g = parseInt(match[2], 10);
-              const b = parseInt(match[3], 10);
-              const a = match[4] !== undefined ? parseFloat(match[4]) : 1;
+          const bg = parseRgb(style.backgroundColor);
+          if (bg && bg.a >= 0.4) {
+            if (checkIsPurpleOrDarkColor(bg)) {
+              return true;
+            } else {
+              // Found opaque light / non-purple background
+              return false;
+            }
+          }
+        } catch (e) {}
+        current = current.parentElement;
+      }
+      return false;
+    };
 
-              if (a >= 0.4) {
-                // Perceived luminance
-                const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+    // Check if cursor is directly over purple text, letter, heading, or icon glyph
+    const isOverPurpleTextOrGlyph = (x, y) => {
+      // 1. Check exact character glyph via caret range
+      if (document.caretRangeFromPoint) {
+        try {
+          const range = document.caretRangeFromPoint(x, y);
+          if (range) {
+            const parentNode =
+              range.startContainer.nodeType === Node.TEXT_NODE
+                ? range.startContainer.parentElement
+                : range.startContainer;
 
-                // Purple / Plum hue: Red & Blue high, Green low
-                const isPurple = r > g + 10 && b > g + 10 && lum < 155;
-
-                // Deep dark background
-                const isDark = lum < 110;
-
-                if (isPurple || isDark) {
-                  return true;
-                } else {
-                  // Found an opaque light or yellow/cream background
-                  return false;
+            if (parentNode && parentNode.nodeType === Node.ELEMENT_NODE) {
+              const style = window.getComputedStyle(parentNode);
+              const textColor = parseRgb(style.color);
+              if (textColor && checkIsPurpleOrDarkColor(textColor)) {
+                const rects = range.getClientRects();
+                if (rects.length > 0) {
+                  const r = rects[0];
+                  const fontSize = parseFloat(style.fontSize) || 16;
+                  const thresholdX = Math.max(fontSize * 1.5, 30);
+                  const thresholdY = Math.max(fontSize * 1.2, 26);
+                  const dx = Math.abs(x - r.left);
+                  const dy = Math.abs(y - (r.top + r.height / 2));
+                  if (dx < thresholdX && dy < thresholdY) {
+                    return true;
+                  }
                 }
               }
             }
           }
         } catch (e) {}
+      }
 
-        current = current.parentElement;
+      // 2. Check element directly under (x, y) for purple text / heading / icon
+      const el = document.elementFromPoint(x, y);
+      if (el) {
+        const tag = el.tagName;
+        if (/^(H[1-6]|SPAN|A|BUTTON|STRONG|B|EM|I|LABEL|LI|CODE|SVG|PATH)$/.test(tag)) {
+          try {
+            const style = window.getComputedStyle(el);
+            const color = parseRgb(style.color) || parseRgb(style.fill);
+            if (color && checkIsPurpleOrDarkColor(color)) {
+              const rect = el.getBoundingClientRect();
+              if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                if (el.textContent.trim().length > 0 || tag === 'SVG' || tag === 'PATH') {
+                  return true;
+                }
+              }
+            }
+          } catch (e) {}
+        }
       }
 
       return false;
+    };
+
+    // Combined detection: Is the cursor over purple background OR purple text/icon?
+    const shouldBeYellow = (x, y) => {
+      if (
+        document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark'
+      ) {
+        return true;
+      }
+      return isPurpleOrDarkBg(x, y) || isOverPurpleTextOrGlyph(x, y);
     };
 
     // Initial color setup
@@ -114,10 +176,10 @@ export default function CustomCursor() {
         setIsVisible(true);
       }
 
-      // Check background color under pointer
-      const overPurple = checkIsPurpleOrDarkAt(targetX, targetY);
-      if (overPurple !== isCurrentlyYellow) {
-        applyColorTheme(overPurple);
+      // Check color under pointer dynamically
+      const yellow = shouldBeYellow(targetX, targetY);
+      if (yellow !== isCurrentlyYellow) {
+        applyColorTheme(yellow);
       }
     };
 
@@ -134,7 +196,7 @@ export default function CustomCursor() {
     let animationFrameId;
     const animate = () => {
       if (isMoving) {
-        // High-performance smooth speed tracking without React setState latency
+        // High-performance smooth tracking without React setState latency
         mX += (targetX - mX) * 0.82;
         mY += (targetY - mY) * 0.82;
 
@@ -157,7 +219,7 @@ export default function CustomCursor() {
     };
     animationFrameId = requestAnimationFrame(animate);
 
-    // Interactive element hover listeners (only scales up for tactile feedback, leaves color to background)
+    // Interactive element hover listeners (scales up for tactile feedback)
     const handleElementHover = () => {
       isHovering = true;
       if (ringRef.current) ringRef.current.classList.add('is-hovered');
@@ -182,7 +244,7 @@ export default function CustomCursor() {
 
     const elements = updateInteractiveListeners();
 
-    // Rebind on DOM changes (e.g. modals opening, filters clicked)
+    // Rebind on DOM changes
     const domObserver = new MutationObserver(() => {
       updateInteractiveListeners();
     });
@@ -196,7 +258,7 @@ export default function CustomCursor() {
       if (isDarkNow) {
         applyColorTheme(true);
       } else {
-        applyColorTheme(checkIsPurpleOrDarkAt(targetX, targetY));
+        applyColorTheme(shouldBeYellow(targetX, targetY));
       }
     });
     themeObserver.observe(document.documentElement, {
