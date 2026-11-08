@@ -7,7 +7,7 @@ export default function Hero() {
   const { personal } = portfolioData;
 
   return (
-    <section id="hero" className="relative pt-28 sm:pt-36 pb-8 sm:pb-10 md:pb-14 lg:pb-16 overflow-hidden bg-[#FAF6F2] dark:bg-[#10030F] transition-colors duration-300">
+    <section id="hero" className="relative pt-20 sm:pt-28 pb-8 sm:pb-10 md:pb-14 lg:pb-16 overflow-hidden bg-[#FAF6F2] dark:bg-[#10030F] transition-colors duration-300">
 
       {/* ========================================================================
           HERO BACKGROUND COMPOSITION (WARM BLUSH, PEACH/GOLD GLOWS, CURVES & WAVES)
