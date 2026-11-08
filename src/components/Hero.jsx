@@ -108,10 +108,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Sub-heading role */}
-            <h2 className="font-display font-bold text-xl sm:text-2xl md:text-3xl text-plum-900 dark:text-ice-100 tracking-tight mb-4">
-              AI & SE4AI Researcher • CSE Scholar
-            </h2>
+
 
             {/* Academic highlights badges */}
             <div className="inline-flex flex-wrap items-center gap-2 mb-5">
