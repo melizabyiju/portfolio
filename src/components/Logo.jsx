@@ -21,9 +21,6 @@ export default function Logo({ className = "w-8 h-8", withText = true }) {
             <span>MELIZA MARIYA BYIJU</span>
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse"></span>
           </span>
-          <span className="font-mono text-[10px] tracking-widest text-gold-600 dark:text-gold-400 font-semibold uppercase">
-            AI / SE4AI Researcher
-          </span>
         </div>
       )}
     </div>
