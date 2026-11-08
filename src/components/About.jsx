@@ -25,11 +25,12 @@ export default function About() {
           <div className="sticky top-28">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-plum-900/15 dark:border-gold-500/30 shadow-lg bg-plum-900">
               <img
-                src="Images/about.jpeg"
+                src={`${(import.meta.env.BASE_URL || '/').endsWith('/') ? (import.meta.env.BASE_URL || '/') : `${import.meta.env.BASE_URL}/`}Images/about.jpeg`}
                 alt="Meliza Mariya Byiju"
                 className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
                 onError={(e) => {
-                  e.currentTarget.src = "Images/hero.jpeg";
+                  const base = (import.meta.env.BASE_URL || '/').endsWith('/') ? (import.meta.env.BASE_URL || '/') : `${import.meta.env.BASE_URL}/`;
+                  e.currentTarget.src = `${base}Images/hero.jpeg`;
                 }}
               />
             </div>

@@ -1,19 +1,24 @@
 # Personal and Media Files
 [iI]mages/
 [iI]mage/
-public/[iI]mages/
-**/Images/
-**/images/
 logo_options/
-*.jpeg
-*.jpg
-*.png
-*.webp
 *.pdf
 *.mp4
 *.gif
+*.raw
 
-# Environment and OS
+# Allow production images inside public/Images/
+!public/Images/
+!public/Images/hero_cutout.png
+!public/Images/hero.jpeg
+!public/Images/about.jpeg
+!public/Images/meliza_portrait_art.png
+
+# Keep raw uncompressed WhatsApp exports ignored
+public/Images/WhatsApp*
+**/WhatsApp*
+
+# Environment, Build & OS
 .DS_Store
 Thumbs.db
 node_modules/

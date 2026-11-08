@@ -221,11 +221,12 @@ export default function Hero() {
               {/* Transparent Person Cutout with Natural Shadows & Smooth Image-Edge Blending */}
               <div className="relative z-10 w-full flex justify-center [mask-image:linear-gradient(to_bottom,black_0%,black_84%,rgba(0,0,0,0.82)_91%,transparent_100%)]">
                 <img
-                  src="Images/hero_cutout.png"
+                  src={`${(import.meta.env.BASE_URL || '/').endsWith('/') ? (import.meta.env.BASE_URL || '/') : `${import.meta.env.BASE_URL}/`}Images/hero_cutout.png`}
                   alt="Meliza Mariya Byiju"
                   className="profile-portrait-image w-[280px] sm:w-[340px] md:w-[380px] h-auto object-contain pointer-events-none transition-transform duration-700 hover:scale-[1.015] filter drop-shadow-[0_16px_28px_rgba(58,15,52,0.16)] dark:drop-shadow-[0_16px_28px_rgba(0,0,0,0.42)]"
                   onError={(e) => {
-                    e.currentTarget.src = "Images/hero.jpeg";
+                    const base = (import.meta.env.BASE_URL || '/').endsWith('/') ? (import.meta.env.BASE_URL || '/') : `${import.meta.env.BASE_URL}/`;
+                    e.currentTarget.src = `${base}Images/hero.jpeg`;
                     e.currentTarget.className = "w-[260px] sm:w-[300px] aspect-[4/5] object-cover object-top rounded-3xl shadow-xl";
                   }}
                 />
