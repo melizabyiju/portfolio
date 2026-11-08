@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-plum-900/10 dark:border-white/10 bg-white dark:bg-plum-950 py-12 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-slate-500 dark:text-slate-400">
-        
+
         {/* Brand */}
         <div className="flex items-center gap-3">
           <Logo className="w-6 h-6" withText={false} />
@@ -23,12 +23,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Palette & Academic Badge */}
-        <div className="text-center font-medium">
-          <span className="text-plum-900 dark:text-gold-400 font-bold">10.0 CGPA</span> • AMAL JYOTHI & NIT CALICUT
-          <span className="hidden sm:inline text-slate-400 dark:text-slate-600 mx-2">|</span>
-          <span className="hidden sm:inline text-[11px] text-slate-400">PLUM, GOLD & ICE SYSTEM</span>
-        </div>
 
         {/* Back to top */}
         <button
